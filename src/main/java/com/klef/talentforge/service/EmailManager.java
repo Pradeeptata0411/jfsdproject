@@ -28,7 +28,7 @@ public class EmailManager
           smm.setSubject(subject);
           smm.setText(htmlContent,true);
           
-          String absoluteFilePath = "D:/JFSD/PROJECTSWORKSPACE/TalentForgeProject/src/main/webapp/images/search.png";
+          String absoluteFilePath = "E:/3_1/JFSD/PROJECTS/TalentForgeProject/src/main/webapp/images/search.png";
 
           FileSystemResource file = new FileSystemResource(absoluteFilePath);
           //smm.addAttachment("login.jpg", file);

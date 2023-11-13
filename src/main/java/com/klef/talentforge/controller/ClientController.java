@@ -98,7 +98,7 @@ public class ClientController
 			 String fileName = "invite.html"; 
 	            String filePath = request.getServletContext().getRealPath("/" + fileName);
 	            
-		    String fromEmail = "mahikiran.b@gmail.com"; // Set your email
+		    String fromEmail = "jfsdsdpams@gmail.com"; // Set your email
             String toEmail = email; // Use the user's email from the booking
             String subject = "Talentforge  Registration Confirmation";
             String text = "Hello " +fname+" "+lname +"\n"+" Your Registration into talentforge  has been Sucessfull "+"\n"+" Through this email "+email;
@@ -113,7 +113,7 @@ public class ClientController
             
         
             emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
-            mv.setViewName("/");
+            mv.setViewName("ApplicantLogin");
 			mv.addObject("message", msg);
 			
 		}
@@ -208,7 +208,7 @@ public class ClientController
 				 String fileName = "invite.html"; 
 		            String filePath = request.getServletContext().getRealPath("/" + fileName);
 		            
-			    String fromEmail = "mahikiran.b@gmail.com"; // Set your email
+			    String fromEmail = "jfsdsdpams@gmail.com"; // Set your email
 	            String toEmail = email; // Use the user's email from the booking
 	            String subject = "Talentforge  Registration Confirmation";
 	            String text = "Hello " +companyname +"\n"+" Your Registration into talentforge  has been Sucessfull "+"\n"+" Through this email "+email;
