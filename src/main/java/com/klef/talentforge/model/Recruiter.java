@@ -66,10 +66,4 @@ public class Recruiter {
 		return "Recruiter [id=" + id + ", companyname=" + companyname + ", email=" + email + ", password=" + password
 				+ ", contactno=" + contactno + ", address=" + address + "]";
 	}
-    
-    
-    
-    
-    
-	
 }

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
+import com.klef.talentforge.service.RecruiterService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +26,9 @@ public class ClientController
 {
 	@Autowired
 	private ApplicantService applicantService;
+	
+	@Autowired
+	private RecruiterService recruiterService;
 	
 
 	@Autowired
@@ -136,5 +141,117 @@ public class ClientController
 					}
 		return mv;
 	}
+	
+	
+	
+	
+	
+	
+	//recruiter
+	
+	@GetMapping("recruiterhome")
+	  public ModelAndView recruiterhome() {
+	    ModelAndView mv=new ModelAndView("recruiterhome");
+	    return mv;
+	  }
+	  @GetMapping("companylogin")
+	  public ModelAndView companylogin() {
+	    ModelAndView mv=new ModelAndView("companylogin");
+	    return mv;
+	  }
+	  @GetMapping("companyregistration")
+	  public ModelAndView companyregistration() {
+	    ModelAndView mv=new ModelAndView("companyregistration");
+	    return mv;
+	  }
+	  
+	  
+	  
+	  
+	     @PostMapping("recruiterRegistration")
+		public ModelAndView recruiterRegistration(HttpServletRequest request) {
+			ModelAndView mv = new ModelAndView();
+			String msg = null;
+			try {
+					String companyname = request.getParameter("companyname");
+				String email = request.getParameter("email");
+				String pwd = request.getParameter("password");
+				String contact = request.getParameter("contactnumber");
+				String address = request.getParameter("address");
+				
+				
+				LocalDate currentDate = LocalDate.now();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				String currentDateStr = currentDate.format(formatter);
+				
+				LocalTime currentTime = LocalTime.now();
+				DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+				String currentTimeStr = currentTime.format(timeFormatter);
+	    
+				
+				Recruiter recruiter = new Recruiter();
+				recruiter.setEmail(email);
+				recruiter.setCompanyname(companyname);
+				recruiter.setPassword(pwd);
+				recruiter.setContactno(contact);
+				recruiter.setAddress(address);
+				
+			    msg = recruiterService.registerRecruiter(recruiter);
+			    
+			    
+				 String fileName = "invite.html"; 
+		            String filePath = request.getServletContext().getRealPath("/" + fileName);
+		            
+			    String fromEmail = "mahikiran.b@gmail.com"; // Set your email
+	            String toEmail = email; // Use the user's email from the booking
+	            String subject = "Talentforge  Registration Confirmation";
+	            String text = "Hello " +companyname +"\n"+" Your Registration into talentforge  has been Sucessfull "+"\n"+" Through this email "+email;
+	            String text2="Date :-" +currentDateStr +"\n"+"On this Time :-"+currentTimeStr;
+	            // Inject JavaMailSender
+	            String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
+	            htmlContent = htmlContent.replace("[name]", companyname);
+	            htmlContent = htmlContent.replace("[text]", text);
+	            htmlContent=htmlContent.replace("[text2]", text2);
+	            
+	            htmlContent=htmlContent.replace("[password]", pwd);
+	            
+	        
+	            emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
+	            mv.setViewName("companylogin");
+				mv.addObject("message", msg);
+				
+			}
+			catch (Exception e) {
+				mv.setViewName("companyregistration");
+				msg = "Registration Failed & Provide Valid Details..!!";
+				mv.addObject("message", msg);
+			}
+			return mv;
+		}
+	  
+	  
+	     @PostMapping("checkrecruiterlogin")
+	 	public ModelAndView checkrecruiterlogin(HttpServletRequest request) {
+	 		String uname = request.getParameter("email");
+	 		String pwd = request.getParameter("password1");
+	 		HttpSession session = request.getSession();
+	 		Recruiter rec = recruiterService.checkRecruiterlogin(uname, pwd);
+	 	
+	 		ModelAndView mv =new ModelAndView();
+	 		if(rec!=null ) {
+	 		
+	 			session.setAttribute("rid",rec.getId()); 
+	 			session.setAttribute("remail",rec.getEmail());
+	 			session.setAttribute("rcompanynmae",rec.getCompanyname());
+	 			mv.setViewName("recruiterhome");
+	 		}else  {
+	 			mv.setViewName("companyregistration");
+	 			mv.addObject("message", "Invalid Login..!");
+	 					}
+	 		return mv;
+	 	}
+	 	
+	  
+	  
 
 }
