@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
 import com.klef.talentforge.service.RecruiterService;
@@ -29,6 +31,10 @@ public class ClientController
 	
 	@Autowired
 	private RecruiterService recruiterService;
+	
+	
+	@Autowired
+	private AdminService adminService;
 	
 
 	@Autowired
@@ -252,6 +258,34 @@ public class ClientController
 	 	}
 	 	
 	  
-	  
+	  //admin
+	     
+	     @GetMapping("admin")
+	     public ModelAndView adminlogin() {
+	       ModelAndView mv=new ModelAndView("adminlogin");
+	       return mv;
+	     }
+
+	     @PostMapping("checkadminlogin")
+	     public ModelAndView checkadminlogin(HttpServletRequest request) {
+	       String username=request.getParameter("email");
+	       String password=request.getParameter("password1");
+	       ModelAndView mv=new ModelAndView();
+	       HttpSession session=request.getSession();
+	       Admin adm=adminService.checkadminlogin(username, password);
+	       if(adm!=null) {
+	          
+	         session.setAttribute("uname", adm.getUsername());
+	         mv.setViewName("adminhome");
+	         
+	       }
+	         else  {
+	       mv.setViewName("adminlogin");
+	       mv.addObject("message", "Invalid Login..!");
+	           }
+	     return mv;
+	       
+	     }
+
 
 }
