@@ -108,7 +108,7 @@ public class ClientController
 	            
 		    String fromEmail = "jfsdsdpams@gmail.com"; // Set your email
             String toEmail = email; // Use the user's email from the booking
-            String subject = "Talentforge  Registration Confirmation";
+            String subject = "Talentforge  Registration Confirmation mail";
             String text = "Hello " +fname+" "+lname +"\n"+" Your Registration into talentforge  has been Sucessfull "+"\n"+" Through this email "+email;
             String text2="Date :-" +currentDateStr +"\n"+"On this Time :-"+currentTimeStr;
             // Inject JavaMailSender
