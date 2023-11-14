@@ -11,20 +11,20 @@
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;" ><a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
 </div>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="recruiterhome">Home</a></li>
+      <li><a href="postajob">Post a Job</a></li>
       <li>
         <a href="#" class="desktop-item">Dropdown Menu</a>
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="#">Drop menu 1</a></li>
+          <li><a href="recruiterviewjobs">view jobs</a></li>
           <li><a href="#">Drop menu 2</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
@@ -76,7 +76,7 @@
 </nav>
 
 <div class="body-text">
-  <div class="title">Responsive Dropdown and Mega Menu</div>
+  <div class="title">Welcome <h1>${rcompanynmae}</h1></div>
   <div class="sub-title">using only HTML & CSS</div>
 </div>
 <!-- partial -->

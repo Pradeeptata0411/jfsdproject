@@ -74,12 +74,21 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+<br>
+<br>
+<br>
+<br>
+ <c:forEach items="${jobslist}" var="job">
+    
+    <div class="job-card">
+      <h3><c:out value="${job.jobtitle}"></c:out></h3>
+      <p>Location: <c:out value="${job.location}"></c:out></p>
+      <p>Skills: <c:out value="${job.skills}"></c:out></p>
+      <p>Description: <c:out value="${job.description}"></c:out></p>
+      <p>Salary: <c:out value="${job.salary}"></c:out></p>
+    </div>
 
-<div class="body-text">
-  <div class="title">Welcome ADMIN</div>
-  <div class="sub-title">Hello </div>
-</div>
-<!-- partial -->
+   </c:forEach>
   
 </body>
 </html>

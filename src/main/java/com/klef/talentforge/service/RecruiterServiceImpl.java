@@ -1,9 +1,14 @@
 package com.klef.talentforge.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
 
 
@@ -14,6 +19,8 @@ public class RecruiterServiceImpl implements RecruiterService {
 	@Autowired
 	private RecruiterRepository recruiterRepository;
 	
+	@Autowired
+	private JobRepository jobRepository;
 	
 	
 	@Override
@@ -25,6 +32,55 @@ public class RecruiterServiceImpl implements RecruiterService {
 	@Override
 	public Recruiter checkRecruiterlogin(String email, String pwd) {
 		return recruiterRepository.checkRecruiterlogin(email, pwd);
+	}
+
+	
+	
+	@Override
+	public String addjob(Job job) {
+		jobRepository.save(job);
+		return "Job Added Successfully";
+	}
+
+	public List<Job> ViewAllJobs()
+	{
+		return  jobRepository.findAll();
+	}
+
+
+	  @Override
+	  public Job ViewJobByID(int id) {
+	    
+	    Optional<Job> obj=jobRepository.findById(id);
+	    if(obj.isPresent()) {
+	      Job mem=obj.get();
+	      return mem;
+	    }
+	    else return null;
+
+	  }
+
+	@Override
+	public Job viewJobByTitleAndDescription(String title, String description) {
+		
+		return jobRepository.viewJobByTitleAndDescription(title, description);
+	}
+
+	@Override
+	public List<Job> viewjobsbycompanyname(String companyname) {
+		return jobRepository.viewalljobsbycompanyname(companyname);
+	}
+
+	@Override
+	public String deletejob(int id) {
+		Optional<Job> obj = jobRepository.findById(id);
+		String msg="";
+		if(obj.isPresent()) {
+			Job job = obj.get();
+			jobRepository.delete(job);
+			 msg = "Successfully Deleted";
+		}
+		return msg;
 	}
 
 }

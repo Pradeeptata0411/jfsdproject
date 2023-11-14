@@ -17,4 +17,5 @@ public interface RecruiterRepository extends JpaRepository<Recruiter,Integer>{
 	
 	
 	
+	
 }

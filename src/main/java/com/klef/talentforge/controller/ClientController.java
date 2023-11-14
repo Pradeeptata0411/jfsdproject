@@ -1,19 +1,30 @@
 package com.klef.talentforge.controller;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
@@ -36,16 +47,13 @@ public class ClientController
 	@Autowired
 	private AdminService adminService;
 	
+	
+	
 
 	@Autowired
 	private EmailManager emailManager;
 	
-	@GetMapping("applicanthome")
-	public ModelAndView indexpage() {
-		ModelAndView mv=new ModelAndView("index");
-		return mv;
-	}
-
+	
 	
 	@GetMapping("register")
 	public ModelAndView employeeregister() {
@@ -140,6 +148,8 @@ public class ClientController
 			session.setAttribute("fname", c.getFirstname());
 			session.setAttribute("lname",c.getLastname());
 			session.setAttribute("email",c.getEmail());
+			   List<Job> jobslist = recruiterService.ViewAllJobs();
+		          mv.addObject("jobslist", jobslist);
 			mv.setViewName("index");
 		}else  {
 			mv.setViewName("ApplicantLogin");
@@ -256,6 +266,25 @@ public class ClientController
 	 					}
 	 		return mv;
 	 	}
+	     
+	     
+	     @GetMapping("recruiterviewjobs")
+	     public ModelAndView recruiterviewjobs(HttpServletRequest request) {
+	       ModelAndView mv=new ModelAndView("recruiterviewalljobs");
+	       HttpSession session = request.getSession();
+	       int sid = (int) session.getAttribute("rid"); 
+		    String sname = (String) session.getAttribute("rcompanynmae");
+	       List<Job> jobsbyname = recruiterService.viewjobsbycompanyname(sname);
+	       mv.addObject("jobsbyname", jobsbyname);
+	      
+	       return mv;
+	     }
+	     
+	     
+	     
+	     
+	     
+	     
 	 	
 	  
 	  //admin
@@ -288,4 +317,97 @@ public class ClientController
 	     }
 
 
+	     @PostMapping("addjob")
+	        public ModelAndView addajob(HttpServletRequest request,@RequestParam("companyimage") MultipartFile file)throws IOException, SerialException, SQLException
+	        {
+	          ModelAndView mv=new ModelAndView();
+	          String title=request.getParameter("jobtitle");
+	          String location=request.getParameter("location");
+	          String skills=request.getParameter("skills");
+	          String description=request.getParameter("description");
+	          String salary=request.getParameter("salary");
+	          String companyname = request.getParameter("companyname");
+	          
+	          byte[] bytes = file.getBytes();
+	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+	      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
+	      if(j==null) {
+	          
+	      Job job=new Job();
+	      job.setJobtitle(title);
+	      job.setLocation(location);
+	      job.setSkills(skills);
+	      job.setSalary(salary);
+	      job.setDescription(description);
+	      job.setImage(blob);
+	      job.setCompanyname(companyname);
+	      
+	      String msg=recruiterService.addjob(job);
+	      mv.setViewName("addjob");
+	      mv.addObject("msg", msg);
+	      }
+	      else {
+	        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
+	      }
+	      return mv;
+	          
+	        }
+  
+	     
+	     
+	     @GetMapping("postajob")
+         public ModelAndView postajob() {
+         ModelAndView mv=new ModelAndView("addjob");
+         return mv;
+       }
+
+	     @GetMapping("displaycompanyimage")
+	     public ResponseEntity<byte[]> displayprofileimage(@RequestParam("id") int id) throws IOException, SQLException
+	        {
+	          Job mem =  recruiterService.ViewJobByID(id);
+	          byte [] imageBytes = null;
+	          imageBytes = mem.getImage().getBytes(1,(int) mem.getImage().length());
+
+	          return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+	        }
+
+	     
+	     @GetMapping("applicanthome")
+	     public ModelAndView indexpage() {
+	       ModelAndView mv=new ModelAndView("index");
+	       List<Job> jobslist = recruiterService.ViewAllJobs();
+	          mv.addObject("jobslist", jobslist);
+	       return mv;
+	     }
+
+	     
+	     @GetMapping("adminviewalljobs")
+	     public ModelAndView adminviewalljobs() {
+	       ModelAndView mv=new ModelAndView("adminviewalljobs");
+	       List<Job> jobslist = recruiterService.ViewAllJobs();
+	          mv.addObject("jobslist", jobslist);
+	       return mv;
+	     }
+
+	     @GetMapping("adminhome")
+	     public ModelAndView adminhome() {
+	       ModelAndView mv=new ModelAndView("adminhome");
+	       return mv;
+	     }
+	     
+	     
+	     @GetMapping("deletejob")
+	     public String deletejob(@RequestParam("id") int id) {
+		       ModelAndView mv=new ModelAndView("adminviewalljobs");
+		      String msg = recruiterService.deletejob(id);
+		      mv.addObject("msg", msg);
+		       return "redirect:/recruiterviewjobs";
+		     }
+
+	     
+	     
+	     
+	     
+	     
+	     
 }
