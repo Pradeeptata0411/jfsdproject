@@ -287,7 +287,7 @@ public class ClientController
 	     
 	 	
 	  
-	  //admin
+	  //admincodes
 	     
 	     @GetMapping("admin")
 	     public ModelAndView adminlogin() {
