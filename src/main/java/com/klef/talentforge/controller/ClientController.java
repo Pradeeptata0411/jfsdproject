@@ -398,7 +398,8 @@ public class ClientController
 	     
 	     @GetMapping("deletejob")
 	     public String deletejob(@RequestParam("id") int id) {
-		       ModelAndView mv=new ModelAndView("adminviewalljobs");
+		       ModelAndView mv=new ModelAndView();
+		       mv.setViewName("adminviewalljobs");
 		      String msg = recruiterService.deletejob(id);
 		      mv.addObject("msg", msg);
 		       return "redirect:/recruiterviewjobs";
