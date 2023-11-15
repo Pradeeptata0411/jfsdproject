@@ -76,7 +76,7 @@
 </nav>
 
 <div class="body-text">
-  <div class="title">Welcome <h1>${rcompanynmae}</h1></div>
+  <div class="title">Welcome <h1><img src='displaycompanyimage?id=${rid}' alt="Company Logo" height="90px" width="180px"></h1></div>
   <div class="sub-title">using only HTML & CSS</div>
 </div>
 <!-- partial -->
