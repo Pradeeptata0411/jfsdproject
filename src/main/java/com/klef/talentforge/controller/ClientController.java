@@ -329,27 +329,27 @@ public class ClientController
 	          String companyname = request.getParameter("companyname");
 	          
 	          byte[] bytes = file.getBytes();
-	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-	      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
-	      if(j==null) {
-	          
-	      Job job=new Job();
-	      job.setJobtitle(title);
-	      job.setLocation(location);
-	      job.setSkills(skills);
-	      job.setSalary(salary);
-	      job.setDescription(description);
-	      job.setImage(blob);
-	      job.setCompanyname(companyname);
-	      
-	      String msg=recruiterService.addjob(job);
-	      mv.setViewName("addjob");
-	      mv.addObject("msg", msg);
-	      }
-	      else {
-	        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
-	      }
-	      return mv;
+		      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+		      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
+		      if(j==null) {
+		          
+		      Job job=new Job();
+		      job.setJobtitle(title);
+		      job.setLocation(location);
+		      job.setSkills(skills);
+		      job.setSalary(salary);
+		      job.setDescription(description);
+		      job.setImage(blob);
+		      job.setCompanyname(companyname);
+		      
+		      String msg=recruiterService.addjob(job);
+		      mv.setViewName("addjob");
+		      mv.addObject("msg", msg);
+		      }
+		      else {
+		        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
+		      }
+		      return mv;
 	          
 	        }
   
