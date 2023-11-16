@@ -157,9 +157,9 @@
     <br><br><br><br>
       <div class="card">
   <img src="/images/wipro.jpg" alt="John" style="width:100%">
-  <h1 style="color: black;">John Doe</h1>
-  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
-  <p>Harvard University</p>
+  <h1 style="color: black;">${fname} ${lname}</h1>
+  <pstyle="color: black;" class="title">Email :- ${email}</p>
+  <p>Contact :- ${address}</p>
   <div style="margin: 24px 0;">
     <a href="#"><i class="fa fa-dribbble"></i></a> 
     <a href="#"><i class="fa fa-twitter"></i></a>  

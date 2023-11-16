@@ -148,6 +148,8 @@ public class ClientController
 			session.setAttribute("fname", c.getFirstname());
 			session.setAttribute("lname",c.getLastname());
 			session.setAttribute("email",c.getEmail());
+			session.setAttribute("address",c.getAddress());
+			session.setAttribute("contact",c.getContactno());
 			   List<Job> jobslist = recruiterService.ViewAllJobs();
 		          mv.addObject("jobslist", jobslist);
 			mv.setViewName("index");
@@ -159,7 +161,21 @@ public class ClientController
 	}
 	
 	
-	
+	 @GetMapping("applicanthome")
+     public ModelAndView indexpage(HttpServletRequest request) {
+       ModelAndView mv=new ModelAndView("index");
+       HttpSession session = request.getSession();
+       int sid = (int) session.getAttribute("cid"); 
+	    String fname = (String) session.getAttribute("fname");
+	    String lname = (String) session.getAttribute("lname");
+	    String email = (String) session.getAttribute("email");
+	    String address=(String) session.getAttribute("address");
+	    String contact=(String) session.getAttribute("contact");
+       List<Job> jobslist = recruiterService.ViewAllJobs();
+          mv.addObject("jobslist", jobslist);
+       return mv;
+     }
+
 	
 	
 	
@@ -329,27 +345,27 @@ public class ClientController
 	          String companyname = request.getParameter("companyname");
 	          
 	          byte[] bytes = file.getBytes();
-		      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-		      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
-		      if(j==null) {
-		          
-		      Job job=new Job();
-		      job.setJobtitle(title);
-		      job.setLocation(location);
-		      job.setSkills(skills);
-		      job.setSalary(salary);
-		      job.setDescription(description);
-		      job.setImage(blob);
-		      job.setCompanyname(companyname);
-		      
-		      String msg=recruiterService.addjob(job);
-		      mv.setViewName("addjob");
-		      mv.addObject("msg", msg);
-		      }
-		      else {
-		        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
-		      }
-		      return mv;
+	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+	      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
+	      if(j==null) {
+	          
+	      Job job=new Job();
+	      job.setJobtitle(title);
+	      job.setLocation(location);
+	      job.setSkills(skills);
+	      job.setSalary(salary);
+	      job.setDescription(description);
+	      job.setImage(blob);
+	      job.setCompanyname(companyname);
+	      
+	      String msg=recruiterService.addjob(job);
+	      mv.setViewName("addjob");
+	      mv.addObject("msg", msg);
+	      }
+	      else {
+	        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
+	      }
+	      return mv;
 	          
 	        }
   
@@ -372,14 +388,7 @@ public class ClientController
 	        }
 
 	     
-	     @GetMapping("applicanthome")
-	     public ModelAndView indexpage() {
-	       ModelAndView mv=new ModelAndView("index");
-	       List<Job> jobslist = recruiterService.ViewAllJobs();
-	          mv.addObject("jobslist", jobslist);
-	       return mv;
-	     }
-
+	    
 	     
 	     @GetMapping("adminviewalljobs")
 	     public ModelAndView adminviewalljobs() {
