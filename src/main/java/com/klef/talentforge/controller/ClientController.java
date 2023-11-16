@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.AdminService;
@@ -140,7 +141,7 @@ public class ClientController
 		String pwd = request.getParameter("password1");
 		HttpSession session = request.getSession();
 		Applicant c = applicantService.checkApplicantlogin(uname, pwd);
-	
+		   int sid = (int) session.getAttribute("cid"); 
 		ModelAndView mv =new ModelAndView();
 		if(c!=null ) {
 		
@@ -151,7 +152,9 @@ public class ClientController
 			session.setAttribute("address",c.getAddress());
 			session.setAttribute("contact",c.getContactno());
 			   List<Job> jobslist = recruiterService.ViewAllJobs();
+			   ApplicantImage image = applicantService.ViewimageByID(sid);
 		          mv.addObject("jobslist", jobslist);
+		          mv.addObject("image", image);
 			mv.setViewName("index");
 		}else  {
 			mv.setViewName("ApplicantLogin");
@@ -168,11 +171,20 @@ public class ClientController
        int sid = (int) session.getAttribute("cid"); 
 	    String fname = (String) session.getAttribute("fname");
 	    String lname = (String) session.getAttribute("lname");
-	    String email = (String) session.getAttribute("email");
-	    String address=(String) session.getAttribute("address");
-	    String contact=(String) session.getAttribute("contact");
-       List<Job> jobslist = recruiterService.ViewAllJobs();
+	    String email1 = (String) session.getAttribute("email");
+	    String address1=(String) session.getAttribute("address");
+	    String contact1=(String) session.getAttribute("contact");
+	    mv.addObject("cid", sid);
+	    mv.addObject("fname", fname);
+	    mv.addObject("lname", lname);
+	    mv.addObject("address", address1);
+	    mv.addObject("contact", contact1);
+	    Applicant aa= applicantService.viewapplicantbyid(sid);
+	    mv.addObject("aa", aa);
+        List<Job> jobslist = recruiterService.ViewAllJobs();
+        ApplicantImage image = applicantService.ViewimageByID(sid);
           mv.addObject("jobslist", jobslist);
+          mv.addObject("image", image);
        return mv;
      }
 
@@ -332,7 +344,41 @@ public class ClientController
 	       
 	     }
 
+	     
+	     
+	     @PostMapping("uploadapplicantprofileimage")
+	        public ModelAndView uploadapplicantprofileimage(HttpServletRequest request,@RequestParam("ApplicantImage") MultipartFile file)throws IOException, SerialException, SQLException
+	        {
+	          ModelAndView mv=new ModelAndView();
+	          
+	          byte[] bytes = file.getBytes();
+	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+	         
+	      
+	      ApplicantImage image = new ApplicantImage();
+	      image.setImage(blob);
+	      
+	      String msg=applicantService.uploadapplicantprofileimage(image);
+	      mv.setViewName("index");
+	      mv.addObject("msg", msg);
+	      return mv;
+	          
+	        }
 
+	     
+	     
+	     @GetMapping("displayApplicantimage")
+	     public ResponseEntity<byte[]> displayApplicantimage(@RequestParam("id") int id) throws IOException, SQLException
+	        {
+	          ApplicantImage mem =  applicantService.ViewimageByID(id);
+	          byte [] imageBytes = null;
+	          imageBytes = mem.getImage().getBytes(1,(int) mem.getImage().length());
+
+	          return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+	        }
+	     
+	     
+	     
 	     @PostMapping("addjob")
 	        public ModelAndView addajob(HttpServletRequest request,@RequestParam("companyimage") MultipartFile file)throws IOException, SerialException, SQLException
 	        {

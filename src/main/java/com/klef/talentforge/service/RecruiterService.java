@@ -2,6 +2,7 @@ package com.klef.talentforge.service;
 
 import java.util.List;
 
+import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 
@@ -13,6 +14,9 @@ public interface RecruiterService {
 	
 	
 	public String addjob(Job job);
+	
+	
+	
 	
 	public List<Job> ViewAllJobs();
 	

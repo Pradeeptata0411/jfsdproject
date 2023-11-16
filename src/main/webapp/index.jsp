@@ -156,18 +156,17 @@
     <div id="right-half">
     <br><br><br><br>
       <div class="card">
-  <img src="/images/wipro.jpg" alt="John" style="width:100%">
+       <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
+  <img src='displayApplicantimage?id=${image.id}' alt="Upload Your image here" style="width:100%"   height="200px" >
+   <input type="file" class="form-control"  name="ApplicantImage"
+                required>
+                <button type="submit" class="btn btn-primary">Upload Image</button>
+                </form>
   <h1 style="color: black;">${fname} ${lname}</h1>
-  <pstyle="color: black;" class="title">Email :- ${email}</p>
-  <p>Contact :- ${address}</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
-  </div>
+  <pstyle="color: black;" class="title">Email :- <h4>${email}</h4></p>
+  <p style="color: green;">Contact :- ${contact}</p>
+  
 </div>
-
       <nav>
         <a href="applicanthome">Home</a>
         <a href="#">My Applications</a>

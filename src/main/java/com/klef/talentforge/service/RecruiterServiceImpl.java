@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.repository.JobRepository;
@@ -82,5 +83,7 @@ public class RecruiterServiceImpl implements RecruiterService {
 		}
 		return msg;
 	}
+
+	
 
 }
