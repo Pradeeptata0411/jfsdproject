@@ -123,8 +123,12 @@
       text-decoration: none;
       font-weight: bold;
     }
-
   
+   #profileimage {
+        width: 100%;
+        height: 200px;
+        border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
+    }
   </style>
 </head>
 <body>
@@ -157,12 +161,13 @@
     <br><br><br><br>
       <div class="card">
        <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
-  <img src='displayApplicantimage?id=${image.id}' alt="Upload Your image here" style="width:100%"   height="200px" >
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="200px" id="profileimage">
    <input type="file" class="form-control"  name="ApplicantImage"
                 required>
                 <button type="submit" class="btn btn-primary">Upload Image</button>
+               
                 </form>
-  <h1 style="color: black;">${fname} ${lname}</h1>
+  <h1 style="color: black;">${fname} ${lname}  </h1>
   <pstyle="color: black;" class="title">Email :- <h4>${email}</h4></p>
   <p style="color: green;">Contact :- ${contact}</p>
   

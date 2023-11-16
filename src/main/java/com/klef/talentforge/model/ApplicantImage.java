@@ -14,7 +14,6 @@ import jakarta.persistence.Table;
 public class ApplicantImage {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="applicant_id")
     private int id;
 	@Column(name="applicant_image")
@@ -35,9 +34,5 @@ public class ApplicantImage {
 	public String toString() {
 		return "ApplicantImage [id=" + id + ", image=" + image + "]";
 	}
-	
-	
-	
-	
 	
 }

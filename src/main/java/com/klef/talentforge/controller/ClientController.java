@@ -141,7 +141,7 @@ public class ClientController
 		String pwd = request.getParameter("password1");
 		HttpSession session = request.getSession();
 		Applicant c = applicantService.checkApplicantlogin(uname, pwd);
-		   int sid = (int) session.getAttribute("cid"); 
+		  
 		ModelAndView mv =new ModelAndView();
 		if(c!=null ) {
 		
@@ -152,9 +152,9 @@ public class ClientController
 			session.setAttribute("address",c.getAddress());
 			session.setAttribute("contact",c.getContactno());
 			   List<Job> jobslist = recruiterService.ViewAllJobs();
-			   ApplicantImage image = applicantService.ViewimageByID(sid);
+			   //ApplicantImage image = applicantService.ViewimageByID(sid);
 		          mv.addObject("jobslist", jobslist);
-		          mv.addObject("image", image);
+		          //mv.addObject("image", image);
 			mv.setViewName("index");
 		}else  {
 			mv.setViewName("ApplicantLogin");
@@ -353,12 +353,15 @@ public class ClientController
 	          
 	          byte[] bytes = file.getBytes();
 	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-	         
-	      
+	      HttpSession session =request.getSession();
+	      int id=(int)session.getAttribute("cid");
 	      ApplicantImage image = new ApplicantImage();
+	      image.setId(id);
 	      image.setImage(blob);
 	      
 	      String msg=applicantService.uploadapplicantprofileimage(image);
+	      List<Job> jobslist = recruiterService.ViewAllJobs();
+	      mv.addObject("jobslist", jobslist);
 	      mv.setViewName("index");
 	      mv.addObject("msg", msg);
 	      return mv;
