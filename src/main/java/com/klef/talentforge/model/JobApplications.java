@@ -11,10 +11,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="jobapplications_table")
 public class JobApplications {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="jobapplication_id")
+    private int jid;
+    
     @Column(name="applicant_id")
     private int id;
+	
 	@Column(name="job_title",nullable=false,length = 100)
     private String jobtitle;
     @Column(name="applicantion_fname",nullable=false,length = 50)

@@ -9,7 +9,14 @@
   <title>TalentForge</title>
 
   <style>
-  .verification-container {
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.verification-container {
       display: flex;
 
       align-items: center;
@@ -38,13 +45,8 @@
       color: #333; /* Dark color */
       line-height: 40px; /* Adjust line-height to match the height of the circle */
     }
-  .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-}
+    
+    
 
 .title {
   color: grey;
@@ -120,7 +122,22 @@
       border-radius: 0%;
     }
 
+   .apply-btn {
+  display: inline-block;
+  background-color: darkblue;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+    text-align: center; /* Center the text */
+  
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+}
 
+.apply-btn:hover {
+  background-color: navy; /* Change color on hover if desired */
+}
 
     #right-half {
       flex: 0 0 20%;
@@ -145,36 +162,53 @@
       text-decoration: none;
       font-weight: bold;
     }
-  
-   #profileimage {
+
+  #employee {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#employee td, #employee th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+}
+
+#employee tr:nth-child(even) {
+	background-color: white;
+}
+
+#employee tr:hover {
+	background-color: #ddd;
+}
+
+#employee th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: darkblue;
+	color: white;
+}
+
+.btn {
+	background-color: skyblue;
+	padding: 5px 16px;
+	font-size: 12px;
+	cursor: pointer;
+}
+ #profileimage {
         width: 100%;
         height: 200px;
         border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
     }
-    
-     .apply-btn {
-  display: inline-block;
-  background-color: darkblue;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-    text-align: center; /* Center the text */
-  
-  text-decoration: none; /* Remove underline */
-  cursor: pointer;
-}
-
-.apply-btn:hover {
-  background-color: navy; /* Change color on hover if desired */
-}
+	</style>
   </style>
 </head>
 <body>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
         <button class="apply-btn">Search</button>
       </div>
@@ -183,33 +217,42 @@
      <br><br><br><br>
     <c:forEach items="${jobslist}" var="job">
     
-    <div class="job-card">
-      <img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px">
-      <h3><c:out value="${job.jobtitle}"></c:out></h3>
-         
-    
-      <p>Location: <c:out value="${job.location}"></c:out></p>
-      <p>Skills: <c:out value="${job.skills}"></c:out></p>
-      <p>Description: <c:out value="${job.description}"></c:out></p>
-      <p>Salary: <c:out value="${job.salary}"></c:out></p>
-        <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
-    </div>
+ <table id="employee">
+			<tr bgcolor="black" style="color: white">
+				<th>Application ID</th>
+				<th>Job Title</th>
+				<th>Company</th>
+				<th>Applicant Email</th>
+				<th>View Application Status</th>
+				
+				
+				
+			</tr>
+			<c:forEach items="${jobslist}" var="job">
+				<tr>
+					<td><c:out value="${job.id}" /></td>
+					<td><c:out value="${job.jobtitle}" /></td>
+					
+					</td>
+					<td><c:out value="${job.companyname}" /></td>
+					<td><c:out value="${job.email}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
+
    </c:forEach>
  </div>
    <br>
     <div id="right-half">
     <br><br><br><br>
-      <div class="card">
-       <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
+     <div class="card">
+      
   <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="200px" id="profileimage">
-   <input type="file" class="form-control"  name="ApplicantImage"
-                required>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
+   
                
-                </form>
+               
   <h1 style="color: black;">${fname} ${lname}  </h1>
-  <pstyle="color: black;" class="title"><h4>${email}</h4></p>
- 
+  <pstyle="color: black;" class="title"> <h4>${email}</h4></p>
   
 </div>
       <nav>

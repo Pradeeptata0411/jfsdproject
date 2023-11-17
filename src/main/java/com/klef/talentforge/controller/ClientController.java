@@ -142,7 +142,7 @@ public class ClientController
 		String pwd = request.getParameter("password1");
 		HttpSession session = request.getSession();
 		Applicant c = applicantService.checkApplicantlogin(uname, pwd);
-		  
+		  JobApplications applications = new JobApplications();
 		ModelAndView mv =new ModelAndView();
 		if(c!=null ) {
 		
@@ -152,7 +152,9 @@ public class ClientController
 			session.setAttribute("email",c.getEmail());
 			session.setAttribute("address",c.getAddress());
 			session.setAttribute("contact",c.getContactno());
+			
 			   List<Job> jobslist = recruiterService.ViewAllJobs();
+			 
 			   //ApplicantImage image = applicantService.ViewimageByID(sid);
 		          mv.addObject("jobslist", jobslist);
 		          //mv.addObject("image", image);
@@ -466,19 +468,22 @@ public class ClientController
 
 	     
 	        
-	       @PostMapping("/apply")
+	     @PostMapping("/apply")
 	       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
 	         
-	         ,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile request) 
+	         ,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile file,HttpServletRequest request) 
 	       {
 	         ModelAndView mv=new ModelAndView();
 	         
+	        
+	         HttpSession session=request.getSession();
+	         int id=(int) session.getAttribute("cid");
 	        
 	         JobApplications applications =applicantService.checkJobApplication(email, jobtitle, companyname);
 	         if(applications==null)
 	         {
 	         
-	            String response=applicantService.applyJob(jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, request,true);
+	            String response=applicantService.applyJob(id,jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, file,true);
 	         mv.addObject("msg", response);
 	         
 	         mv.setViewName("applicationsuccessfulpage");
@@ -494,33 +499,33 @@ public class ClientController
 
 	     
 	     
-//	       @GetMapping("applyjob")
-//	       public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
-//	         ModelAndView mv=new ModelAndView("applyjob");
-//	         HttpSession session = request.getSession();
-//	             int sid = (int) session.getAttribute("cid"); 
-//	             Applicant app=applicantService.getApplicantById(sid);
-//	             Job job =recruiterService.ViewJobByID(id);
-//	             
-//	             
-//	             JobApplications applications =applicantService.checkJobApplication(app.getEmail(), job.getJobtitle(), job.getCompanyname());
-//	             if(applications==null) 
-//	           {
-//	             Job j=recruiterService.ViewJobByID(id);
-//	             
-//	             mv.addObject("applicant", app);
-//	             mv.addObject("job", j);
-//	             
-//	         return mv;
-//	             }
-//	             else {
-//	               mv.setViewName("applicationsuccessfulpage");
-//	               mv.addObject("msg", "This Job is Already Applied !!");
-//	               
-//	             }
-//	         
-//	             return mv;
-//	       }
+	       @GetMapping("applyjob")
+	       public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
+	         ModelAndView mv=new ModelAndView("applyjob");
+	         HttpSession session = request.getSession();
+	             int sid = (int) session.getAttribute("cid"); 
+	             Applicant app=applicantService.getApplicantById(sid);
+	             Job job =recruiterService.ViewJobByID(id);
+	             
+	             
+	             JobApplications applications =applicantService.checkJobApplication(app.getEmail(), job.getJobtitle(), job.getCompanyname());
+	             if(applications==null) 
+	           {
+	             Job j=recruiterService.ViewJobByID(id);
+	             
+	             mv.addObject("applicant", app);
+	             mv.addObject("job", j);
+	             
+	         return mv;
+	             }
+	             else {
+	               mv.setViewName("applicationsuccessfulpage");
+	               mv.addObject("msg", "This Job is Already Applied !!");
+	               
+	             }
+	         
+	             return mv;
+	       }
 	       
 	       
 	       @GetMapping("applicationsuccessfulpage")
@@ -530,5 +535,18 @@ public class ClientController
 	         return mv;
 	       }
 
+	       
+	       @GetMapping("myjobApplications")
+	       public ModelAndView viewMyJobApplications(HttpServletRequest request) {
+	         ModelAndView mv=new ModelAndView();
+	         HttpSession session=request.getSession();
+	         int id=(int) session.getAttribute("cid");
+	         List<JobApplications> jobslist=applicantService.ViewMyJobApplications(id);
+	         
+	         mv.setViewName("myjobApplications");
+	         mv.addObject("jobslist", jobslist);
+	         return mv;
+	       }
+	       
 	     
 }

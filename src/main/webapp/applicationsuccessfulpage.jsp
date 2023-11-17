@@ -257,7 +257,7 @@ a:hover {
 
       <nav>
         <a href="applicanthome">Home</a>
-        <a href="#">My Applications</a>
+        <a href="myjobApplications">My Applications</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
             <a href="/">Logout</a>

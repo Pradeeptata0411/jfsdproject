@@ -1,5 +1,7 @@
 package com.klef.talentforge.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
@@ -16,13 +18,21 @@ public interface ApplicantService {
 	
 	public String uploadapplicantprofileimage(ApplicantImage image);
 	
+	public Applicant getApplicantById(int id);
 	
 	public ApplicantImage ViewimageByID(int id);
 	
-	public String applyJob(String jobtitle,String firstname,String lastname,String email,String dateofbirth
+	public String applyJob(int id,String jobtitle,String firstname,String lastname,String email,String dateofbirth
 		      
 		      ,String experience,String contactno,String companyname,MultipartFile request,boolean status);
 		  
 		   public JobApplications checkJobApplication(String email,String jobtitle,String companyname);
+		   
+		   
+		   
+			  public List<JobApplications> ViewMyJobApplications(int id);
+			  
+			  
+			
 	
 }

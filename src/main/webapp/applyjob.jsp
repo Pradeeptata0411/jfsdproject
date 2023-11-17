@@ -214,6 +214,13 @@ a:hover {
         width: 100%;
     }
 }
+
+ #profileimage {
+        width: 100%;
+        height: 200px;
+        border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
+    }
+
   </style>
 </head>
 <body>
@@ -298,21 +305,19 @@ a:hover {
     <div id="right-half">
     <br><br><br><br>
       <div class="card">
-  <img src="/images/wipro.jpg" alt="John" style="width:100%">
-  <h1 style="color: black;">John Doe</h1>
-  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
-  <p>Harvard University</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
-  </div>
+      
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="200px" id="profileimage">
+   
+               
+               
+  <h1 style="color: black;">${fname} ${lname}  </h1>
+  <pstyle="color: black;" class="title"> <h4>${email}</h4></p>
+
 </div>
 
       <nav>
         <a href="applicanthome">Home</a>
-        <a href="#">My Applications</a>
+        <a href="myjobApplications">My Applications</a>
         <a href="#">About</a>
           <a href="#">Settings</a>
             <a href="/">Logout</a>
