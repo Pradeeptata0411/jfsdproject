@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
+import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 
 
 @Service
@@ -23,6 +25,10 @@ public class RecruiterServiceImpl implements RecruiterService {
 	@Autowired
 	private JobRepository jobRepository;
 	
+	
+	
+	@Autowired
+	private ViewApplicationStatusRepository applicationStatusRepository;
 	
 	@Override
 	public String registerRecruiter(Recruiter recruiter) {
@@ -83,6 +89,14 @@ public class RecruiterServiceImpl implements RecruiterService {
 		}
 		return msg;
 	}
+
+	@Override
+	public String setstatusofapplicant(ViewApplicationStatus applicationStatus) {
+		applicationStatusRepository.save(applicationStatus);
+		return "Sucessfully Updated";
+	}
+
+	
 
 	
 

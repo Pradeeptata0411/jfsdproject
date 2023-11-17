@@ -28,6 +28,7 @@ import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
@@ -547,6 +548,37 @@ public class ClientController
 	         mv.addObject("jobslist", jobslist);
 	         return mv;
 	       }
+	       
+	       
+	       
+	       @PostMapping("setapplicationstatus")
+			public ModelAndView setapplicationstatus(HttpServletRequest request) {
+				ModelAndView mv = new ModelAndView();
+				String msg = null;
+				try {
+					
+						String companyname = request.getParameter("applicationStatus");
+					String email = request.getParameter("comment");
+			       ViewApplicationStatus viewApplicationStatus = new ViewApplicationStatus();
+			       viewApplicationStatus.setApplicationstatus(companyname);
+			       viewApplicationStatus.setComment(email);
+					
+					
+					
+				    msg = recruiterService.setstatusofapplicant(viewApplicationStatus);
+		            mv.setViewName("setapplicationstatusbyid");
+					mv.addObject("message", msg);
+					
+				}
+				catch (Exception e) {
+					mv.setViewName("setapplicationstatusbyid");
+					msg = "updation Failed & Provide Valid Details..!!";
+					mv.addObject("message", msg);
+				}
+				return mv;
+			}
+	       
+	       
 	       
 	     
 }
