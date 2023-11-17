@@ -26,6 +26,7 @@ import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
@@ -464,9 +465,70 @@ public class ClientController
 		     }
 
 	     
+	        
+	       @PostMapping("/apply")
+	       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
+	         
+	         ,@RequestParam("experience") String experience,@RequestParam("contactnumber") String contactno,@RequestParam("companyname") String companyname,@RequestParam("resume") MultipartFile request) 
+	       {
+	         ModelAndView mv=new ModelAndView();
+	         
+	        
+	         JobApplications applications =applicantService.checkJobApplication(email, jobtitle, companyname);
+	         if(applications==null)
+	         {
+	         
+	            String response=applicantService.applyJob(jobtitle, firstname, lastname, email, dateofbirth, experience, contactno, companyname, request,true);
+	         mv.addObject("msg", response);
+	         
+	         mv.setViewName("applicationsuccessfulpage");
+	         
+	         return mv;
+	       }
+	         else {
+	           mv.setViewName("applicationsuccessfulpage");
+	           mv.addObject("msg", "This Job is Already Applied !!");
+	         }
+	         return mv;
+	       }
+
 	     
 	     
-	     
-	     
+//	       @GetMapping("applyjob")
+//	       public ModelAndView applyjob(HttpServletRequest request,@RequestParam("id") int  id) {
+//	         ModelAndView mv=new ModelAndView("applyjob");
+//	         HttpSession session = request.getSession();
+//	             int sid = (int) session.getAttribute("cid"); 
+//	             Applicant app=applicantService.getApplicantById(sid);
+//	             Job job =recruiterService.ViewJobByID(id);
+//	             
+//	             
+//	             JobApplications applications =applicantService.checkJobApplication(app.getEmail(), job.getJobtitle(), job.getCompanyname());
+//	             if(applications==null) 
+//	           {
+//	             Job j=recruiterService.ViewJobByID(id);
+//	             
+//	             mv.addObject("applicant", app);
+//	             mv.addObject("job", j);
+//	             
+//	         return mv;
+//	             }
+//	             else {
+//	               mv.setViewName("applicationsuccessfulpage");
+//	               mv.addObject("msg", "This Job is Already Applied !!");
+//	               
+//	             }
+//	         
+//	             return mv;
+//	       }
+	       
+	       
+	       @GetMapping("applicationsuccessfulpage")
+	       public ModelAndView applicationsuccessfulpage()
+	       {
+	         ModelAndView mv=new ModelAndView("applicationsuccessfulpage");
+	         return mv;
+	       }
+
 	     
 }

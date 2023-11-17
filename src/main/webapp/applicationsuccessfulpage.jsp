@@ -9,35 +9,6 @@
   <title>TalentForge</title>
 
   <style>
-  .verification-container {
-      display: flex;
-
-      align-items: center;
-    }
-
-    .verified-tick {
-      width: 40px;
-      height: 40px;
-      background-color: #2ecc71; /* Green color */
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-    }
-
-    .tick-icon {
- 
-      width: 25px;
-      height: 25px;
-      fill: #fff; /* White color */
-    }
-
-    .verification-text {
-      font-size: 18px;
-      color: #333; /* Dark color */
-      line-height: 40px; /* Adjust line-height to match the height of the circle */
-    }
   .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
@@ -63,6 +34,17 @@
       display: flex;
       width: 100%;
     }
+    .form-control option {
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+    font-size: 14px; /* Text size */
+}
+
+/* Style for the selected option */
+.form-control option:checked {
+    background-color: #f0f0f0; /* Background color when selected */
+    font-weight: bold; /* Bold text when selected */
+}
 
     #left-half {
       flex: 0 0 80%;
@@ -152,63 +134,127 @@
       text-decoration: none;
       font-weight: bold;
     }
-  
-   #profileimage {
+
+   .container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.registration-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+#registerimage {
+    max-width: 100%;
+    height: auto;
+}
+
+h5 {
+    color: red;
+}
+
+.card p {
+    color: darkblue;
+    font-size: 24px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 768px) {
+    .container {
         width: 100%;
-        height: 200px;
-        border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
     }
+}
   </style>
 </head>
 <body>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
         <button class="apply-btn">Search</button>
       </div>
 
       <!-- Sample job cards -->
      <br><br><br><br>
-    <c:forEach items="${jobslist}" var="job">
-    
-    <div class="job-card">
-      <img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px">
-      <h3><c:out value="${job.jobtitle}"></c:out></h3>
-          <div class="verification-container">
-        <div class="verified-tick">
-            <svg class="tick-icon" viewBox="2 2 12 19">
-                <path d="M2 12l4 4 8-8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        <div class="verification-text">Applied</div>
-    </div>
-      <p>Location: <c:out value="${job.location}"></c:out></p>
-      <p>Skills: <c:out value="${job.skills}"></c:out></p>
-      <p>Description: <c:out value="${job.description}"></c:out></p>
-      <p>Salary: <c:out value="${job.salary}"></c:out></p>
-        <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
-    </div>
+  <div class="card-body">
+       <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑨𝒑𝒑𝒍𝒚 𝑱𝒐𝒃</p>
+       
+          <h3><font color="green">${msg}</font></h3><br>
+       
+        <form action="applicanthome" method="get" id="passwordForm" >
+        
+         <button type="submit" class="btn btn-primary">Search For More Jobs..</button>
+           
+        </form>
 
-   </c:forEach>
- </div>
+ </div> </div>
    <br>
     <div id="right-half">
     <br><br><br><br>
       <div class="card">
-       <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
-  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="200px" id="profileimage">
-   <input type="file" class="form-control"  name="ApplicantImage"
-                required>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
-               
-                </form>
-  <h1 style="color: black;">${fname} ${lname}  </h1>
-  <pstyle="color: black;" class="title">Email :- <h4>${email}</h4></p>
-  <p style="color: green;">Contact :- ${contact}</p>
-  
+  <img src="/images/wipro.jpg" alt="John" style="width:100%">
+  <h1 style="color: black;">John Doe</h1>
+  <pstyle="color: black;" class="title">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+  </div>
 </div>
+
       <nav>
         <a href="applicanthome">Home</a>
         <a href="#">My Applications</a>
@@ -232,5 +278,20 @@
       });
     });
   </script>
+  
+   <script>
+        function validateFile() {
+            var fileInput = document.getElementById('book');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.pdf)$/i;
+            
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file format. Please select a .pdf file.');
+                fileInput.value = ''; // Clear the file input field
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
