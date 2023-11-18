@@ -220,7 +220,7 @@ a:hover {
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"><a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
         <button class="apply-btn">Search</button>
       </div>

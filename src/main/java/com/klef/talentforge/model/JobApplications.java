@@ -15,10 +15,13 @@ public class JobApplications {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="jobapplication_id")
-    private int jid;
+    private int applicationid;
     
     @Column(name="applicant_id")
     private int id;
+    
+    @Column(name = "job_id")
+    private int jobid;
 	
 	@Column(name="job_title",nullable=false,length = 100)
     private String jobtitle;
@@ -131,5 +134,21 @@ public class JobApplications {
 
 	public void setApplicationstatus(boolean applicationstatus) {
 		this.applicationstatus = applicationstatus;
+	}
+
+	public int getApplicationid() {
+		return applicationid;
+	}
+
+	public void setApplicationid(int applicationid) {
+		this.applicationid = applicationid;
+	}
+
+	public int getJobid() {
+		return jobid;
+	}
+
+	public void setJobid(int jobid) {
+		this.jobid = jobid;
 	}
 }

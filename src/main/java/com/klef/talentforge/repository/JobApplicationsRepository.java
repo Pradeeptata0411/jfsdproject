@@ -19,6 +19,13 @@ public interface JobApplicationsRepository extends JpaRepository<JobApplications
 	   public List<JobApplications> ViewMyJobApplications(int id);
 
 	 
-	 
+	 @Query("from JobApplications where companyname=?1")
+	  public List<JobApplications> viewalljobapplicationsByCompany(String companyname);
+	  
+	  @Query("select j from JobApplications j where j.id=?1 and j.jobtitle=?2")
+	  public JobApplications viewJobApplicationBYID(int id,String jobtitle);
+	  
+	
+	  
 	 
 }

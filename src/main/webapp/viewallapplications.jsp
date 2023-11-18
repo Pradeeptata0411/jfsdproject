@@ -1,12 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>TalentForge Recruiter Home</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+	<style>
+	  .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: sky	blue;
+}
+	
+#employee {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
 
+#employee td, #employee th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+}
+
+#employee tr:nth-child(even) {
+	background-color: white;
+}
+
+#employee tr:hover {
+	background-color: #ddd;
+}
+
+#employee th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: skyblue;
+	color: black;
+}
+
+.btn {
+	 display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: lightpink;
+}
+	</style>
 </head>
 <body>
 <nav>
@@ -24,8 +76,8 @@
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="recruiterviewjobs">view jobs</a></li>
-          <li><a href="viewalljobapplications">Job Applications</a></li>
+          <li><a href="recruiterviewjobs">VIEW ALL JOBS</a></li>
+          <li><a href="viewalljobapplications">JOB APPLICATIONS</a></li>
           <li><a href="#">Drop menu 3</a></li>
           <li><a href="#">Drop menu 4</a></li>
         </ul>
@@ -69,18 +121,45 @@
           </div>
         </div>
       </li>
-      <li><a href="#">logout</a></li>
+      <li><a href="#">Logout</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-
-<div class="body-text">
-  <div class="title">Welcome <h1>${rcompanynmae}</h1></div>
-  <div class="sub-title">using only HTML & CSS</div>
-</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table id="employee">
+			<tr bgcolor="darkblue" style="color: white">
+				<th>Application ID</th>
+				<th>Applicant ID</th>
+				<th>Job Title</th>
+				<th>Email</th>
+				<th>Experience</th>
+				<th>Contact No</th>
+				<th>Resume</th>
+				<th>Update Status</th>
+				
+				
+			</tr>
+			<c:forEach items="${jobslist}" var="job">
+				<tr>
+					<td><c:out value="${job.applicationid}" /></td>
+					<td><c:out value="${job.id}" /></td>
+					<td><c:out value="${job.jobtitle}" />
+					</td>
+					<td><c:out value="${job.email}" /></td>
+					<td><c:out value="${job.experience}" /></td>
+					<td><c:out value="${job.contactno}" /></td>
+					<td><a href="/download/${job.id}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
+					</td>				
+					<td><a href="recruitersetstatus?id=${job.id}&company=${job.jobtitle}">Update Status</a></td>
+				</tr>
+			</c:forEach>
+		</table>
 <!-- partial -->
-  
 </body>
 </html>
     

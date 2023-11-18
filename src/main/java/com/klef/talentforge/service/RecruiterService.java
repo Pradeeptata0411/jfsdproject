@@ -2,8 +2,8 @@ package com.klef.talentforge.service;
 
 import java.util.List;
 
-import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 
@@ -29,6 +29,14 @@ public interface RecruiterService {
 	
 	public String deletejob(int id);
 	
-	public String setstatusofapplicant(ViewApplicationStatus applicationStatus);
+	
+	
+	public JobApplications ViewJobApplicationByID(int jobid,String jobtitle);
+	
+	
+	
+	public List<JobApplications> viewalljobapplicationsByCompany(String companyname);
+	
+	
 	
 }

@@ -6,10 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
+import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
+import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
 import com.klef.talentforge.repository.ViewApplicationStatusRepository;
@@ -26,6 +27,9 @@ public class RecruiterServiceImpl implements RecruiterService {
 	private JobRepository jobRepository;
 	
 	
+	
+	@Autowired
+	private JobApplicationsRepository jobapplicationsRepository;
 	
 	@Autowired
 	private ViewApplicationStatusRepository applicationStatusRepository;
@@ -90,14 +94,27 @@ public class RecruiterServiceImpl implements RecruiterService {
 		return msg;
 	}
 
-	@Override
-	public String setstatusofapplicant(ViewApplicationStatus applicationStatus) {
-		applicationStatusRepository.save(applicationStatus);
-		return "Sucessfully Updated";
-	}
+//	@Override
+//	public String setstatusofapplicant(ViewApplicationStatus applicationStatus) {
+//		applicationStatusRepository.save(applicationStatus);
+//		return "Sucessfully Updated";
+//	}
 
 	
+	@Override
+	  public List<JobApplications> viewalljobapplicationsByCompany(String companyname) {
+	    List<JobApplications> jobslist=jobapplicationsRepository.viewalljobapplicationsByCompany(companyname);
+	    
+	    return jobslist;
+	  }
 
+	  @Override
+	  public JobApplications ViewJobApplicationByID(int jobid,String jobtitle) {
+	    JobApplications job=jobapplicationsRepository.viewJobApplicationBYID(jobid,jobtitle);
+	    return job;
+	  }
+
+	
 	
 
 }

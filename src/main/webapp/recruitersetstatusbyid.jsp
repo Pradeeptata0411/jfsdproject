@@ -6,8 +6,21 @@
 <head>
   <meta charset="UTF-8">
   <title>TalentForge Recruiter Home</title>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 	<style>
+	  .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: sky	blue;
+}
 	
 #employee {
 	font-family: Arial, Helvetica, sans-serif;
@@ -37,11 +50,67 @@
 }
 
 .btn {
-	background-color: skyblue;
-	padding: 5px 16px;
-	font-size: 12px;
-	cursor: pointer;
+	 display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: lightpink;
 }
+
+
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h5 {
+      color: red;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      margin-top: 10px;
+      color: #333; /* Dark color */
+      font-size: 16px;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
 	</style>
 </head>
 <body>
@@ -115,31 +184,28 @@
 <br>
 <br>
 <br>
-<table id="employee">
-			<tr bgcolor="black" style="color: black">
-				<th>Job ID</th>
-				<th>Job Title</th>
-				<th>Company</th>
-				<th>Description</th>
-				<th>Salary</th>
-				
-				<th>Action</th>
-				
-				
-			</tr>
-			<c:forEach items="${jobsbyname}" var="job">
-				<tr>
-					<td><c:out value="${job.id}" /></td>
-					<td><c:out value="${job.jobtitle}" /></td>
-				    <td><img src='displaycompanyimage?id=${job.id}' alt="Company Logo" height="45px" width="80px"></td>
-					
-					<td><c:out value="${job.description}" />
-					</td>
-					<td><c:out value="${job.salary}" /></td>
-					<td><a href="deletejob?id=${job.id}">Delete</a></td>
-				</tr>
-			</c:forEach>
-		</table>
+<h5 align="center" style="color:red">${message}</h5>
+   <div class="card">
+    <h2 align="center" style="color:green">id:- ${jobslist.id} And Job:-  ${jobslist.jobtitle} </h2>
+    <form action="your_server_endpoint" method="post">
+      <!-- Application Status Combo Box -->
+      <label for="applicationStatus">Application Status:</label>
+      <select name="applicationStatus" id="applicationStatus" required>
+        <option value="">Select Option</option>
+        <option value="Passed first Round">Passed first Round</option>
+        <option value="Passed second Round">Passed second Round</option>
+        <option value="Passed third Round">Passed third Round</option>
+        <option value="Application Rejected">Application Rejected</option>
+      </select>
+
+      <!-- Comment Textarea -->
+      <label for="comment">Comment:</label>
+      <textarea name="comment" id="comment" rows="4" cols="50" required></textarea>
+
+      <!-- Submit Button -->
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 <!-- partial -->
 </body>
 </html>

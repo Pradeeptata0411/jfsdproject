@@ -201,21 +201,35 @@
         height: 200px;
         border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
     }
-	</style>
+	/* Add this CSS to the existing styles */
+.btn.view-btn {
+  display: inline-block;
+  background-color: #3498db; /* Blue color */
+  color: #fff; /* White color */
+  padding: 13px 26px;
+  text-decoration: none; /* Remove underline from the link */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn.view-btn:hover {
+  background-color: #2980b9; /* Darker blue color on hover */
+}
+	
   </style>
 </head>
 <body>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 <img src="/images/search.png" width="30px" height="30" /></p>
+       <p style="color: darkblue; font-size: 20px;"><a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a><img src="/images/search.png" width="30px" height="30" /></p>
         <input type="text" placeholder="Search for jobs">
         <button class="apply-btn">Search</button>
       </div>
 
       <!-- Sample job cards -->
      <br><br><br><br>
-    <c:forEach items="${jobslist}" var="job">
+    
     
  <table id="employee">
 			<tr bgcolor="black" style="color: white">
@@ -236,11 +250,16 @@
 					</td>
 					<td><c:out value="${job.companyname}" /></td>
 					<td><c:out value="${job.email}" /></td>
+					
+					 <td>
+					    <a href="#" class="btn view-btn">View</a>
+					  </td>
+					
 				</tr>
 			</c:forEach>
 		</table>
 
-   </c:forEach>
+  
  </div>
    <br>
     <div id="right-half">
