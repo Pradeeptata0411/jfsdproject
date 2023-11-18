@@ -521,7 +521,7 @@ public class ClientController
 	             }
 	             else {
 	               mv.setViewName("applicationsuccessfulpage");
-	               mv.addObject("msg", "This Job is Already Applied !!");
+	               mv.addObject("msg", "This Job is Already Applied !!!");
 	               
 	             }
 	         
