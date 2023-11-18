@@ -12,9 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.Uploadapplicantprofileimage;
+import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 @Service
 public class ApplicantServiceImpl implements ApplicantService {
 
@@ -31,6 +33,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Autowired
 	  private JobApplicationsRepository jobapplicationsRepository;
 
+	
+	@Autowired
+	private ViewApplicationStatusRepository viewApplicationStatusRepository;
+	
+	
 	@Override
 	public String register(Applicant applicant) {
 		applicantRepository.save(applicant);
@@ -124,6 +131,14 @@ public class ApplicantServiceImpl implements ApplicantService {
 	    List<JobApplications> jobslist=jobapplicationsRepository.ViewMyJobApplications(id);
 	    return jobslist;
 	  }
+
+	
+
+	@Override
+	public ViewApplicationStatus byid(int id, String tittle) {
+		ViewApplicationStatus status = viewApplicationStatusRepository.getbyidofstatus(id, tittle);
+	    return status;
+	}
 
 	
 

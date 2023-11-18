@@ -31,6 +31,7 @@ import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
+import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
 import com.klef.talentforge.service.EmailManager;
@@ -553,32 +554,7 @@ public class ClientController
 	       
 	       
 //	       
-//	       @PostMapping("setapplicationstatus")
-//			public ModelAndView setapplicationstatus(HttpServletRequest request) {
-//				ModelAndView mv = new ModelAndView();
-//				String msg = null;
-//				try {
-//					
-//						String companyname = request.getParameter("applicationStatus");
-//					String email = request.getParameter("comment");
-//			       ViewApplicationStatus viewApplicationStatus = new ViewApplicationStatus();
-//			       viewApplicationStatus.setApplicationstatus(companyname);
-//			       viewApplicationStatus.setComment(email);
-//					
-//					
-//					
-//				    msg = recruiterService.setstatusofapplicant(viewApplicationStatus);
-//		            mv.setViewName("setapplicationstatusbyid");
-//					mv.addObject("message", msg);
-//					
-//				}
-//				catch (Exception e) {
-//					mv.setViewName("setapplicationstatusbyid");
-//					msg = "updation Failed & Provide Valid Details..!!";
-//					mv.addObject("message", msg);
-//				}
-//				return mv;
-//			}
+
 	       
 	       @GetMapping("/download/{id}/{jobtitle}")
 	       public ResponseEntity<byte[]> downloadBook(@PathVariable("id") int fileid,@PathVariable("jobtitle") String jobtitle) {
@@ -621,5 +597,70 @@ public class ClientController
 	           return mv;
 	       }
 
-	     
+	       
+	       
+	       @PostMapping("setapplicationstatus")
+	       public ModelAndView setapplicationstatus(HttpServletRequest request) {
+	           ModelAndView mv = new ModelAndView();
+	           String msg = null;
+	           HttpSession session = request.getSession();
+	          
+
+	           try {
+	               // Get 'id' parameter from the request
+	               String idString = request.getParameter("id");
+
+	               // Check if idString is not null and not empty before parsing
+	               if (idString != null && !idString.isEmpty()) {
+	                   int id = Integer.parseInt(idString);
+
+	                   // Get other parameters from the request
+	                   String companyname = request.getParameter("applicationStatus");
+	                   String email = request.getParameter("comment");
+	                   String tittle = request.getParameter("tittle");
+
+	                   // Create a ViewApplicationStatus object
+	                   ViewApplicationStatus viewApplicationStatus = new ViewApplicationStatus();
+	                   viewApplicationStatus.setApplicationstatus(companyname);
+	                   viewApplicationStatus.setComment(email);
+	                   viewApplicationStatus.setId(id);
+	                   viewApplicationStatus.setApplicationstatustittle(tittle);
+	                   // Call the service method to set the status
+	                   msg = recruiterService.setstatusofapplicant(viewApplicationStatus);
+
+	                   // Set the view and message for success
+	                   String companynameee=(String)session.getAttribute("rcompanynmae");
+	      	         List<JobApplications> jobslist=recruiterService.viewalljobapplicationsByCompany(companynameee);
+	      	         mv.addObject("jobslist", jobslist);
+	                   mv.setViewName("viewallapplications");
+	                   mv.addObject("message", msg);
+	               } else {
+	                   // Handle the case where 'id' is null or empty
+	                   mv.setViewName("setapplicationstatusbyid");
+	                   msg = "Invalid 'id' parameter.";
+	                   mv.addObject("message", msg);
+	               }
+	           } catch (Exception e) {
+	               // Handle any other exceptions
+	               mv.setViewName("setapplicationstatusbyid");
+	               msg = e.getMessage();
+	               mv.addObject("message", msg);
+	           }
+
+	           return mv;
+	       }
+	       
+	       
+	       
+	       @GetMapping("viewmystatus")
+	       public ModelAndView viewmystatus(HttpServletRequest request, @RequestParam("id") int eid, @RequestParam(name = "applicationstatus_tittle", required = false) String company) {
+	           ModelAndView mv = new ModelAndView("applicantviewmystatusbyid");
+	           HttpSession session = request.getSession();
+	           ViewApplicationStatus status = applicantService.byid(eid, company);
+	           mv.addObject("jobslist", status);
+	           return mv;
+	       }
+
+	       
+
 }

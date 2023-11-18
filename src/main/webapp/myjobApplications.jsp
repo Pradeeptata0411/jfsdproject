@@ -252,7 +252,7 @@
 					<td><c:out value="${job.email}" /></td>
 					
 					 <td>
-					    <a href="#" class="btn view-btn">View</a>
+					    <a href="viewmystatus?id=${job.id}&jobtittle=${job.jobtitle}" class="btn view-btn">View</a>
 					  </td>
 					
 				</tr>

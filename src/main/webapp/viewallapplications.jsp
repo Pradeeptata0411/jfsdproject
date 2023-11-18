@@ -131,6 +131,8 @@
 <br>
 <br>
 <br>
+ <h5 align="center" style="color:red">${message}</h5>
+  
 <table id="employee">
 			<tr bgcolor="darkblue" style="color: white">
 				<th>Application ID</th>

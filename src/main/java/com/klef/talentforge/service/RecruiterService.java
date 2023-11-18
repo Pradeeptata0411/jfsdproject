@@ -29,10 +29,9 @@ public interface RecruiterService {
 	
 	public String deletejob(int id);
 	
-	
+	public String setstatusofapplicant(ViewApplicationStatus viewApplicationStatus);
 	
 	public JobApplications ViewJobApplicationByID(int jobid,String jobtitle);
-	
 	
 	
 	public List<JobApplications> viewalljobapplicationsByCompany(String companyname);

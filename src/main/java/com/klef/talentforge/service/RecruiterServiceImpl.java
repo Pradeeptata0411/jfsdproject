@@ -115,6 +115,13 @@ public class RecruiterServiceImpl implements RecruiterService {
 	  }
 
 	
+	@Override
+	public String setstatusofapplicant(ViewApplicationStatus viewApplicationStatus) {
+		applicationStatusRepository.save(viewApplicationStatus);
+		return "Sucessfully updated";
+	}
+
+	 
 	
 
 }

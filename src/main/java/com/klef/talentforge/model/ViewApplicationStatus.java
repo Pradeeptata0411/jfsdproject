@@ -13,7 +13,16 @@ public class ViewApplicationStatus {
 
 	@Id
     @Column(name="applicantion_id")
-    private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int applicationid;
+	
+	 @Column(name="applicant_id")
+	    private int id;
+	
+	@Column(name="applicationstatus_tittle")
+	private String Applicationstatustittle;
+	
+
 	@Column(name="applicationstatus_status")
 	private String Applicationstatus;
 	@Column(name="applicationstatus_comment")
@@ -34,7 +43,21 @@ public class ViewApplicationStatus {
 		return comment;
 	}
 	public void setComment(String comment) {
+	
 		this.comment = comment;
+	}
+	
+	public String getApplicationstatustittle() {
+		return Applicationstatustittle;
+	}
+	public void setApplicationstatustittle(String applicationstatustittle) {
+		Applicationstatustittle = applicationstatustittle;
+	}
+	public int getApplicationid() {
+		return applicationid;
+	}
+	public void setApplicationid(int applicationid) {
+		this.applicationid = applicationid;
 	}
 	@Override
 	public String toString() {

@@ -187,8 +187,11 @@
 <h5 align="center" style="color:red">${message}</h5>
    <div class="card">
     <h2 align="center" style="color:green">id:- ${jobslist.id} And Job:-  ${jobslist.jobtitle} </h2>
-    <form action="your_server_endpoint" method="post">
+    <form action="/setapplicationstatus" method="post">
       <!-- Application Status Combo Box -->
+        <input type="hidden" name="id" value="${jobslist.id}">
+        <input type="hidden" name="tittle" value="${jobslist.jobtitle}">
+        
       <label for="applicationStatus">Application Status:</label>
       <select name="applicationStatus" id="applicationStatus" required>
         <option value="">Select Option</option>

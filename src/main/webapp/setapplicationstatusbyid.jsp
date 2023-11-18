@@ -63,7 +63,7 @@
   
 <div class="card">
    
-    <form action="your_server_endpoint" method="post">
+    <form action="#" method="post">
       <!-- Application Status Combo Box -->
       <label for="applicationStatus">Application Status:</label>
       <select name="applicationStatus" id="applicationStatus" required>
