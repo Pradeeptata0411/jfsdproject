@@ -11,8 +11,9 @@
 <h1>
 <center>
 hello
-		  ${jobslist.Applicationstatus}
-				
+<c:forEach items="${jobslist}" var="job">
+		  ${job.Applicationstatus}
+				</c:forEach>
 								</center>
 								</h1>
 </body>

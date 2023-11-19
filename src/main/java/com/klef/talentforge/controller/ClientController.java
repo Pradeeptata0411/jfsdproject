@@ -653,9 +653,8 @@ public class ClientController
 	       
 	       
 	       @GetMapping("viewmystatus")
-	       public ModelAndView viewmystatus(HttpServletRequest request, @RequestParam("id") int eid, @RequestParam(name = "applicationstatus_tittle", required = false) String company) {
-	           ModelAndView mv = new ModelAndView("applicantviewmystatusbyid");
-	           HttpSession session = request.getSession();
+	       public ModelAndView viewmystatus( @RequestParam("id") int eid, @RequestParam(name = "jobtitle", required = false) String company) {
+	           ModelAndView mv = new ModelAndView("applicantviewmystatusbyid");     
 	           ViewApplicationStatus status = applicantService.byid(eid, company);
 	           mv.addObject("jobslist", status);
 	           return mv;

@@ -4,11 +4,12 @@ package com.klef.talentforge.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ViewApplicationStatus;
 
-
+@Repository
 public interface ViewApplicationStatusRepository extends JpaRepository<ViewApplicationStatus, Integer> {
 
 	
