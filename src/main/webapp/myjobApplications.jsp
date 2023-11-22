@@ -469,7 +469,6 @@
         <!-- Add more navigation items here -->
       </nav>
     </div>
-     </div>
 
   <script>
     // JavaScript for handling scrolling by revealing additional job cards

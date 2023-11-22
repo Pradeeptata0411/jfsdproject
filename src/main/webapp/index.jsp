@@ -201,8 +201,28 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+/* Style for the search input */
+#searchInput {
+  max-width:100px; /* Set the width of the input */
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Add a border for a defined boundary */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  font-size: 26px; /* Set the font size */
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
 
+#searchInput::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+#searchInput.typing::placeholder,
+#searchInput:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 .verification-container {
       display: flex;
 
@@ -381,10 +401,30 @@
 .apply-btn:hover {
   background-color: navy; /* Change color on hover if desired */
 }
-
+	
 }
 
+/* Style for the search input */
+#searchInput {
+  max-width: 150px; /* Set the width of the input */
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Add a border for a defined boundary */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  font-size: 26px; /* Set the font size */
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
 
+#searchInput::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+#searchInput.typing::placeholder,
+#searchInput:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-100%);
+}
   </style>
 </head>
 <body>
@@ -392,9 +432,7 @@
     <div id="left-half">
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome">  𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-        <input type="text" placeholder="Search for jobs">
-        
-        <button class="apply-btn">Search</button>
+        <input type="search" id="searchInput" class="form-control" placeholder="Type Here to search for your required jobs">
         <button id="toggle-btn">&#9776;</button>
       </div>
 
@@ -461,5 +499,50 @@
     document.getElementById('right-half').classList.toggle('show');
   });
 </script>
+
+<script>
+        // Previous JavaScript code for adding to the cart
+
+        const searchInput = document.getElementById('searchInput');
+        const products = document.querySelectorAll('.job-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchText = searchInput.value.toLowerCase();
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchText)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+<script>
+document.getElementById('searchInput').addEventListener('input', function() {
+	  if (this.value !== '') {
+	    this.classList.add('typing');
+	  } else {
+	    this.classList.remove('typing');
+	  }
+	});
+
+	document.getElementById('searchInput').addEventListener('focus', function() {
+	  if (this.value !== '') {
+	    this.classList.add('typing');
+	  }
+	});
+
+	document.getElementById('searchInput').addEventListener('blur', function() {
+	  if (this.value === '') {
+	    this.classList.remove('typing');
+	  }
+	});
+
+
+</script>
+
 </body>
 </html>

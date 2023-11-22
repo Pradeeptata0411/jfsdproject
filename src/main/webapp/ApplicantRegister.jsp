@@ -1647,7 +1647,7 @@ margin-top:300px;
         <form action="registration" method="post" id="passwordForm">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" placeholder="Enter email" required>
             </div>
            
             <div class="mb-3">
@@ -1669,8 +1669,7 @@ margin-top:300px;
             </div>
             <div class="mb-3">
                 <label for="phone_number">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="contactnumber"
-                    placeholder="Enter phone number" required>
+                <input type="tel" class="form-control" id="phone_number" name="contactnumber" pattern="[789][0-9]{9}" placeholder="Enter phone number Must be 10 digits" required>
             </div>
             <div class="mb-3">
                 <label for="address">Address:</label>
@@ -1679,18 +1678,17 @@ margin-top:300px;
             </div>
             <div class="mb-3">
             <label for="password1">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password"
-                placeholder="Enter password" required>
+            <input type="password" class="form-control" id="password1" name="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,30})" title="Password must contain atleast one number [0-9],uppercase [A-Z],special character [!@#$%^&*], length > 8!! try again!!" placeholder="Enter password" required>
+             
         </div>
         <div class="mb-3">
             <label for="password2">Confirm Password:</label>
-            <input type="password" class="form-control" id="password2" name="password2"
-                placeholder="Confirm password" required>
+            <input type="password" class="form-control" id="password2" name="password2"  placeholder="Confirm password" required>
             <span class="error" id="passwordError"></span>
             
         </div>
       
-            <a href="/">Login Here</a>
+            <a href="/"> Already Have an Account  Login Here 👈</a>
                <br>
               <br>
        
@@ -1738,6 +1736,17 @@ margin-top:300px;
             passwordForm.addEventListener('submit', handleFormSubmit);
         });
     </script>
+    <script>
+    const passwordInput = document.getElementById('password1');
+    const togglePasswordButton = document.getElementById('togglePassword');
+
+    togglePasswordButton.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password1' ? 'text' : 'password1';
+        passwordInput.setAttribute('type', type);
+        togglePasswordButton.classList.toggle('fa-eye-slash');
+        togglePasswordButton.classList.toggle('fa-eye');
+    });
+</script>
 </body>
 
 </html>
