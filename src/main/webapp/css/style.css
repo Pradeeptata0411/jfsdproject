@@ -276,6 +276,7 @@ nav input{
 
 
 @media screen and (max-width: 1000px) {
+	
 .wrapper .btn{
     display: block;
   }
@@ -397,6 +398,7 @@ nav input{
  .container {
         width: 100%;
     }
+    
 }
 
 

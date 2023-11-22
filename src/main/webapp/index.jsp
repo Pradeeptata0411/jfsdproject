@@ -9,6 +9,33 @@
   <title>TalentForge</title>
 
   <style>
+  
+  .choose-file-btn {
+  display: inline-block;
+  background-color: #007BFF; /* Adjust the color as needed */
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-btn {
+  display: inline-block;
+  background-color: #28A745; /* Adjust the color as needed */
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style for the file name display */
+.file-name {
+  margin-top: 5px;
+  color: #6C757D; /* Adjust the color as needed */
+}
+  
   .verification-container {
       display: flex;
 
@@ -263,7 +290,8 @@
     }
 
     #search-bar button {
-      padding: 8px 16px;
+      padding: 8px 20px;
+       top: -1px;
       background-color: #4caf50;
       color: #fff;
       border: none;
@@ -294,7 +322,7 @@
     top: 0;
     right: -100%;
     height: 100%;
-    width: 80%;
+    width: 100%;
     background-color: #F9F9FB;
     z-index: 1;
     overflow-x: hidden;
@@ -311,7 +339,7 @@
   #toggle-btn {
     display: block;
     position: fixed;
-    top: 10px;
+   top: -4px;
     right: 10px;
     cursor: pointer;
   }
@@ -394,10 +422,9 @@
     <br><br><br><br>
       <div class="card">
        <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
-  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="200px" id="profileimage">
-   <input type="file" class="form-control"  name="ApplicantImage"
-                required>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here"  style="width:100%"   height="200px" id="profileimage">
+   <input type="file"   name="ApplicantImage" class="choose-file-btn" required>
+                <button type="submit" class="btn btn-primary upload-btn">Upload Image</button>
                
                 </form>
   <h1 style="color: black;">${fname} ${lname}  </h1>
