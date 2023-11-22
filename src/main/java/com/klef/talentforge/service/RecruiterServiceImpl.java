@@ -6,10 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
+import com.klef.talentforge.repository.ApplicantRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
@@ -19,6 +21,10 @@ import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 @Service
 public class RecruiterServiceImpl implements RecruiterService {
 
+	
+	
+	@Autowired
+    private ApplicantRepository applicantRepository;
 	
 	@Autowired
 	private RecruiterRepository recruiterRepository;
@@ -120,6 +126,13 @@ public class RecruiterServiceImpl implements RecruiterService {
 		applicationStatusRepository.save(viewApplicationStatus);
 		return "Sucessfully updated";
 	}
+
+	@Override
+	public List<String> getAllApplicantEmails(Applicant applicant) {
+		 return applicantRepository.getAllEmails();
+	}
+
+	
 
 	 
 	

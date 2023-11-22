@@ -389,41 +389,41 @@ public class ClientController
 	     
 	     
 	     
-	     @PostMapping("addjob")
-	        public ModelAndView addajob(HttpServletRequest request,@RequestParam("companyimage") MultipartFile file)throws IOException, SerialException, SQLException
-	        {
-	          ModelAndView mv=new ModelAndView();
-	          String title=request.getParameter("jobtitle");
-	          String location=request.getParameter("location");
-	          String skills=request.getParameter("skills");
-	          String description=request.getParameter("description");
-	          String salary=request.getParameter("salary");
-	          String companyname = request.getParameter("companyname");
-	          
-	          byte[] bytes = file.getBytes();
-	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-	      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
-	      if(j==null) {
-	          
-	      Job job=new Job();
-	      job.setJobtitle(title);
-	      job.setLocation(location);
-	      job.setSkills(skills);
-	      job.setSalary(salary);
-	      job.setDescription(description);
-	      job.setImage(blob);
-	      job.setCompanyname(companyname);
-	      
-	      String msg=recruiterService.addjob(job);
-	      mv.setViewName("addjob");
-	      mv.addObject("msg", msg);
-	      }
-	      else {
-	        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
-	      }
-	      return mv;
-	          
-	        }
+//	     @PostMapping("addjob")
+//	        public ModelAndView addajob(HttpServletRequest request,@RequestParam("companyimage") MultipartFile file)throws IOException, SerialException, SQLException
+//	        {
+//	          ModelAndView mv=new ModelAndView();
+//	          String title=request.getParameter("jobtitle");
+//	          String location=request.getParameter("location");
+//	          String skills=request.getParameter("skills");
+//	          String description=request.getParameter("description");
+//	          String salary=request.getParameter("salary");
+//	          String companyname = request.getParameter("companyname");
+//	          
+//	          byte[] bytes = file.getBytes();
+//	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+//	      Job j=recruiterService.viewJobByTitleAndDescription(title, description);
+//	      if(j==null) {
+//	          
+//	      Job job=new Job();
+//	      job.setJobtitle(title);
+//	      job.setLocation(location);
+//	      job.setSkills(skills);
+//	      job.setSalary(salary);
+//	      job.setDescription(description);
+//	      job.setImage(blob);
+//	      job.setCompanyname(companyname);
+//	      
+//	      String msg=recruiterService.addjob(job);
+//	      mv.setViewName("addjob");
+//	      mv.addObject("msg", msg);
+//	      }
+//	      else {
+//	        mv.addObject("msg", "Failed to Add.This is Already Existing Job");
+//	      }
+//	      return mv;
+//	          
+//	        }
   
 	     
 	     
@@ -661,6 +661,158 @@ public class ClientController
 	           return mv;
 	       }
 
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+//	       @PostMapping("addjob")
+//	       public ModelAndView addajob(HttpServletRequest request, @RequestParam("companyimage") MultipartFile file)
+//	               throws IOException, SerialException, SQLException {
+//	           ModelAndView mv = new ModelAndView();
+//	           String title = request.getParameter("jobtitle");
+//	           String location = request.getParameter("location");
+//	           String skills = request.getParameter("skills");
+//	           String description = request.getParameter("description");
+//	           String salary = request.getParameter("salary");
+//	           String companyname = request.getParameter("companyname");
+//
+//	           byte[] bytes = file.getBytes();
+//	           Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+//
+//	           Job j = recruiterService.viewJobByTitleAndDescription(title, description);
+//	           if (j == null) {
+//	               Job job = new Job();
+//	               job.setJobtitle(title);
+//	               job.setLocation(location);
+//	               job.setSkills(skills);
+//	               job.setSalary(salary);
+//	               job.setDescription(description);
+//	               job.setImage(blob);
+//	               job.setCompanyname(companyname);
+//
+//	               String msg = recruiterService.addjob(job);
+//	               mv.setViewName("addjob");
+//	               mv.addObject("msg", msg);
+//
+//	               Applicant a = new Applicant();
+//	               
+//	               // Fetch emails from the applicant_table
+//	               List<String> applicantEmails = recruiterService.getAllApplicantEmails(a);
+//
+//	               // Send notification to each applicant
+//	               for (String email : applicantEmails) {
+//	                   sendJobNotificationEmail(email, title, companyname);
+//	               }
+//	           } else {
+//	               mv.addObject("msg", "Failed to Add. This is Already Existing Job");
+//	           }
+//	           return mv;
+//	       }
+
+//	       // New method to send job notification email
+//	       private void sendJobNotificationEmail(String toEmail, String jobTitle, String companyName) {
+//	           try {
+//	               String fromEmail = "your-email@example.com"; // Set your email
+//	               String subject = "Job Notification: " + jobTitle + " at " + companyName;
+//	               String text = "Hello,\n\nA new job has been added:\nTitle: " + jobTitle + "\nCompany: " + companyName;
+//
+//	               // You can use your email manager or any other method to send the email
+//	               emailManager.sendEmail(fromEmail, toEmail, subject, text, text);
+//	           } catch (Exception e) {
+//	               // Handle exceptions, e.g., log or print an error message
+//	               e.printStackTrace();
+//	           }
+//	       }
+//	       private void sendJobNotificationEmail(String toEmail, String jobTitle, String companyName,HttpServletRequest request) {
+//	           try {
+//
+//			String fileName = "job_notification.html"; 
+//		            String filePath = request.getServletContext().getRealPath("/" + fileName);
+//	                String fromEmail = "jfsdsdpams@gmail.com"; // Set your email
+//
+//	               String subject = "Job Notification: " + jobTitle + " at " + companyName;
+//	               String text = "Hello,\n\nA new job has been added:\nTitle: " + jobTitle + "\nCompany: " + companyName;
+//	               String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
+//	               // You can use your email manager or any other method to send the email
+//	               emailManager.sendEmail(fromEmail, toEmail, subject, text, htmlContent);
+//	           } catch (Exception e) {
+//	               // Handle exceptions, e.g., log or print an error message
+//	               e.printStackTrace();
+//	           }
+//	       }
+	       
+	       private void sendJobNotificationEmail(String toEmail, String jobTitle, String companyName, HttpServletRequest request) {
+	    	    try {
+	    	        String fileName = "job_notification.html";
+	    	        String filePath = request.getServletContext().getRealPath("/" + fileName); // Adjust the path as needed
+	    	        String fromEmail = "your-email@example.com"; // Set your email
+
+	    	        String subject = "Job Notification: " + jobTitle + " at " + companyName;
+	    	        String text = "Hello,\n\nA new job has been added:\nTitle: " + jobTitle + "\nCompany: " + companyName;
+
+	    	        // Read email content from template file
+	    	        String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
+
+	    	        // You can use your email manager or any other method to send the email
+	    	        emailManager.sendEmail(fromEmail, toEmail, subject, text, htmlContent);
+	    	    } catch (Exception e) {
+	    	        // Handle exceptions, e.g., log or print an error message
+	    	        e.printStackTrace();
+	    	    }
+	    	}
+
+	    	@PostMapping("addjob")
+	    	public ModelAndView addajob(HttpServletRequest request, @RequestParam("companyimage") MultipartFile file)
+	    	        throws IOException, SerialException, SQLException {
+	    	    ModelAndView mv = new ModelAndView();
+	    	    String title = request.getParameter("jobtitle");
+	    	    String location = request.getParameter("location");
+	    	    String skills = request.getParameter("skills");
+	    	    String description = request.getParameter("description");
+	    	    String salary = request.getParameter("salary");
+	    	    String companyname = request.getParameter("companyname");
+
+	    	    byte[] bytes = file.getBytes();
+	    	    Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+
+	    	    Job j = recruiterService.viewJobByTitleAndDescription(title, description);
+	    	    if (j == null) {
+	    	        Job job = new Job();
+	    	        job.setJobtitle(title);
+	    	        job.setLocation(location);
+	    	        job.setSkills(skills);
+	    	        job.setSalary(salary);
+	    	        job.setDescription(description);
+	    	        job.setImage(blob);
+	    	        job.setCompanyname(companyname);
+
+	    	        String msg = recruiterService.addjob(job);
+	    	        mv.setViewName("addjob");
+	    	        mv.addObject("msg", msg);
+
+	    	        Applicant a = new Applicant();
+
+	    	        // Fetch emails from the applicant_table
+	    	        List<String> applicantEmails = recruiterService.getAllApplicantEmails(a);
+
+	    	        // Send notification to each applicant
+	    	        for (String email : applicantEmails) {
+	    	            sendJobNotificationEmail(email, title, companyname, request);
+	    	        }
+	    	    } else {
+	    	        mv.addObject("msg", "Failed to Add. This is Already Existing Job");
+	    	    }
+	    	    return mv;
+	    	}
+
+
+	       
+	       
+	       
 	       
 
 }

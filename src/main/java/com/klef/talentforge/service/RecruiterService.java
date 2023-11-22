@@ -2,6 +2,7 @@ package com.klef.talentforge.service;
 
 import java.util.List;
 
+import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
@@ -37,5 +38,8 @@ public interface RecruiterService {
 	public List<JobApplications> viewalljobapplicationsByCompany(String companyname);
 	
 	
+	
+	
+	public List<String> getAllApplicantEmails(Applicant applicant);
 	
 }
