@@ -18,6 +18,12 @@ public class ApplicantImage {
     private int id;
 	@Column(name="applicant_image")
 	  private Blob image;
+	
+	
+	
+	
+	
+	
 	public int getId() {
 		return id;
 	}
