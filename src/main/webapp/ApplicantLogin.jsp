@@ -5,9 +5,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title> Applicant Login</title>
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+    
     <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* General styling */
 
@@ -439,7 +442,33 @@
             color: #ff7473
         }
 
-       
+        @media (min-width: 992px) {
+            .navbar ul.navbar-nav>li>a:not(.navbar-btn) {
+                border-top: 5px solid transparent;
+                padding: 40px 15px !important;
+                color: #fff;
+                font-weight: 300
+            }
+
+            .navbar ul.navbar-nav>li>a:not(.navbar-btn):hover {
+                border-top-color: #2b8f9c;
+                color: #009900
+            }
+
+            .navbar ul.navbar-nav>li.active>a,
+            .navbar ul.navbar-nav>li.show>a {
+                text-decoration: none !important;
+                border-top-color: #ff7473;
+                color: #ff7473
+            }
+
+            .navbar ul.navbar-nav>li>a.navbar-btn {
+                margin: 32px 15px !important;
+                -webkit-transform: translateY(4px);
+                transform: translateY(4px)
+            }
+        }
+
         .navbar .navbar-toggler {
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -1572,49 +1601,35 @@
         color: #333;
     }
     
-       #togglePassword {
-      position: absolute;
-      right:500px;
-      top: 42%;
-      transform: translateY(-50%);
-      cursor: pointer;
-    }
-      @media screen and (min-width: 768px) {
-
-    .navbar ul.navbar-nav>li>a:not(.navbar-btn) {
-        border-top: 5px solid transparent;
-        padding: 40px 15px !important;
-        color: #fff;
-        font-weight: 300;
-    }
-
-    .navbar ul.navbar-nav>li>a:not(.navbar-btn):hover {
-        border-top-color: #2b8f9c;
-        color: #009900;
-    }
-
-    .navbar ul.navbar-nav>li.active>a,
-    .navbar ul.navbar-nav>li.show>a {
-        text-decoration: none !important;
-        border-top-color: #ff7473;
-        color: #ff7473;
-    }
-
-    .navbar ul.navbar-nav>li>a.navbar-btn {
-        margin: 32px 15px !important;
-        -webkit-transform: translateY(4px);
-        transform: translateY(4px);
-    }
-}
-
        
        
     </style>
 </head>
 
 <body>
+<nav>
+
+  <div class="wrapper">
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+</div>
+    <input type="radio" name="slider" id="menu-btn">
+    <input type="radio" name="slider" id="close-btn">
+    <ul class="nav-links">
+      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+      <li><a href="/">Home</a></li>
+      <li><a href="">About Us</a></li>
+      
+       <li><a href="ApplicantLogin">Applicant Login</a></li>
+      <li><a href="companylogin">Company Login</a></li>
+      
+    </ul>
+    <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+  </div>
+</nav>
+ 
+    <br><br><br><br>
     <div class="container">
-    
+    																																		
     	<div class="card">
     <div class="card-body">
      <span class="blink">
@@ -1625,13 +1640,13 @@
         <form action="checkapplicantlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" placeholder="Enter email"  required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
             </div>
            
             <div class="mb-3">
                 <label for="password1">Password:</label>
-  <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" 	 required>
-  <i class="fas fa-eye-slash" id="togglePassword"></i>
+                <input type="password" class="form-control" id="password1" name="password1"
+                    placeholder="Enter password">
                     <br><br>
                      <a href="register">Don't have an account?</a>
             </div>
@@ -1640,33 +1655,13 @@
             
            
         </form>
+       
     </div>
     </div>
+    
     </div>
-<script>
-  const passwordInput = document.getElementById('password1');
-  const togglePasswordButton = document.getElementById('togglePassword');
-
-  togglePasswordButton.addEventListener('click', function () {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-
-    // Toggle eye icon based on password visibility
-    this.classList.toggle('fa-eye-slash');
-    this.classList.toggle('fa-eye');
-  });
-</script>
-<script>
-    const passwordInput = document.getElementById('password1');
-    const togglePasswordButton = document.getElementById('togglePassword');
-
-    togglePasswordButton.addEventListener('click', function () {
-        const type = passwordInput.getAttribute('type') === 'password1' ? 'text' : 'password1';
-        passwordInput.setAttribute('type', type);
-        togglePasswordButton.classList.toggle('fa-eye-slash');
-        togglePasswordButton.classList.toggle('fa-eye');
-    });
-</script>
+  
+    
 </body>
 
 </html>

@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Applicant Registration</title>
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+    
     <link rel="stylesheet" href="style.css">
     <style>
         /* General styling */
@@ -1635,6 +1637,25 @@ margin-top:300px;
 </head>
 
 <body>
+<nav>
+  <div class="wrapper">
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+</div>
+    <input type="radio" name="slider" id="menu-btn">
+    <input type="radio" name="slider" id="close-btn">
+    <ul class="nav-links">
+      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+      <li><a href="/">Home</a></li>
+      <li><a href="">About Us</a></li>
+      
+       <li><a href="ApplicantLogin">Applicant Login</a></li>
+      <li><a href="companylogin">Company Login</a></li>
+      
+    </ul>
+    <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+  </div>
+</nav>
+<br><br><br><br>
     <div class="container">
     <div class="registration-section">
         <img id="registerimage" alt="" src="images/register1.png">
@@ -1647,7 +1668,7 @@ margin-top:300px;
         <form action="registration" method="post" id="passwordForm">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
             </div>
            
             <div class="mb-3">
@@ -1669,7 +1690,8 @@ margin-top:300px;
             </div>
             <div class="mb-3">
                 <label for="phone_number">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone_number" name="contactnumber" pattern="[789][0-9]{9}" placeholder="Enter phone number Must be 10 digits" required>
+                <input type="tel" class="form-control" id="phone_number" name="contactnumber"
+                    placeholder="Enter phone number" required>
             </div>
             <div class="mb-3">
                 <label for="address">Address:</label>
@@ -1678,17 +1700,18 @@ margin-top:300px;
             </div>
             <div class="mb-3">
             <label for="password1">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,30})" title="Password must contain atleast one number [0-9],uppercase [A-Z],special character [!@#$%^&*], length > 8!! try again!!" placeholder="Enter password" required>
-             
+            <input type="password" class="form-control" id="password1" name="password"
+                placeholder="Enter password" required>
         </div>
         <div class="mb-3">
             <label for="password2">Confirm Password:</label>
-            <input type="password" class="form-control" id="password2" name="password2"  placeholder="Confirm password" required>
+            <input type="password" class="form-control" id="password2" name="password2"
+                placeholder="Confirm password" required>
             <span class="error" id="passwordError"></span>
             
         </div>
       
-            <a href="/"> Already Have an Account  Login Here 👈</a>
+            <a href="/">Login Here</a>
                <br>
               <br>
        
@@ -1736,17 +1759,6 @@ margin-top:300px;
             passwordForm.addEventListener('submit', handleFormSubmit);
         });
     </script>
-    <script>
-    const passwordInput = document.getElementById('password1');
-    const togglePasswordButton = document.getElementById('togglePassword');
-
-    togglePasswordButton.addEventListener('click', function () {
-        const type = passwordInput.getAttribute('type') === 'password1' ? 'text' : 'password1';
-        passwordInput.setAttribute('type', type);
-        togglePasswordButton.classList.toggle('fa-eye-slash');
-        togglePasswordButton.classList.toggle('fa-eye');
-    });
-</script>
 </body>
 
 </html>
