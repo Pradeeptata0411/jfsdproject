@@ -29,6 +29,9 @@ public class Applicant {
 	    private String contactno;
 	    @Column(name="applicant_address",nullable=false,length = 1000)
 	    private String Address;
+	    
+	    
+	    
 		public int getId() {
 			return id;
 		}

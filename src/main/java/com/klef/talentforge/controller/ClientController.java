@@ -252,6 +252,7 @@ public class ClientController
 				recruiter.setPassword(pwd);
 				recruiter.setContactno(contact);
 				recruiter.setAddress(address);
+				recruiter.setLoginstatus(false);
 				
 			    msg = recruiterService.registerRecruiter(recruiter);
 			    
@@ -324,7 +325,7 @@ public class ClientController
 	     
 	     
 	     
-	     
+
 	     
 	 	
 	  
@@ -357,6 +358,47 @@ public class ClientController
 	       
 	     }
 
+	     
+	     
+	     
+	     @GetMapping("viewallrecruiters")
+	     public ModelAndView viewallrecruiters() {
+	       ModelAndView mv=new ModelAndView("adminviewallrecruiter");
+	       List<Recruiter> recruiters = adminService.ViewAllRecruiters();
+	       mv.addObject("recruiters", recruiters);
+	       return mv;
+	     }
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
 	     
 	     
 	     @PostMapping("uploadapplicantprofileimage")
@@ -824,7 +866,24 @@ public class ClientController
 
 
 	       
-	       
+	    	@GetMapping("setstatusacceptanceordeclined")
+	        public ModelAndView setstatusacceptanceordeclinedseller(@RequestParam("id") int rid , @RequestParam("status") boolean rstatus ){
+	    		
+	            int n = adminService.recruiteracceptance(rid,rstatus);
+	            ModelAndView mv = new ModelAndView();
+	            mv.setViewName("adminviewallrecruiter");
+	            List<Recruiter> recruiters = adminService.ViewAllRecruiters();
+	 	       mv.addObject("recruiters", recruiters);
+	            if(n>0)
+	            {
+	              mv.addObject("message", "Status Updated Successfully");
+	            }
+	            else
+	            {
+	              mv.addObject("message", "Failed to Update Status");
+	            }
+	            return mv;
+	        }
 	       
 	       
 
