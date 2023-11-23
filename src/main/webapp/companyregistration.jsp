@@ -1667,7 +1667,7 @@ margin-top:300px;
         <form action="recruiterRegistration" method="post" id="passwordForm">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" placeholder="Enter email" title="email format must be xxx@gmail.com" required>
             </div>
         
             <div class="mb-3">
@@ -1686,13 +1686,11 @@ margin-top:300px;
             </div>
             <div class="mb-3">
             <label for="password1">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password"
-                placeholder="Enter password" required>
+            <input type="password" class="form-control" id="password1" name="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,30})" placeholder="Enter password" title="Password must contain atleast one number [0-9],uppercase [A-Z],special character [!@#$%^&*], length > 8!! try again!!" required>
         </div>
         <div class="mb-3">
             <label for="password2">Confirm Password:</label>
-            <input type="password" class="form-control" id="password2" name="password2"
-                placeholder="Confirm password" required>
+            <input type="password" class="form-control" id="password2" name="password2" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,30})" title="Password must contain atleast one number [0-9],uppercase [A-Z],special character [!@#$%^&*], length > 8!! try again!!"  placeholder="Confirm password" required>
             <span class="error" id="passwordError"></span>
             
         </div>
