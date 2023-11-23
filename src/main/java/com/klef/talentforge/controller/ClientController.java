@@ -296,7 +296,7 @@ public class ClientController
 	 			session.setAttribute("rcompanynmae",rec.getCompanyname());
 	 			mv.setViewName("recruiterhome");
 	 		}else  {
-	 			mv.setViewName("companyregistration");
+	 			mv.setViewName("companylogin");
 	 			mv.addObject("message", "Invalid Login..!");
 	 					}
 	 		return mv;
@@ -470,7 +470,14 @@ public class ClientController
 		       return "redirect:/recruiterviewjobs";
 		     }
 
-	     
+	     @GetMapping("withdrawApplication")
+	     public String withdrawApplication(@RequestParam("id") int id) {
+		       ModelAndView mv=new ModelAndView();
+		       mv.setViewName("myjobApplications");
+		      String msg = applicantService.withdrawapplicantion(id);
+		      mv.addObject("msg", msg);
+		       return "redirect:/myjobApplications";
+		     }
 	        
 	     @PostMapping("/apply")
 	       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth
@@ -590,10 +597,10 @@ public class ClientController
 	       
 	       
 	       @GetMapping("recruitersetstatus")
-	       public ModelAndView recruitersetstatus(HttpServletRequest request, @RequestParam("id") int eid, @RequestParam("company") String company) {
+	       public ModelAndView recruitersetstatus(HttpServletRequest request, @RequestParam("id") int eid, @RequestParam("jobtitle") String jobtitle) {
 	           ModelAndView mv = new ModelAndView("recruitersetstatusbyid");
 	           HttpSession session = request.getSession();
-	           JobApplications job = recruiterService.ViewJobApplicationByID(eid, company);
+	           JobApplications job = recruiterService.ViewJobApplicationByID(eid, jobtitle);
 	           mv.addObject("jobslist", job);
 	           return mv;
 	       }

@@ -9,6 +9,30 @@
   <title>TalentForge</title>
 
   <style>
+  #searchInput {
+ max-width: 160px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Add a border for a defined boundary */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  font-size: 26px; /* Set the font size */
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
+
+#searchInput::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+#searchInput.typing::placeholder,
+#searchInput:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+  
+  
   #toggle-btn {
   display: none; /* Initially hide the toggle button */
 }
@@ -357,7 +381,7 @@
   #toggle-btn {
     display: block;
     position: fixed;
-   top: -4px;
+   margin-top: 32px;
     right: 10px;
     cursor: pointer;
   }
@@ -408,9 +432,8 @@
     <div id="left-half">
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"><a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a><img src="/images/search.png" width="30px" height="30" /></p>
-        <input type="text" placeholder="Search for jobs">
-        <button class="apply-btn">Search</button>
-              <button id="toggle-btn">&#9776;</button>
+       <input type="search" id="searchInput" class="form-control" placeholder="Type Here to search for your required jobs">
+          <button id="toggle-btn">&#9776;</button>
       </div>
 
       <!-- Sample job cards -->
@@ -419,18 +442,20 @@
     
  <table id="employee">
 			<tr bgcolor="black" style="color: white">
-				<th>Application ID</th>
+				<th>Applicant ID</th>
+				<th>Applicantion ID</th>
 				<th>Job Title</th>
 				<th>Company</th>
 				<th>Applicant Email</th>
 				<th>View Application Status</th>
-				
+					<th>Withdraw Application</th>
 				
 				
 			</tr>
 			<c:forEach items="${jobslist}" var="job">
 				<tr>
-					<td><c:out value="${job.id}" /></td>
+				<td><c:out value="${job.id}" /></td>
+					<td><c:out value="${job.applicationid}" /></td>
 					<td><c:out value="${job.jobtitle}" /></td>
 					
 					</td>
@@ -440,7 +465,9 @@
 					 <td>
 					    <a href="/viewmystatus?id=${job.id}&jobtitle=${job.jobtitle}" class="btn view-btn">View</a>
 					  </td>
-					
+					 <td>
+					    <a href="withdrawApplication?id=${job.id}" style="color: red" >Withdraw</a>
+					  </td>
 				</tr>
 			</c:forEach>
 		</table>

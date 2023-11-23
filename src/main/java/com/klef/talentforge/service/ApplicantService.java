@@ -36,4 +36,8 @@ public interface ApplicantService {
 	public ViewApplicationStatus byid(int id , String tittle); 	  
 			
 	
+	
+	public String withdrawapplicantion(int id);
+	
+	
 }

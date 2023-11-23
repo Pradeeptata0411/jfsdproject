@@ -359,7 +359,7 @@
   #toggle-btn {
     display: block;
     position: fixed;
-   top: -4px;
+   margin-top: 32px;
     right: 10px;
     cursor: pointer;
   }
@@ -406,7 +406,9 @@
 
 /* Style for the search input */
 #searchInput {
-  max-width: 150px; /* Set the width of the input */
+ max-width: 160px;
+  box-sizing: border-box;
+  margin: 0;
   padding: 10px; /* Add padding for better spacing */
   border: 1px solid #ccc; /* Add a border for a defined boundary */
   border-radius: 5px; /* Add rounded corners */

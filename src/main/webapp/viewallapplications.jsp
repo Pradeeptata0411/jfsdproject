@@ -137,6 +137,7 @@
 			<tr bgcolor="darkblue" style="color: white">
 				<th>Application ID</th>
 				<th>Applicant ID</th>
+				<th>Company Name</th>
 				<th>Job Title</th>
 				<th>Email</th>
 				<th>Experience</th>
@@ -150,14 +151,16 @@
 				<tr>
 					<td><c:out value="${job.applicationid}" /></td>
 					<td><c:out value="${job.id}" /></td>
+					<td><c:out value="${job.companyname}" /></td>
 					<td><c:out value="${job.jobtitle}" />
 					</td>
 					<td><c:out value="${job.email}" /></td>
+					
 					<td><c:out value="${job.experience}" /></td>
 					<td><c:out value="${job.contactno}" /></td>
 					<td><a href="/download/${job.id}/${job.jobtitle}"><button class="btn">Download Resume here</button></a>
 					</td>				
-					<td><a href="recruitersetstatus?id=${job.id}&company=${job.jobtitle}">Update Status</a></td>
+					<td><a href="recruitersetstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
 				</tr>
 			</c:forEach>
 		</table>

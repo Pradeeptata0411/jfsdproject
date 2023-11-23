@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
@@ -138,6 +139,18 @@ public class ApplicantServiceImpl implements ApplicantService {
 	public ViewApplicationStatus byid(int id, String tittle) {
 		ViewApplicationStatus status = viewApplicationStatusRepository.getbyidofstatus(id, tittle);
 	    return status;
+	}
+
+	@Override
+	public String withdrawapplicantion(int id) {
+		Optional<JobApplications> obj = jobapplicationsRepository.findById(id);
+		String msg="";
+		if(obj.isPresent()) {
+			JobApplications job = obj.get();
+			jobapplicationsRepository.delete(job);
+			 msg = "Successfully Withdrawn applicantion";
+		}
+		return msg;
 	}
 
 	

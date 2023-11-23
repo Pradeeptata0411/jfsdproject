@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Job 
 {   
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "job_title",length = 50,nullable = false)
 	private String jobtitle;
