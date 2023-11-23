@@ -470,14 +470,14 @@ public class ClientController
 		       return "redirect:/recruiterviewjobs";
 		     }
 
-	     @GetMapping("withdrawApplication")
-	     public String withdrawApplication(@RequestParam("id") int id) {
-		       ModelAndView mv=new ModelAndView();
-		       mv.setViewName("myjobApplications");
-		      String msg = applicantService.withdrawapplicantion(id);
-		      mv.addObject("msg", msg);
-		       return "redirect:/myjobApplications";
-		     }
+//	     @GetMapping("withdrawApplication")
+//	     public String withdrawApplication(@RequestParam("id") int id , @RequestParam("applicationid") int applicantid) {
+//		       ModelAndView mv=new ModelAndView();
+//		       mv.setViewName("myjobApplications");
+//		      String msg = applicantService.withdrawapplication(id, applicantid);
+//		      mv.addObject("msg", msg);
+//		       return "redirect:/myjobApplications";
+//		     }
 	        
 	     @PostMapping("/apply")
 	       public ModelAndView applyjob(@RequestParam("jobtitle") String jobtitle,@RequestParam("fname") String firstname,@RequestParam("lname") String lastname, @RequestParam("email") String email, @RequestParam("dateofbirth") String dateofbirth

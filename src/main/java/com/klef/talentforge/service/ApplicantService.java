@@ -37,7 +37,7 @@ public interface ApplicantService {
 			
 	
 	
-	public String withdrawapplicantion(int id);
+	 // public String withdrawapplication(int id, int applicantid);
 	
 	
 }

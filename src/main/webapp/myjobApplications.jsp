@@ -439,7 +439,7 @@
       <!-- Sample job cards -->
      <br><br><br><br>
     
-    
+    <h5 align="center" style="color:red">${message}</h5>
  <table id="employee">
 			<tr bgcolor="black" style="color: white">
 				<th>Applicant ID</th>
@@ -448,7 +448,6 @@
 				<th>Company</th>
 				<th>Applicant Email</th>
 				<th>View Application Status</th>
-					<th>Withdraw Application</th>
 				
 				
 			</tr>
@@ -465,9 +464,7 @@
 					 <td>
 					    <a href="/viewmystatus?id=${job.id}&jobtitle=${job.jobtitle}" class="btn view-btn">View</a>
 					  </td>
-					 <td>
-					    <a href="withdrawApplication?id=${job.id}" style="color: red" >Withdraw</a>
-					  </td>
+					 
 				</tr>
 			</c:forEach>
 		</table>

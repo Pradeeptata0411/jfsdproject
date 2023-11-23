@@ -140,19 +140,16 @@ public class ApplicantServiceImpl implements ApplicantService {
 		ViewApplicationStatus status = viewApplicationStatusRepository.getbyidofstatus(id, tittle);
 	    return status;
 	}
+	
+	
+//
+//	@Override
+//	public String withdrawapplication(int id, int applicantid) {
+//		jobapplicationsRepository.withdrawApplication(id, applicantid);
+//		return "Sucessfully withdrawn the applicantion";
+//	}
 
-	@Override
-	public String withdrawapplicantion(int id) {
-		Optional<JobApplications> obj = jobapplicationsRepository.findById(id);
-		String msg="";
-		if(obj.isPresent()) {
-			JobApplications job = obj.get();
-			jobapplicationsRepository.delete(job);
-			 msg = "Successfully Withdrawn applicantion";
-		}
-		return msg;
-	}
-
+	
 	
 
 	

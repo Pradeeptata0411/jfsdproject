@@ -3,6 +3,7 @@ package com.klef.talentforge.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,8 @@ public interface JobApplicationsRepository extends JpaRepository<JobApplications
 	  public JobApplications viewJobApplicationBYID(int id,String jobtitle);
 	  
 	
-	  
-	 
+//	  @Modifying
+//	  @Query("delete j from JobApplications WHERE j.id = ?1 AND j.applicationid = ?2")
+//	  public int withdrawApplication(int id, int applicantId);
+
 }
