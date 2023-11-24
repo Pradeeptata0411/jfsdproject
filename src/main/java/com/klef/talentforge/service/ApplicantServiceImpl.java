@@ -142,12 +142,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 	
 	
-//
-//	@Override
-//	public String withdrawapplication(int id, int applicantid) {
-//		jobapplicationsRepository.withdrawApplication(id, applicantid);
-//		return "Sucessfully withdrawn the applicantion";
-//	}
+
+	@Override
+	public String withdrawapplication(int id, int applicantid) {
+		jobapplicationsRepository.withdrawApplication(id, applicantid);
+		return "Sucessfully withdrawn the applicantion";
+	}
 
 	
 	

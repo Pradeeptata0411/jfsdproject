@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.klef.talentforge.model.JobApplications;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public interface JobApplicationsRepository extends JpaRepository<JobApplications, Integer>{
 
@@ -26,8 +28,10 @@ public interface JobApplicationsRepository extends JpaRepository<JobApplications
 	 @Query("select j from JobApplications j where j.applicationid=?1 and j.jobtitle=?2")
 	 public JobApplications viewJobApplicationBYID(int id,String jobtitle);
 	
-//	  @Modifying
-//	  @Query("delete j from JobApplications WHERE j.id = ?1 AND j.applicationid = ?2")
-//	  public int withdrawApplication(int id, int applicantId);
+	 
+	 @Transactional
+	 @Modifying
+	 @Query("delete from JobApplications j where j.id = ?1 and j.applicationid = ?2")
+	 public int withdrawApplication(int id, int applicantId);
 
 }

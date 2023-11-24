@@ -6,6 +6,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add Bootstrap CSS and JS -->
+
   <title>TalentForge</title>
 
   <style>
@@ -437,7 +439,7 @@
       </div>
 
       <!-- Sample job cards -->
-     <br><br><br><br>
+     <br>
     
     <h5 align="center" style="color:red">${message}</h5>
  <table id="employee">
@@ -448,7 +450,7 @@
 				<th>Company</th>
 				<th>Applicant Email</th>
 				<th>View Application Status</th>
-				
+				<th>WithDraw Application</th>
 				
 			</tr>
 			<c:forEach items="${jobslist}" var="job">
@@ -464,7 +466,9 @@
 					 <td>
 					    <a href="/viewmystatus?id=${job.id}&jobtitle=${job.jobtitle}" class="btn view-btn">View</a>
 					  </td>
-					 
+					 <td>
+					  <a href="#" class="btn view-btn" onclick="confirmWithdraw(${job.id}, ${job.applicationid})">Withdraw</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -512,5 +516,23 @@
     document.getElementById('right-half').classList.toggle('show');
   });
 </script>
+
+<script>
+function confirmWithdraw(id, applicationid) {
+  // Display a confirmation dialog
+  var isConfirmed = confirm("Are you sure you want to withdraw the application?");
+
+  // If the user clicks "OK", proceed with withdrawal
+  if (isConfirmed) {
+    // Redirect to the withdrawal URL or trigger an AJAX request to perform withdrawal
+    window.location.href = "/withdrawApplication?id=" + id + "&applicationid=" + applicationid;
+  } else {
+    // If the user clicks "Cancel" do nothing or provide feedback
+    // You can add additional logic here if needed
+    console.log("Withdrawal canceled");
+  }
+}
+</script>
+
 </body>
 </html>
