@@ -30,8 +30,15 @@ public class Applicant {
 	    @Column(name="applicant_address",nullable=false,length = 1000)
 	    private String Address;
 	    
+	    @Column(name="applicant_loginstatus",nullable=false)
+	    private boolean loginstatus;
 	    
-	    
+		public boolean isLoginstatus() {
+			return loginstatus;
+		}
+		public void setLoginstatus(boolean loginstatus) {
+			this.loginstatus = loginstatus;
+		}
 		public int getId() {
 			return id;
 		}
@@ -84,9 +91,9 @@ public class Applicant {
 		public String toString() {
 			return "Applicant [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 					+ ", gender=" + gender + ", password=" + password + ", contactno=" + contactno + ", Address="
-					+ Address + "]";
+					+ Address + ", loginstatus=" + loginstatus + "]";
 		}
-	    
+		
 	    
 	    
 	

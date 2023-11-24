@@ -68,7 +68,7 @@
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
       <li><a href="adminhome">Home</a></li>
-      <li><a href="">View All Applicants</a></li>
+      <li><a href="viewallapplicants">View All Applicants</a></li>
             <li><a href="viewallrecruiters">View All Companies</a></li>
       
       <li>

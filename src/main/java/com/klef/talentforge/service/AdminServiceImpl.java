@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.klef.talentforge.model.Admin;
+import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.repository.AdminRepository;
 import com.klef.talentforge.repository.ApplicantRepository;
@@ -82,6 +83,19 @@ public class AdminServiceImpl implements AdminService
 		@Override
 		public long JobApplicationsCount() {
 			return jobapplicationsRepository.count();
+		}
+
+
+		@Override
+		public int applicantacceptance(int cid, boolean acceptance) {
+			return applicantRepository.applicantacceptance(cid, acceptance);
+		}
+
+
+		@Override
+		public List<Applicant> ViewAllApplicant() {
+			// TODO Auto-generated method stub
+			return applicantRepository.findAll();
 		}
 	
 	

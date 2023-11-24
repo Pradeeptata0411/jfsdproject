@@ -112,6 +112,8 @@ public class ClientController
 		    applicant.setPassword(pwd);
 		    applicant.setGender(gender);
 		    applicant.setAddress(address);
+		    applicant.setLoginstatus(true);
+		    
 		    msg = applicantService.register(applicant);
 		    
 		    
@@ -388,7 +390,7 @@ public class ClientController
 	     }
 	     
 	     
-	     
+	   
 	     
 	     
 	     
@@ -912,6 +914,35 @@ public class ClientController
 	            return mv;
 	        }
 	       
-	       
+	    	@GetMapping("setstatusacceptanceordeclinedforapplicant")
+	        public ModelAndView setstatusacceptanceordeclinedforapplicant(@RequestParam("id") int rid , @RequestParam("status") boolean rstatus ){
+	    		
+	            int n = adminService.applicantacceptance(rid, rstatus);
+	            ModelAndView mv = new ModelAndView();
+	            mv.setViewName("adminviewallapplicants");
+	            List<Applicant> applicants = adminService.ViewAllApplicant();
+	 	       mv.addObject("applicants", applicants);
+	            if(n>0)
+	            {
+	              mv.addObject("message", "Status Updated Successfully");
+	            }
+	            else
+	            {
+	              mv.addObject("message", "Failed to Update Status");
+	            }
+	            return mv;
+	        }
 
+	    	
+	    	  
+		     @GetMapping("viewallapplicants")
+		     public ModelAndView viewallapplicants() {
+		       ModelAndView mv=new ModelAndView("adminviewallapplicants");
+		       List<Applicant> applicants = adminService.ViewAllApplicant();
+		       mv.addObject("applicants", applicants);
+		       return mv;
+		     }
+	    	
+	    	
+	    	
 }

@@ -110,7 +110,7 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Recruiters</p>
+  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Applicants</p>
  <br>
  <table id="employee">
 			<tr bgcolor="darkblue" style="color: white">
@@ -119,6 +119,7 @@
 				<th>Email-📧</th>
 				
 				<th>Contact-📞</th>
+				<th>Gender</th>
 				<th>Address</th>
 				<th>Status</th>
 				<th>Accept</th>
@@ -126,19 +127,19 @@
 								
 				
 			</tr>
-			<c:forEach items="${recruiters}" var="rec">
+			<c:forEach items="${applicants}" var="appl">
 				<tr>
-					<td><c:out value="${rec.id}" /></td>
-					<td><c:out value="${rec.companyname}" /></td>
-					<td><c:out value="${rec.email}" /></td>
+					<td><c:out value="${appl.id}" /></td>
+					<td><c:out value="${appl.firstname} ${appl.lastname}  " /></td>
+					<td><c:out value="${appl.email}" /></td>
 					
 					</td>
-					<td><c:out value="${rec.contactno}" /></td>
-					
-					<td><c:out value="${rec.address}" /></td>
-					<td><c:out value="${rec.loginstatus}" /></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclined?id=${rec.id}&status=true"></c:url>'><button class="btn">accept</button></a></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclined?id=${rec.id}&status=false"></c:url>'><button class="btnr">Reject</button></a>
+					<td><c:out value="${appl.contactno}" /></td>
+					<td><c:out value="${appl.gender}" /></td>
+					<td><c:out value="${appl.address}" /></td>
+					<td><c:out value="${appl.loginstatus}" /></td>
+					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=true"></c:url>'><button class="btn">accept</button></a></td>
+					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=false"></c:url>'><button class="btnr">Reject</button></a>
 					</td>				
 					</tr>
 			</c:forEach>
