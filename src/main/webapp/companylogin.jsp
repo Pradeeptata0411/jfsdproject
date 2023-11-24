@@ -1667,6 +1667,7 @@
   </div>
 </nav>
  <br><br><br><br><br><br><br>
+
  <div class="column">
         <div class="card1" id="registerCard1">
             <span class="count">${applicantCount}</span>
@@ -1680,6 +1681,7 @@
     </div>
     <br><br><br><br>
     <div class="container">
+    <br><br><br><br>
     
     	<div class="card">
     <div class="card-body">

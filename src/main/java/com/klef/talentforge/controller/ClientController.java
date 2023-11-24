@@ -352,6 +352,14 @@ public class ClientController
 	       String username=request.getParameter("email");
 	       String password=request.getParameter("password1");
 	       ModelAndView mv=new ModelAndView();
+	       long applicantCount=adminService.applicantCount();
+			long recruiterCount=adminService.recruiterCount();
+			long jobsCount=adminService.JobsCount();
+			long jobApplicationsCount=adminService.JobApplicationsCount();
+				  mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
 	       HttpSession session=request.getSession();
 	       Admin adm=adminService.checkadminlogin(username, password);
 	       if(adm!=null) {

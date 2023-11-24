@@ -117,7 +117,8 @@
 					
 					<td><c:out value="${job.experience}" /></td>
 					<td><c:out value="${job.contactno}" /></td>
-					<td><a href="/download/${job.id}/${job.jobtitle}"><button class="btn">Download Resume here</button></a>
+					<td><a href="/download/${job.applicationid}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
+
 					</td>				
 					<td><a href="recruitersetstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
 				</tr>
