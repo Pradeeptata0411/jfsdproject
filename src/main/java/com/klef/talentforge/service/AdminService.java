@@ -15,4 +15,14 @@ public interface AdminService {
 	
 	
 	public int recruiteracceptance(int cid, boolean acceptance);
+	
+    public long applicantCount();
+	
+	public long recruiterCount();
+	
+	public long JobsCount();
+	
+	public long JobApplicationsCount();
+	
+	
 }

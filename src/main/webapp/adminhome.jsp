@@ -8,6 +8,56 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 
 </head>
+<style>
+   body {
+            display: flex;
+            justify-content: space-between;
+            height: 120vh;
+            margin: 0;
+        }
+       
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 200px;
+            height: 150px;
+            background-color: lightblue;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            margin: 35px; /* Add some margin between cards */
+        }
+
+        .count {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .label {
+            margin-top: 10px;
+        }
+
+        /* Hover effect */
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            background-color: lightpink;
+            
+        }
+
+
+</style>
 <body>
 <nav>
   <div class="wrapper">
@@ -38,10 +88,33 @@
   </div>
 </nav>
 
-<div class="body-text">
+ <div class="column">
+        <div class="card" id="registerCard1">
+            <span class="count">${applicantCount}</span>
+            <span class="label">Total Applicants</span>
+        </div>
+        <div class="card" id="registerCard1">
+            <span class="count">${recruiterCount}</span>
+            <span class="label">Total Companies</span>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+    <div class="body-text">
   <div class="title">Welcome <h1>${uname}</h1></div>
   <div class="sub-title">hello </div>
 </div>
+
+    <div class="column">
+        <div class="card" id="registerCard2">
+            <span class="count">${jobsCount}</span>
+            <span class="label">Total Jobs Posted</span>
+        </div>
+        <!-- Add more cards as needed -->
+ <div class="card" id="registerCard2">
+            <span class="count">${jobApplicationsCount}</span>
+            <span class="label">Total Jobs Applied</span>
+        </div>
+    </div>
 <!-- partial -->
   
 </body>

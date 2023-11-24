@@ -211,11 +211,21 @@ public class ClientController
 	    ModelAndView mv=new ModelAndView("recruiterhome");
 	    return mv;
 	  }
-	  @GetMapping("companylogin")
-	  public ModelAndView companylogin() {
-	    ModelAndView mv=new ModelAndView("companylogin");
-	    return mv;
-	  }
+	 @GetMapping("companylogin")
+		public ModelAndView companylogin() 
+		{
+			long applicantCount=adminService.applicantCount();
+			long recruiterCount=adminService.recruiterCount();
+			long jobsCount=adminService.JobsCount();
+			long jobApplicationsCount=adminService.JobApplicationsCount();
+			ModelAndView mv=new ModelAndView("companylogin");
+
+			mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
+			return mv;
+		}
 	  @GetMapping("companyregistration")
 	  public ModelAndView companyregistration() {
 	    ModelAndView mv=new ModelAndView("companyregistration");
@@ -503,10 +513,19 @@ public class ClientController
 	     }
 
 	     @GetMapping("adminhome")
-	     public ModelAndView adminhome() {
-	       ModelAndView mv=new ModelAndView("adminhome");
-	       return mv;
-	     }
+		  public ModelAndView adminhome() {
+			  long applicantCount=adminService.applicantCount();
+				long recruiterCount=adminService.recruiterCount();
+				long jobsCount=adminService.JobsCount();
+				long jobApplicationsCount=adminService.JobApplicationsCount();
+				
+			  ModelAndView mv=new ModelAndView("adminhome");
+			  mv.addObject("applicantCount", applicantCount);
+				mv.addObject("recruiterCount",recruiterCount );
+				mv.addObject("jobsCount",jobsCount );
+				mv.addObject("jobApplicationsCount",jobApplicationsCount );
+			  return mv;
+		  }
 	     
 	     
 	     @GetMapping("deletejob")
