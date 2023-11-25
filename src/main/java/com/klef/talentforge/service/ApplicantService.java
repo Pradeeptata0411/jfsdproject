@@ -40,4 +40,9 @@ public interface ApplicantService {
 	  public String withdrawapplication(int id, int applicantid);
 	
 	  public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle);
+	  
+	  
+	  
+	  public String ApplicantupdateProfile(Applicant applicant);
+	  
 }

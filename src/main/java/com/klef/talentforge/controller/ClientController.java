@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
@@ -995,6 +996,50 @@ public class ClientController
 		          return mv;
 		          
 		        }
+		     
+		     
+		     
+		     
+		     
+		     @GetMapping("updateprofileApplicant")
+		      public ModelAndView applicantupdateprofile(HttpServletRequest request) {
+		        ModelAndView mv=new ModelAndView("applicantupdateprofile");
+		        HttpSession session=request.getSession();
+		        int id=(int)session.getAttribute("cid");
+		        Applicant app=applicantService.getApplicantById(id);
+		        mv.addObject("app", app);
+		        return mv;
+		        
+		        
+		      }
+		      
+		      
+		      @PostMapping("update")
+		      public String updateprofile(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+		        ModelAndView mv=new ModelAndView("applicantupdateprofile");
+		        HttpSession session =request.getSession();
+		        int id=(int)session.getAttribute("cid");
+		        String email=request.getParameter("email");
+		        String fname=request.getParameter("firstname");
+		        String lname=request.getParameter("lastname");
+		        String contact=request.getParameter("contactnumber");
+		        String address=request.getParameter("address");
+		        String password=request.getParameter("password");
+		        Applicant app=new Applicant();
+		        app.setAddress(address);
+		        app.setContactno(contact);
+		          app.setEmail(email);
+		          app.setFirstname(fname);
+		          app.setId(id);
+		          app.setPassword(password);
+		          app.setLastname(lname);
+		          String msg=applicantService.ApplicantupdateProfile(app);
+		          mv.addObject("message", msg);
+		          redirectAttributes.addFlashAttribute("message", msg);
+
+		        return "redirect:/ApplicantLogin";
+		            
+		      }
 		     
 		     
 	    	

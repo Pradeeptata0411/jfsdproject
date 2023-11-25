@@ -160,5 +160,35 @@ public class ApplicantServiceImpl implements ApplicantService {
 	  }
 
 	
+	
+	
+	
+	
+	
+	@Override
+	  public String ApplicantupdateProfile(Applicant applicant)
+	  {
+	    int id=applicant.getId();
+	    Optional<Applicant> app=applicantRepository.findById(id);
+	  
+	    if(app.isPresent()) {
+	      Applicant a=app.get();
+	      a.setId(id);
+	      a.setEmail(applicant.getEmail());
+	      a.setContactno(applicant.getContactno());
+	      a.setAddress(applicant.getAddress());
+	      a.setFirstname(applicant.getFirstname());
+	      a.setLastname(applicant.getLastname());
+	      a.setPassword(applicant.getPassword());
+	      applicantRepository.save(a);
+	      
+	      
+	    }
+	    
+	    return "Profile Updated Successfully!";
+	  }
+	
+	
+	
 
 }

@@ -489,10 +489,9 @@
   
 </div>
       <nav>
-        <a href="applicanthome">Home</a>
+          <a href="applicanthome">Home</a>
         <a href="myjobApplications">My Applications</a>
-        <a href="#">About</a>
-          <a href="#">Settings</a>
+          <a href="updateprofileApplicant">Update Profile</a>
             <a href="/">Logout</a>
         <!-- Add more navigation items here -->
       </nav>
