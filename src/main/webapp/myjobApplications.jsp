@@ -464,7 +464,7 @@
 					<td><c:out value="${job.email}" /></td>
 					
 					 <td>
-					    <a href="/viewmystatus?id=${job.id}&jobtitle=${job.jobtitle}" class="btn view-btn">View</a>
+					    <a href="getApplicationStatus?id=${job.id}&jobtitle=${job.jobtitle}" class="btn view-btn">View</a>
 					  </td>
 					 <td>
 					  <a href="#" class="btn view-btn" onclick="confirmWithdraw(${job.id}, ${job.applicationid})">Withdraw</a>

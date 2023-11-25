@@ -41,5 +41,5 @@ public interface RecruiterService {
 	
 	
 	public List<String> getAllApplicantEmails(Applicant applicant);
-	
+	public String addApplicationStatus(ViewApplicationStatus viewApplicationStatus);
 }

@@ -33,11 +33,11 @@ public interface ApplicantService {
 		   
 			  public List<JobApplications> ViewMyJobApplications(int id);
 			  
-	public ViewApplicationStatus byid(int id , String tittle); 	  
-			
+//	public ViewApplicationStatus byid(int id , String tittle); 	  
+//			
 	
 	
 	  public String withdrawapplication(int id, int applicantid);
 	
-	
+	  public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle);
 }

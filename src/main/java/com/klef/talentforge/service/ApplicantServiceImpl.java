@@ -35,8 +35,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 	  private JobApplicationsRepository jobapplicationsRepository;
 
 	
+	
+	
 	@Autowired
-	private ViewApplicationStatusRepository viewApplicationStatusRepository;
+	  private ViewApplicationStatusRepository applicationStatusRepository;
 	
 	
 	@Override
@@ -135,11 +137,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	
 
-	@Override
-	public ViewApplicationStatus byid(int id, String tittle) {
-		ViewApplicationStatus status = viewApplicationStatusRepository.getbyidofstatus(id, tittle);
-	    return status;
-	}
+//	@Override
+//	public ViewApplicationStatus byid(int id, String tittle) {
+//		ViewApplicationStatus status = viewApplicationStatusRepository.getbyidofstatus(id, tittle);
+//	    return status;
+//	}
 	
 	
 
@@ -150,7 +152,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	
-	
+	@Override
+	  public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle) {
+	    
+	    System.err.println(jobtitle);
+	    return applicationStatusRepository.getStatusByIDAndTitle(id,jobtitle);
+	  }
 
 	
 

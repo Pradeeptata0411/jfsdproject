@@ -133,7 +133,11 @@ public class RecruiterServiceImpl implements RecruiterService {
 	}
 
 	
-
+	@Override
+    public String addApplicationStatus(ViewApplicationStatus viewApplicationStatus) {
+      applicationStatusRepository.save(viewApplicationStatus);
+      return "Sucessfully Updated";
+    }
 	 
 	
 

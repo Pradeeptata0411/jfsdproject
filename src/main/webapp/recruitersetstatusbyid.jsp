@@ -82,6 +82,16 @@
       flex-direction: column;
       align-items: center;
     }
+    input[type="text"] {
+
+      width: 100%;
+      padding: 8px;
+      
+      box-sizing: border-box;
+      border-radius: 4px;
+      
+      
+    }
 
     label {
       margin-top: 10px;
@@ -142,7 +152,7 @@
         <div class="mega-box">
           <div class="content">
             <div class="row">
-              <img src="images/search.png" alt="">
+              <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
             </div>
             <div class="row">
               <header>Design Services</header>
@@ -186,22 +196,26 @@
 <br>
 <h5 align="center" style="color:red">${message}</h5>
    <div class="card">
-    <h2 align="center" style="color:green">id:- ${jobslist.id} And Job:-  ${jobslist.jobtitle} </h2>
-    <form action="/setapplicationstatus" method="post">
+    <h2 align="center" style="color:green">Update Application Status</h2>
+    
+    <form action="addapplicationstatus" method="post">
       <!-- Application Status Combo Box -->
-        <input type="hidden" name="id" value="${jobslist.id}">
-        <input type="hidden" name="tittle" value="${jobslist.jobtitle}">
+        <label for="applicationStatus">Applicant ID:</label>
+      
+        <input type="text" name="id" value="${id}"readonly>
+        <label for="applicationStatus">Job Title :</label>
+        
+        <input type="text" name="jobtitle" value="${jobtitle} "readonly>
         
       <label for="applicationStatus">Application Status:</label>
       <select name="applicationStatus" id="applicationStatus" required>
-        <option value="">Select Option</option>
+        <option value="" >Set Status</option>
         <option value="Passed first Round">Passed first Round</option>
         <option value="Passed second Round">Passed second Round</option>
         <option value="Passed third Round">Passed third Round</option>
         <option value="Application Rejected">Application Rejected</option>
       </select>
 
-      <!-- Comment Textarea -->
       <label for="comment">Comment:</label>
       <textarea name="comment" id="comment" rows="4" cols="50" required></textarea>
 

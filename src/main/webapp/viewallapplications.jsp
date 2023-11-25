@@ -120,7 +120,7 @@
 					<td><a href="/download/${job.applicationid}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
 
 					</td>				
-					<td><a href="recruitersetstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
+					<td><a href="updateapplicationstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
 				</tr>
 			</c:forEach>
 		</table>

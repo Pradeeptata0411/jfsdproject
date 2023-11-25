@@ -1,21 +1,25 @@
 package com.klef.talentforge.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ViewApplicationStatus;
 
 @Repository
-public interface ViewApplicationStatusRepository extends JpaRepository<ViewApplicationStatus, Integer> {
+public interface ViewApplicationStatusRepository extends JpaRepository<ViewApplicationStatus, Integer>
+{
 
 	
-	@Query("from ViewApplicationStatus where id=?1 and Applicationstatustittle=?2")
-	public ViewApplicationStatus getbyidofstatus(int id,String tittle);
+//	@Query("Select e from ViewApplicationStatus e where e.id=?1 and e.applicationstatustittle=?2")
+//	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id,String Applicationstatustittle);
 	
+	@Query("select s from ViewApplicationStatus s where s.id=?1 and s.applicationstatustittle=?2")
+	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id , String jobtitle);
 	    
 	    
 }

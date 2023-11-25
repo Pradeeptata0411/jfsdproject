@@ -737,13 +737,13 @@ public class ClientController
 	       
 	       
 	       
-	       @GetMapping("viewmystatus")
-	       public ModelAndView viewmystatus( @RequestParam("id") int eid, @RequestParam(name = "jobtitle", required = false) String company) {
-	           ModelAndView mv = new ModelAndView("applicantviewmystatusbyid");     
-	           ViewApplicationStatus status = applicantService.byid(eid, company);
-	           mv.addObject("jobslist", status);
-	           return mv;
-	       }
+//	       @GetMapping("viewmystatus")
+//	       public ModelAndView viewmystatus( @RequestParam("id") int eid, @RequestParam(name = "jobtitle", required = false) String company) {
+//	           ModelAndView mv = new ModelAndView("applicantviewmystatusbyid");     
+//	           ViewApplicationStatus status = applicantService.byid(eid, company);
+//	           mv.addObject("jobslist", status);
+//	           return mv;
+//	       }
 
 	       
 	       
@@ -944,5 +944,58 @@ public class ClientController
 		     }
 	    	
 	    	
+		     
+		     
+		     
+		     
+		     @GetMapping("updateapplicationstatus") 
+		     public ModelAndView updatestatusofApplication(@RequestParam("id") int id,@RequestParam("jobtitle") String jobtitle)
+		     {
+		       ModelAndView mv=new ModelAndView("recruitersetstatusbyid");
+		       mv.addObject("id", id);
+		       mv.addObject("jobtitle", jobtitle);
+		       return mv;
+		     }
+		     
+		     
+		     @PostMapping("addapplicationstatus")
+		     public ModelAndView addApplicationStatus(HttpServletRequest request)
+		     {
+		       ModelAndView mv=new ModelAndView("recruitersetstatusbyid");
+		       int id=Integer.parseInt(request.getParameter("id"));
+		       String jobtitle=request.getParameter("jobtitle");
+		       String status=request.getParameter("applicationStatus");
+		       String comment=request.getParameter("comment");
+		       
+		       ViewApplicationStatus stat=new ViewApplicationStatus();
+		       stat.setId(id);
+		       stat.setApplicationstatus(status);
+		       stat.setApplicationstatustittle(jobtitle);
+		       stat.setComment(comment);
+		       
+		       String msg=recruiterService.addApplicationStatus(stat);
+		       mv.addObject("message", msg);
+		       
+		       return mv;  
+		     } 
+		     
+		     
+		     
+		     
+		     @GetMapping("getApplicationStatus")
+		        public ModelAndView getApplicationsStatus(@RequestParam("id") int id,
+		            @RequestParam("jobtitle") String jobtitle) 
+		        {
+		          ModelAndView mv=new ModelAndView("myApplicationstatus");
+		          System.err.println(id+" "+jobtitle);
+		          
+		          List<ViewApplicationStatus> statuslist=applicantService.viewapplicationStatus(id,jobtitle);
+		          System.out.println(statuslist.size());
+		          mv.addObject("statuslist", statuslist);
+		          return mv;
+		          
+		        }
+		     
+		     
 	    	
 }
