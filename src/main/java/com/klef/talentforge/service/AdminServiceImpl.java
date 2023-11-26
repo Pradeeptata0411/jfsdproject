@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.repository.AdminRepository;
 import com.klef.talentforge.repository.ApplicantRepository;
@@ -99,7 +100,10 @@ public class AdminServiceImpl implements AdminService
 		}
 	
 	
-	
+		public List<Job> ViewAllJobs()
+		{
+			return  jobRepository.findAll();
+		}
 	
 	
 	

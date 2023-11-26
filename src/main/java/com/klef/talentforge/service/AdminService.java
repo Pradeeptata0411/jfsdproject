@@ -33,4 +33,7 @@ public interface AdminService {
 	public long JobApplicationsCount();
 	
 	
+	public List<Job> ViewAllJobs();
+	
+	
 }

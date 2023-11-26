@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Add Bootstrap CSS and JS -->
 
-  <title>TalentForge</title>
+  <title>TalentForge My Application's</title>
 
   <style>
   #searchInput {

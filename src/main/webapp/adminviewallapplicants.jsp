@@ -5,7 +5,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>TalentForge Recruiter Home</title>
+  <title>All Applicants</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <style>
 
@@ -138,8 +138,8 @@
 					<td><c:out value="${appl.gender}" /></td>
 					<td><c:out value="${appl.address}" /></td>
 					<td><c:out value="${appl.loginstatus}" /></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=true"></c:url>'><button class="btn">accept</button></a></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=false"></c:url>'><button class="btnr">Reject</button></a>
+					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=true"></c:url>'><button class="btn"><h3>Accept</h3></button></a></td>
+					<td><a href='<c:url value="setstatusacceptanceordeclinedforapplicant?id=${appl.id}&status=false"></c:url>'><button class="btnr"><h3>Decline</h3></button></a>
 					</td>				
 					</tr>
 			</c:forEach>
