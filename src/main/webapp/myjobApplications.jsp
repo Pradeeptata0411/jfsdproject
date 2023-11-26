@@ -532,6 +532,24 @@ function confirmWithdraw(id, applicationid) {
   }
 }
 </script>
+<script>
+        // Previous JavaScript code for adding to the cart
 
+        const searchInput = document.getElementById('searchInput');
+        const products = document.querySelectorAll('.employee');
+
+        searchInput.addEventListener('input', function () {
+            const searchText = searchInput.value.toLowerCase();
+
+            products.forEach(product => {
+                const productName = product.querySelector('Job Title').textContent.toLowerCase();
+                if (productName.includes(searchText)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

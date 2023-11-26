@@ -91,7 +91,7 @@
         <input type="checkbox" id="showDrop">
         <label for="showDrop" class="mobile-item">Dropdown Menu</label>
         <ul class="drop-menu">
-          <li><a href="">VIEW ALL JOBS</a></li>
+          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
           <li><a href="">JOB APPLICATIONS</a></li>
         
         </ul>
@@ -114,8 +114,8 @@
  <br>
  <table id="employee">
 			<tr bgcolor="darkblue" style="color: white">
-				<th>Recruiter ID</th>
-				<th>Company Name</th>
+				<th>Applicant ID</th>
+				<th>Name</th>
 				<th>Email-📧</th>
 				
 				<th>Contact-📞</th>

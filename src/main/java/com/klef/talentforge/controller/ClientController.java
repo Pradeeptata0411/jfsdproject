@@ -945,7 +945,13 @@ public class ClientController
 		     }
 	    	
 	    	
-		     
+		     @GetMapping("viewalljobs")
+		     public ModelAndView viewalljobs() {
+		       ModelAndView mv=new ModelAndView("adminviewalljobs");
+		       List<Job> jobslist = recruiterService.ViewAllJobs();
+		       mv.addObject("jobslist", jobslist);
+		       return mv;
+		     }
 		     
 		     
 		     
