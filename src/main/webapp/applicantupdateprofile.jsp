@@ -113,11 +113,7 @@ button:hover {
 }
 
 /* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
-}
+
   
   .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

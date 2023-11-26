@@ -6,6 +6,23 @@
   <meta charset="UTF-8">
   <title>TalentForge Recruiter Home</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+<head>
+  <!-- Existing head content -->
+
+  <script>
+    document.addEventListener('copy', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('cut', function (e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('paste', function (e) {
+      e.preventDefault();
+    });
+  </script>
+</head>
 
 </head>
 <style>
@@ -55,7 +72,11 @@
             background-color: lightpink;
             
         }
-
+@media (max-width: 768px) {
+   .title{
+   font-size: 1px;
+   }
+}
 
 </style>
 <body>
@@ -101,7 +122,7 @@
     </div>
     <div class="body-text">
   <div class="title">Welcome <h1>${uname}</h1></div>
-  <div class="sub-title">hello </div>
+  <div class="sub-title"> </div>
 </div>
 
     <div class="column">
