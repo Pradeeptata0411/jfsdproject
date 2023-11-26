@@ -116,7 +116,7 @@
 <section>
 
 
-<img src="/images/jobsearchhome.jpg" height="350px" width="1401px">
+<img src="/images/jobsearchhome.jpg" height="350px" width="1498px">
 </section>
  <section class="our_service_section">
     <h3 class="section_title">Our Top Recruiters</h3>
