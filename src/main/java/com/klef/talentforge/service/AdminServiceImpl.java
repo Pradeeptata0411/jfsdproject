@@ -1,6 +1,7 @@
 package com.klef.talentforge.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,6 +104,20 @@ public class AdminServiceImpl implements AdminService
 		public List<Job> ViewAllJobs()
 		{
 			return  jobRepository.findAll();
+		}
+
+
+		@Override
+		public Job adminviewjobbyid(int id) {
+			
+			Optional<Job> obj =  jobRepository.findById(id);	
+			if(obj.isPresent()){
+				Job c = obj.get();
+				return c;
+			}
+			else{
+		         return null;
+		    }
 		}
 	
 	

@@ -51,7 +51,7 @@
 .btn {
 	 display: inline-block;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -70,7 +70,40 @@
   border-radius: 5px;
   background-color: #D96060;
 }
+.container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-info {
+            text-align: center;
+            font-weight:bolder;
+            margin-bottom: 20px;
+        }
 
+        .profile-pic {
+            width: 640px;
+            height: 200px;
+
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 34px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .profile-location {
+            color: #777;
+            font-weight:bolder;
+            margin-top: 5px;
+        }
 </style>
 </head>
 <body>
@@ -110,34 +143,28 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Jobs</p>
- <br>
- <table id="employee">
-			<tr bgcolor="darkblue" style="color: white">
-			    <th>ID's</th>
-			    <th>Company Name</th>
-			    
-				<th>Job Role</th>
-				<th>Skill</th>
-				<th>Action</th>
-				
-			</tr>
-			<c:forEach items="${jobslist}" var="job">
-				<tr>
-									<td><c:out value="${job.id}" /></td>
-									<td><i style="font-family:fantasy; font-size: 25px"><c:out value="${job.companyname}" /></i></td>
-					<td><c:out value="${job.jobtitle}" /></td>
-					
-					
-					</td>
-					<td><c:out value="${job.skills}" /></td>
-					<td><a href='<c:url value="adminviewjobsbyid?id=${job.id}"></c:url>'>
-                        <button class="btn" ><i class="fas fa-eye"></i> View</button>
-                    </a></td>
-					</td>				
-					</tr>
-			</c:forEach>
-		</table>
+  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View Job By Id-><i style="font-family:serif; font-size: 65px"><c:out value="${j.companyname}" /></i></p>
+ <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3"> <!-- Centered column -->
+                <!-- Left Column for Profile Details -->
+                <div class="profile-info">
+                    <img class="profile-pic" src="displaycompanyimage?id=${j.id}" alt="Profile Picture">
+                    <div class="profile-name">Role :- ${j.jobtitle}</div>
+                    <div class="profile-location">Location :-${j.location}</div>
+                    <div class="profile-location">Skill :-${j.skills}</div>
+                    <div class="profile-location">Description :-${j.description}</div>
+                    <div class="profile-location">Salary :-${j.salary}</div>
+                   <div class="boxed-container">
+				  
+				</div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    
  
  
 </body>

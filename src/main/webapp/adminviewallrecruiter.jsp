@@ -117,7 +117,6 @@
 				<th>Recruiter ID</th>
 				<th>Company Name</th>
 				<th>Email-📧</th>
-				
 				<th>Contact-📞</th>
 				<th>Address</th>
 				<th>Status</th>

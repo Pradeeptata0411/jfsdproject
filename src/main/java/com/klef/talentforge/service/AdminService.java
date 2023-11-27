@@ -35,5 +35,8 @@ public interface AdminService {
 	
 	public List<Job> ViewAllJobs();
 	
+	public Job adminviewjobbyid(int id);
+	
+	
 	
 }

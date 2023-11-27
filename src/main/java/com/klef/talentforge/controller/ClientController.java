@@ -523,6 +523,20 @@ public class ClientController
 	       return mv;
 	     }
 
+	     @GetMapping("adminviewjobsbyid")
+	     public ModelAndView adminviewalljobs(@RequestParam("id") int id) {
+	       ModelAndView mv=new ModelAndView("adminviewjobbyid");
+	       
+	       Job j = adminService.adminviewjobbyid(id);
+	          mv.addObject("j", j);
+	       return mv;
+	     }
+	     
+	     
+	     
+	     
+	     
+	     
 	     @GetMapping("adminhome")
 		  public ModelAndView adminhome() {
 			  long applicantCount=adminService.applicantCount();
