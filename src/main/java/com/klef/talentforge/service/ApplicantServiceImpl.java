@@ -156,6 +156,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	  public List<ViewApplicationStatus> viewapplicationStatus(int id,String jobtitle) {
 	    
 	    System.err.println(jobtitle);
+	    
 	    return applicationStatusRepository.getStatusByIDAndTitle(id,jobtitle);
 	  }
 

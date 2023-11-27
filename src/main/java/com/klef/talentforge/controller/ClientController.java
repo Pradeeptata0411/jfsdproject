@@ -982,7 +982,13 @@ public class ClientController
 		     @PostMapping("addapplicationstatus")
 		     public ModelAndView addApplicationStatus(HttpServletRequest request)
 		     {
-		       ModelAndView mv=new ModelAndView("recruitersetstatusbyid");
+		       ModelAndView mv=new ModelAndView("viewallapplications");
+		       
+		       HttpSession session=request.getSession();
+		         String companyname=(String)session.getAttribute("rcompanynmae");
+		         List<JobApplications> jobslist=recruiterService.viewalljobapplicationsByCompany(companyname);
+		         mv.addObject("jobslist", jobslist);
+		       
 		       int id=Integer.parseInt(request.getParameter("id"));
 		       String jobtitle=request.getParameter("jobtitle");
 		       String status=request.getParameter("applicationStatus");

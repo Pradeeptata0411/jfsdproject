@@ -211,6 +211,24 @@
 .view-button:hover {
   background-color: #2980b9; /* Darker blue color on hover */
 }
+
+.status-item {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .status-item:before {
+        content: '\2713'; /* Unicode character for tick mark */
+        font-size: 20px;
+        color: green;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 10px;
+    }
+
 	</style>
   </style>
 </head>
@@ -228,10 +246,16 @@
        <h2>About Us</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac velit eget nunc commodo ultricies.</p>
         
-        <c:forEach items="${statuslist}" var="status">
-		    <c:out value="${status.id}"></c:out>
-		    <c:out value="${status.applicationstatus}"></c:out>
-		</c:forEach>
+       <c:forEach items="${statuslist}" var="status">
+    <div class="status-item">
+        <c:out value="${status.id}"></c:out>
+        <c:out value="${status.applicationstatus}"></c:out>
+        <br>
+        <br>
+        Comment Given by recruiter -> <c:out value="${status.comment}"></c:out>
+    </div>
+</c:forEach>
+
 
     </div>
         
