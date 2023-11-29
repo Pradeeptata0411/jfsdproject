@@ -22,9 +22,9 @@
       e.preventDefault();
     });
   </script>
-</head>
+  
 
-</head>
+
 <style>
    body {
             display: flex;
@@ -33,14 +33,8 @@
             margin: 0;
         }
        
-
-        .column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
+       
+       
         .card {
             width: 200px;
             height: 150px;
@@ -59,10 +53,7 @@
             font-size: 2em;
             font-weight: bold;
         }
-
-        .label {
-            margin-top: 10px;
-        }
+       
 
         /* Hover effect */
         .card:hover {
@@ -72,13 +63,8 @@
             background-color: lightpink;
             
         }
-@media (max-width: 768px) {
-   .title{
-   font-size: 1px;
-   }
-}
-
 </style>
+</head>
 <body>
 <nav>
   <div class="wrapper">
@@ -121,7 +107,7 @@
         <!-- Add more cards as needed -->
     </div>
     <div class="body-text">
-  <div class="title">Welcome <h1>${uname}</h1></div>
+  <div class="title"><h3>Welcome</h3><h1 id="username"></h1></div>
   <div class="sub-title"> </div>
 </div>
 
@@ -137,7 +123,21 @@
         </div>
     </div>
 <!-- partial -->
-  
+   <script>
+    const uname = "${uname}"; // Replace with the actual username
+    const usernameElement = document.getElementById('username');
+
+    // Function to display each letter with a delay
+    function typeText(text, index) {
+      if (index < text.length) {
+        usernameElement.innerHTML += text.charAt(index);
+        setTimeout(() => typeText(text, index + 1), 100);
+      }
+    }
+
+    // Call the function with the username
+    typeText(uname, 0);
+  </script>
 </body>
 </html>
     

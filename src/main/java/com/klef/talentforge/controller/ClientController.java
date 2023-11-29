@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.sql.rowset.serial.SerialException;
 
@@ -872,7 +874,8 @@ public class ClientController
 	    	    String location = request.getParameter("location");
 	    	    String skills = request.getParameter("skills");
 	    	    String description = request.getParameter("description");
-	    	    String salary = request.getParameter("salary");
+	    	    String salaryParameter = request.getParameter("salary");
+	    	    int salary = Integer.parseInt(salaryParameter);
 	    	    String companyname = request.getParameter("companyname");
 
 	    	    byte[] bytes = file.getBytes();
@@ -929,6 +932,27 @@ public class ClientController
 	            return mv;
 	        }
 	       
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	@GetMapping("adminsearching")
+	        public ModelAndView adminsearching(@RequestParam("companyname") String companyname , @RequestParam("salary")int salary ){
+	    		
+	            List<Job> searchedjobs=adminService.adminsearchbasedonsalary(companyname, salary);
+	            ModelAndView mv = new ModelAndView();
+	            mv.setViewName("adminsearchedjobsare");
+	 	       mv.addObject("searchedjobs", searchedjobs);
+	 	      List<Job> jobslist = recruiterService.ViewAllJobs();
+		         mv.addObject("jobslist", jobslist);
+	         
+	            return mv;
+	        }
+	    	
+	    	
+	    	
 	    	@GetMapping("setstatusacceptanceordeclinedforapplicant")
 	        public ModelAndView setstatusacceptanceordeclinedforapplicant(@RequestParam("id") int rid , @RequestParam("status") boolean rstatus ){
 	    		
@@ -958,15 +982,20 @@ public class ClientController
 		       return mv;
 		     }
 	    	
-	    	
+		  // Controller
 		     @GetMapping("viewalljobs")
 		     public ModelAndView viewalljobs() {
-		       ModelAndView mv=new ModelAndView("adminviewalljobs");
-		       List<Job> jobslist = recruiterService.ViewAllJobs();
-		       mv.addObject("jobslist", jobslist);
-		       return mv;
+		         ModelAndView mv = new ModelAndView("adminviewalljobs");
+		         List<Job> jobslist = recruiterService.ViewAllJobs();
+		         
+		         mv.addObject("jobslist", jobslist);
+		         return mv;
 		     }
-		     
+
+
+		     // List<String> uniquecompanynames=adminService.findAllDistinctCompanyNames();
+		     // mv.addObject("uniquecompanynames", uniquecompanynames);
+
 		     
 		     
 		     @GetMapping("updateapplicationstatus") 
@@ -1008,22 +1037,21 @@ public class ClientController
 		     
 		     
 		     
-		     
 		     @GetMapping("getApplicationStatus")
 		        public ModelAndView getApplicationsStatus(@RequestParam("id") int id,
-		            @RequestParam("jobtitle") String jobtitle) 
+		            @RequestParam("jobtitle") String jobtitle,@RequestParam("jobid") int jobid) 
 		        {
 		          ModelAndView mv=new ModelAndView("myApplicationstatus");
 		          System.err.println(id+" "+jobtitle);
 		          
-		          List<ViewApplicationStatus> statuslist=applicantService.viewapplicationStatus(id,jobtitle);
+		          List<ViewApplicationStatus> statuslist=applicantService.viewmyjobapplicationStatus(id,jobtitle);
 		          System.out.println(statuslist.size());
 		          mv.addObject("statuslist", statuslist);
+		          mv.addObject("jobtitle", jobtitle);  
+		          mv.addObject("jobid", jobid);  
 		          return mv;
 		          
 		        }
-		     
-		     
 		     
 		     
 		     

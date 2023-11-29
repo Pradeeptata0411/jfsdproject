@@ -70,7 +70,9 @@
   border-radius: 5px;
   background-color: #D96060;
 }
-#jobSalaryForm {
+
+
+        #jobSalaryForm {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -104,8 +106,7 @@
         button:hover {
             background-color: #45a049;
         }
-
-       
+        
 </style>
 </head>
 <body>
@@ -147,30 +148,7 @@
  
   <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Jobs</p>
   <br>
-  
-  <br>
-  <form id="jobSalaryForm" method="get" action="adminsearching">
-    <label for="jobTitle">Company:</label>
-			<select id="company" name="companyname" required>
-			    <option value="">---Select An Option---</option>
-			    <c:forEach var="c" items="${jobslist}">
-			        <option value="${c.companyname}">${c.companyname}</option>
-			    </c:forEach>
-			</select>
 
-        <label for="salary">Salary:</label>
-        <select id="salary" name="salary" required>
-            <option value="">---Select An Option---</option>
-            <!-- Use JSTL to dynamically populate salary options from the controller -->
-                <option value="100000">>=100000</option>
-                <option value="200000">>=200000</option>
-                <option value="500000">>=500000</option>
-                <option value="800000">>=800000</option>
-                <option value="1000000">>=1000000</option>
-                <option value="1500000">>=1500000</option>
-                        </select>
-        <button type="submit">Search</button>
-    </form>
   <br>
  <br>
  <table id="employee">
@@ -179,24 +157,25 @@
 			    <th>Company Name</th>
 			    
 				<th>Job Role</th>
+				<th>Discription</th>
+				
 				<th>Skill</th>
 				<th>Salary</th>
-				<th>Action</th>
+				
 				
 			</tr>
-			<c:forEach items="${jobslist}" var="job">
+			<c:forEach items="${searchedjobs}" var="job">
 				<tr>
 									<td><c:out value="${job.id}" /></td>
 									<td><i style="font-family:fantasy; font-size: 25px"><c:out value="${job.companyname}" /></i></td>
 					<td><c:out value="${job.jobtitle}" /></td>
+					<td><c:out value="${job.description}" /></td>
 					
 					
 					</td>
 					<td><c:out value="${job.skills}" /></td>
 				<td><c:out value="${job.salary}" /></td>
-					<td><a href='<c:url value="adminviewjobsbyid?id=${job.id}"></c:url>'>
-                        <button class="btn" ><i class="fas fa-eye"></i> View</button>
-                    </a></td>
+					
 					</td>				
 					</tr>
 			</c:forEach>

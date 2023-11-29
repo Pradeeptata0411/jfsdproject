@@ -45,4 +45,7 @@ public interface ApplicantService {
 	  
 	  public String ApplicantupdateProfile(Applicant applicant);
 	  
+	  public List<ViewApplicationStatus> viewmyjobapplicationStatus(int id,String jobtitle);
+	  
+	  
 }

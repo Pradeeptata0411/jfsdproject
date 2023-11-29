@@ -14,9 +14,12 @@ import com.klef.talentforge.model.ViewApplicationStatus;
 public interface ViewApplicationStatusRepository extends JpaRepository<ViewApplicationStatus, Integer>
 {
 	
-	@Query("select s from ViewApplicationStatus s where s.id=?1 and s.applicationstatustittle=?2")
-	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id, String jobtitle);
+//	@Query("select s from ViewApplicationStatus s where s.id=?1 and s.applicationstatustittle=?2")
+//	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id, String jobtitle);
 
 	    
-	    
+	@Query("FROM ViewApplicationStatus WHERE id = ?1 AND TRIM(applicationstatustittle) = ?2")
+	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id, String jobtitle);
+	
+	
 }

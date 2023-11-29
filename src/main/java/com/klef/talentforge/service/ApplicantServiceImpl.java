@@ -189,7 +189,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 	    return "Profile Updated Successfully!";
 	  }
 	
-	
+	@Override
+	  public List<ViewApplicationStatus> viewmyjobapplicationStatus(int id,String jobtitle) {
+
+	    return applicationStatusRepository.getStatusByIDAndTitle(id,jobtitle);
+	  }
 	
 
 }

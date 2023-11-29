@@ -37,6 +37,11 @@ public interface AdminService {
 	
 	public Job adminviewjobbyid(int id);
 	
-	
+	 public List<String> findAllDistinctCompanyNames();
+	 
+	 
+	 public List<Job> adminsearchbasedonsalary(String companyname, int salary);
+		
+	 
 	
 }

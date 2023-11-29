@@ -24,8 +24,8 @@ public class Job
 	private String skills;
 	@Column(name = "job_description",length = 500,nullable = false)
 	private String description;
-	@Column(name = "job_salary",length = 40,nullable = false)
-	private String salary;
+	@Column(name = "job_salary",nullable = false)
+	private int salary;
 	@Column(name="comapany_image")
 	  private Blob image;
 	
@@ -70,17 +70,18 @@ public class Job
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getSalary() {
-		return salary;
-	}
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
+	
 	public Blob getImage() {
 		return image;
 	}
 	public void setImage(Blob image) {
 		this.image = image;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 	
 	

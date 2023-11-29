@@ -18,4 +18,17 @@ public interface JobRepository extends JpaRepository<Job, Integer>{
 	@Query("from Job where companyname=?1 ")
 	public List<Job> viewalljobsbycompanyname(String companyname);
 	
+	
+	@Query("FROM Job WHERE companyname = ?1 AND salary >= ?2")
+	public List<Job> searchBasedOnSalaryAndCompanyName(String companyname, int salary);
+
+	 @Query("select DISTINCT j.companyname from Job j")
+	 public  List<String> findAllDistinctCompanyNamescheck();
+	
+	 
+	 
+	 
+	 
+	 
+	 
 }

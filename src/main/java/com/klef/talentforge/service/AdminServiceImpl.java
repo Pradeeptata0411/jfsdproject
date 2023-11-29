@@ -119,6 +119,21 @@ public class AdminServiceImpl implements AdminService
 		         return null;
 		    }
 		}
+
+
+		@Override
+		public List<String> findAllDistinctCompanyNames() {
+			List<String> list = jobRepository.findAllDistinctCompanyNamescheck();
+			System.out.println("size:-" +list.size());
+			return list;
+		}
+
+
+		@Override
+		public List<Job> adminsearchbasedonsalary(String companyname, int salary) {
+			// TODO Auto-generated method stub
+			return jobRepository.searchBasedOnSalaryAndCompanyName(companyname, salary);
+		}
 	
 	
 	
