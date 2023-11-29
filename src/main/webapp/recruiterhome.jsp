@@ -36,11 +36,26 @@
 </nav>
 
 <div class="body-text">
-  <div class="title">Welcome <h1>${rcompanynmae}</h1></div>
-  <div class="sub-title">using only HTML & CSS</div>
+  <div class="title"><h2>Welcome</h2><i style="font-size: 100px; font-style: oblique;" id="username" ></i></div>
+  <div class="sub-title"> </div>
 </div>
 <!-- partial -->
   
 </body>
+<script>
+    const uname = "${rcompanynmae}😊😊"; // Replace with the actual username
+    const usernameElement = document.getElementById('username');
+
+    // Function to display each letter with a delay
+    function typeText(text, index) {
+      if (index < text.length) {
+        usernameElement.innerHTML += text.charAt(index);
+        setTimeout(() => typeText(text, index + 1), 100);
+      }
+    }
+
+    // Call the function with the username
+    typeText(uname, 0);
+  </script>
 </html>
     

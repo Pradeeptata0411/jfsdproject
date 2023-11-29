@@ -42,6 +42,51 @@
 	font-size: 12px;
 	cursor: pointer;
 }
+/* Style for the delete button */
+.delete-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #e74c3c; /* Use your preferred color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.delete-button:hover {
+    background-color: #c0392b; /* Darker shade for hover effect */
+}
+/* Style for the confirmation modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size:20px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 100px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Add more styling based on your design preferences */
+
+/* Style for the buttons with spacing between them */
+.modal-content button {
+    text-align:center;
+    margin-right: 20px;
+}
 	</style>
 </head>
 <body>
@@ -95,11 +140,55 @@
 					<td><c:out value="${job.description}" />
 					</td>
 					<td><c:out value="${job.salary}" /></td>
-					<td><a href="deletejob?id=${job.id}">Delete</a></td>
+					<!-- Add this modal at the end of your HTML body -->
+					<div id="confirmationModal" class="modal">
+					    <div class="modal-content">
+					        <p>Are you sure you want to delete this job?</p>
+					        <button id="confirmDelete">Delete</button>
+					        <button id="cancelDelete">Cancel</button>
+					    </div>
+					</div>
+					
+					<!-- Your table cell with the delete link -->
+					<!-- Your table cell with the delete link -->
+						<td>
+						    <a href="#" class="delete-button" onclick="showConfirmation(${job.id}); return false;">Delete</a>
+						</td>
+
+
 				</tr>
 			</c:forEach>
 		</table>
 <!-- partial -->
 </body>
+<script>
+
+function showConfirmation(jobId) {
+    var modal = document.getElementById('confirmationModal');
+    var confirmBtn = document.getElementById('confirmDelete');
+    var cancelBtn = document.getElementById('cancelDelete');
+
+    // Event listener for the confirm button
+    confirmBtn.onclick = function () {
+        window.location.href = 'deletejob?id=' + jobId;
+    };
+
+    // Event listener for the cancel button
+    cancelBtn.onclick = function () {
+        modal.style.display = 'none';
+    };
+
+    modal.style.display = 'block';
+
+    // Event listener to close the modal if clicked outside of the modal content
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+}
+
+
+</script>
 </html>
     

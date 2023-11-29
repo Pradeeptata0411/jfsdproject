@@ -148,7 +148,28 @@
  
   <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Jobs</p>
   <br>
+<form id="jobSalaryForm" method="get" action="adminsearching">
+    <label for="jobTitle">Company:</label>
+			<select id="company" name="companyname" required>
+			    <option value="">---Select An Option---</option>
+			    <c:forEach var="companyName" items="${companyNamesSet}">
+			        <option value="${companyName}">${companyName}</option>
+			    </c:forEach>
+			</select>
 
+        <label for="salary">Salary:</label>
+        <select id="salary" name="salary" required>
+            <option value="">---Select An Option---</option>
+            <!-- Use JSTL to dynamically populate salary options from the controller -->
+                <option value="100000">>=100000</option>
+                <option value="200000">>=200000</option>
+                <option value="500000">>=500000</option>
+                <option value="800000">>=800000</option>
+                <option value="1000000">>=1000000</option>
+                <option value="1500000">>=1500000</option>
+                        </select>
+        <button type="submit">Search</button>
+    </form>
   <br>
  <br>
  <table id="employee">

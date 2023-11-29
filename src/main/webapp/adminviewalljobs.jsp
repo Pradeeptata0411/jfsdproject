@@ -153,10 +153,11 @@
     <label for="jobTitle">Company:</label>
 			<select id="company" name="companyname" required>
 			    <option value="">---Select An Option---</option>
-			    <c:forEach var="c" items="${jobslist}">
-			        <option value="${c.companyname}">${c.companyname}</option>
+			    <c:forEach var="companyName" items="${companyNamesSet}">
+			        <option value="${companyName}">${companyName}</option>
 			    </c:forEach>
 			</select>
+
 
         <label for="salary">Salary:</label>
         <select id="salary" name="salary" required>

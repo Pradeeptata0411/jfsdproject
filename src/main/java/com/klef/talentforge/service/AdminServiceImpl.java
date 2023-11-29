@@ -134,6 +134,13 @@ public class AdminServiceImpl implements AdminService
 			// TODO Auto-generated method stub
 			return jobRepository.searchBasedOnSalaryAndCompanyName(companyname, salary);
 		}
+
+
+		@Override
+		public List<Recruiter> getcompanynames() {
+			return recruiterRepository.findAll();
+					
+		}
 	
 	
 	

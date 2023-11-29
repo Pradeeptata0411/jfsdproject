@@ -308,9 +308,21 @@ public class ClientController
 	 		String uname = request.getParameter("email");
 	 		String pwd = request.getParameter("password1");
 	 		HttpSession session = request.getSession();
+	 		ModelAndView mv =new ModelAndView();
+	 		long applicantCount=adminService.applicantCount();
+			long recruiterCount=adminService.recruiterCount();
+			long jobsCount=adminService.JobsCount();
+			long jobApplicationsCount=adminService.JobApplicationsCount();
+			
+			
+			mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
+	 		
 	 		Recruiter rec = recruiterService.checkRecruiterlogin(uname, pwd);
 	 	
-	 		ModelAndView mv =new ModelAndView();
+
 	 		if(rec!=null ) {
 	 		
 	 			session.setAttribute("rid",rec.getId()); 
@@ -517,14 +529,7 @@ public class ClientController
 	     
 	    
 	     
-	     @GetMapping("adminviewalljobs")
-	     public ModelAndView adminviewalljobs() {
-	       ModelAndView mv=new ModelAndView("adminviewalljobs");
-	       List<Job> jobslist = adminService.ViewAllJobs();
-	          mv.addObject("jobslist", jobslist);
-	       return mv;
-	     }
-
+	     
 	     @GetMapping("adminviewjobsbyid")
 	     public ModelAndView adminviewalljobs(@RequestParam("id") int id) {
 	       ModelAndView mv=new ModelAndView("adminviewjobbyid");
@@ -846,25 +851,7 @@ public class ClientController
 //	           }
 //	       }
 	       
-	       private void sendJobNotificationEmail(String toEmail, String jobTitle, String companyName, HttpServletRequest request) {
-	    	    try {
-	    	        String fileName = "job_notification.html";
-	    	        String filePath = request.getServletContext().getRealPath("/" + fileName); // Adjust the path as needed
-	    	        String fromEmail = "your-email@example.com"; // Set your email
-
-	    	        String subject = "Job Notification: " + jobTitle + " at " + companyName;
-	    	        String text = "Hello,\n\nA new job has been added:\nTitle: " + jobTitle + "\nCompany: " + companyName;
-
-	    	        // Read email content from template file
-	    	        String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
-
-	    	        // You can use your email manager or any other method to send the email
-	    	        emailManager.sendEmail(fromEmail, toEmail, subject, text, htmlContent);
-	    	    } catch (Exception e) {
-	    	        // Handle exceptions, e.g., log or print an error message
-	    	        e.printStackTrace();
-	    	    }
-	    	}
+	     
 
 	    	@PostMapping("addjob")
 	    	public ModelAndView addajob(HttpServletRequest request, @RequestParam("companyimage") MultipartFile file)
@@ -911,7 +898,34 @@ public class ClientController
 	    	    return mv;
 	    	}
 
+	    	  private void sendJobNotificationEmail(String toEmail, String jobTitle, String companyName, HttpServletRequest request) {
+		    	    try {
+		    	        String fileName = "job_notification.html";
+		    	        String filePath = request.getServletContext().getRealPath("/" + fileName); // Adjust the path as needed
+		    	        String fromEmail = "your-email@example.com"; // Set your email
 
+		    	        String subject = "Job Notification: " + jobTitle + " at " + companyName;
+		    	        String text = "Hello,\n\nA new job has been added:\nTitle: " + jobTitle + "\nCompany: " + companyName;
+
+//		    	        // Read email content from template file
+//		    	        String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)));
+//
+//		    	        // You can use your email manager or any other method to send the email
+//		    	        emailManager.sendEmail(fromEmail, toEmail, subject, text, htmlContent);
+		    	        String htmlContent = new String(Files.readAllBytes(Paths.get(filePath)))
+		    	                .replace("[name]", toEmail)
+		    	                .replace("[jobTitle]", jobTitle)
+		    	                .replace("[companyName]", companyName)
+		    	                .replace("[text2]", "Unlock your potential and seize the opportunity. Remember, great things never came from comfort zones. Apply now and embark on a journey to redefine your career success!");
+		    	                
+
+		    	        // Send the email
+		    	        emailManager.sendEmail(fromEmail, toEmail, subject, text, htmlContent);
+		    	    } catch (Exception e) {
+		    	        // Handle exceptions, e.g., log or print an error message
+		    	        e.printStackTrace();
+		    	    }
+		    	}
 	       
 	    	@GetMapping("setstatusacceptanceordeclined")
 	        public ModelAndView setstatusacceptanceordeclinedseller(@RequestParam("id") int rid , @RequestParam("status") boolean rstatus ){
@@ -946,6 +960,16 @@ public class ClientController
 	            mv.setViewName("adminsearchedjobsare");
 	 	       mv.addObject("searchedjobs", searchedjobs);
 	 	      List<Job> jobslist = recruiterService.ViewAllJobs();
+	 	      Set<String> companyNamesSet = new HashSet<>();
+
+		         // Extract company names from each Job object and add to the Set
+		         for (Job job : jobslist) {
+		             companyNamesSet.add(job.getCompanyname());
+		         }
+
+		         // Add the Set of company names to the ModelAndView
+		         mv.addObject("companyNamesSet", companyNamesSet);
+	 	     
 		         mv.addObject("jobslist", jobslist);
 	         
 	            return mv;
@@ -983,12 +1007,28 @@ public class ClientController
 		     }
 	    	
 		  // Controller
-		     @GetMapping("viewalljobs")
+		     @GetMapping("adminviewalljobs")
 		     public ModelAndView viewalljobs() {
 		         ModelAndView mv = new ModelAndView("adminviewalljobs");
 		         List<Job> jobslist = recruiterService.ViewAllJobs();
 		         
-		         mv.addObject("jobslist", jobslist);
+		         
+		         
+//		         List<Recruiter> companynames = adminService.getcompanynames();
+//		         mv.addObject("companynames", companynames);
+		         
+		         Set<String> companyNamesSet = new HashSet<>();
+
+		         // Extract company names from each Job object and add to the Set
+		         for (Job job : jobslist) {
+		             companyNamesSet.add(job.getCompanyname());
+		         }
+
+		         // Add the Set of company names to the ModelAndView
+		         mv.addObject("companyNamesSet", companyNamesSet);
+		         
+		         
+		          mv.addObject("jobslist", jobslist);
 		         return mv;
 		     }
 

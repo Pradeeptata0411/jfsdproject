@@ -42,6 +42,6 @@ public interface AdminService {
 	 
 	 public List<Job> adminsearchbasedonsalary(String companyname, int salary);
 		
-	 
+	 public List<Recruiter> getcompanynames();
 	
 }
