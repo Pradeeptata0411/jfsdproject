@@ -11,6 +11,39 @@
   <title>TalentForge My Application's</title>
 
   <style>
+  
+  
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size:20px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 100px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Add more styling based on your design preferences */
+
+/* Style for the buttons with spacing between them */
+.modal-content button {
+    text-align:center;
+    margin-right: 20px;
+}
+  
+  
   #searchInput {
  max-width: 160px;
   box-sizing: border-box;
@@ -462,7 +495,13 @@
 					</td>
 					<td><c:out value="${job.companyname}" /></td>
 					<td><c:out value="${job.email}" /></td>
-					
+					<div id="withdrawApplicationModal" class="modal">
+								    <div class="modal-content">
+								        <p>Are you sure you want to withdraw this application?</p>
+								        <button id="confirmWithdrawApplicationBtn">Withdraw</button>
+								        <button id="cancelWithdrawApplicationBtn">Cancel</button>
+								    </div>
+								</div>
 					 <td>
 					    <a href="getApplicationStatus?id=${job.id}&jobtitle=${job.jobtitle}&jobid=${job.id}" class="btn view-btn">View</a>
 					  </td>

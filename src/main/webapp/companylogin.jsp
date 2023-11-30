@@ -41,7 +41,7 @@
         }
 
         .count {
-            font-size: 2em;
+            font-size: 70px;
             font-weight: bold;
         }
 
@@ -1669,12 +1669,12 @@
 
  <div class="column">
         <div class="card1" id="registerCard1">
-            <span class="count">${applicantCount}</span>
-            <span class="label">Total Applicants</span>
+            <span class="count" id="applicantCount">0</span>
+         <span class="label" id="applicantCount">Total Applicants</span>
         </div>
         <div class="card1" id="registerCard1">
-            <span class="count">${recruiterCount}</span>
-            <span class="label">Total Companies</span>
+             <span class="count" id="recruiterCount">0</span>
+         <span class="label" id="recruiterCount">Total Applicants</span>
         </div>
         <!-- Add more cards as needed -->
     </div>
@@ -1713,16 +1713,85 @@
     
       <div class="column">
         <div class="card1" id="registerCard2">
-            <span class="count">${jobsCount}</span>
-            <span class="label">Total Jobs Posted</span>
+           <span class="count" id="jobsCount">0</span>
+        <span class="label">Total Jobs Posted</span>
         </div>
         <!-- Add more cards as needed -->
- <div class="card1" id="registerCard2">
-            <span class="count">${jobApplicationsCount}</span>
-            <span class="label">Total Jobs Applied</span>
+ 			<div class="card1" id="registerCard2">
+            <span class="count" id="jobApplicationsCount">0</span>
+        <span class="label">Total Jobs Applied</span>
         </div>
     </div>
     
 </body>
+ <script>
+      // Set the target counts
+      const targetApplicantCount = ${applicantCount};
+      const targetRecruiterCount = ${recruiterCount};
+      
+      
+  
+      // Function to update counts
+      function updateCounts() {
+          const applicantCountElement = document.getElementById('applicantCount');
+          const recruiterCountElement = document.getElementById('recruiterCount');
+  
+          // Get the current counts
+          let currentApplicantCount = parseInt(applicantCountElement.textContent);
+          let currentRecruiterCount = parseInt(recruiterCountElement.textContent);
+  
+          // Increment counts until they reach the target
+          if (currentApplicantCount < targetApplicantCount) {
+              currentApplicantCount++;
+              applicantCountElement.textContent = currentApplicantCount;
+          }
+  
+          if (currentRecruiterCount < targetRecruiterCount) {
+              currentRecruiterCount++;
+              recruiterCountElement.textContent = currentRecruiterCount;
+          }
+  
+          // Repeat the update every second (1000 milliseconds)
+          if (currentApplicantCount < targetApplicantCount || currentRecruiterCount < targetRecruiterCount) {
+              setTimeout(updateCounts, 120);
+          }
+      }
+  
+      // Start updating counts
+      updateCounts();
+   </script>
+<script>
+    // Set the target counts for jobs
+    const targetJobsCount = ${jobsCount};
+    const targetJobApplicationsCount = ${jobApplicationsCount};
 
+    // Function to update job counts
+    function updateJobCounts() {
+        const jobsCountElement = document.getElementById('jobsCount');
+        const jobApplicationsCountElement = document.getElementById('jobApplicationsCount');
+
+        // Get the current job counts
+        let currentJobsCount = parseInt(jobsCountElement.textContent);
+        let currentJobApplicationsCount = parseInt(jobApplicationsCountElement.textContent);
+
+        // Increment counts until they reach the target
+        if (currentJobsCount < targetJobsCount) {
+            currentJobsCount++;
+            jobsCountElement.textContent = currentJobsCount;
+        }
+
+        if (currentJobApplicationsCount < targetJobApplicationsCount) {
+            currentJobApplicationsCount++;
+            jobApplicationsCountElement.textContent = currentJobApplicationsCount;
+        }
+
+        // Repeat the update every second (1000 milliseconds)
+        if (currentJobsCount < targetJobsCount || currentJobApplicationsCount < targetJobApplicationsCount) {
+            setTimeout(updateJobCounts, 120);
+        }
+    }
+
+    // Start updating job counts
+    updateJobCounts();
+</script>
 </html>

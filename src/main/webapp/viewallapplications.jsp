@@ -58,6 +58,21 @@
   border-radius: 5px;
   background-color: lightpink;
 }
+
+.we {
+    cursor: pointer;
+    color: #fff; /* Set the initial text color */
+    background-color: #007bff; /* Set the initial background color */
+    padding: 5px 10px; /* Add padding for better appearance */
+    display: inline-block; /* Make it a block to allow setting width and height */
+    text-decoration: none; /* Remove underline from the text */
+    border-radius: 4px; /* Add rounded corners for a button-like appearance */
+  }
+
+  /* Change styles on hover */
+  .we:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
 	</style>
 </head>
 <body>
@@ -120,7 +135,7 @@
 					<td><a href="/download/${job.applicationid}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
 
 					</td>				
-					<td><a href="updateapplicationstatus?id=${job.id}&jobtitle=${job.jobtitle}">Update Status</a></td>
+					<td><a href="updateapplicationstatus?id=${job.id}&jobtitle=${job.jobtitle}" class="we"> <i class="fas fa-edit">Update Status</i></a></td>
 				</tr>
 			</c:forEach>
 		</table>
