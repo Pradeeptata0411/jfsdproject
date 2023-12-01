@@ -1643,8 +1643,7 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-  <div id="partyPopper" class="party-popper">🎉</div>
- 
+  
     <br><br><br><br>
     <div class="container">
     																																		
@@ -1681,22 +1680,27 @@
   
     
 </body>
-<script>
-        // Add this script to trigger the party popper
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the message contains 'success'
-            var successMessage = document.querySelector('.card-body h5').innerText.toLowerCase();
-            if (successMessage.includes('success')) {
-                // Trigger the party popper animation
-                var partyPopper = document.getElementById('partyPopper');
-                partyPopper.classList.add('pop-animation');
-                partyPopper.style.display = 'block';
+ <script src="sucessfulparty.js"></script>
+    <!-- Confetti  JS-->
+    <script>
 
-                // Remove the party popper animation class after it finishes
-                setTimeout(function () {
-                    partyPopper.classList.remove('pop-animation');
-                }, 500);
-            }
-        });
+        // start
+
+        const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        start();
+        stop();
     </script>
 </html>

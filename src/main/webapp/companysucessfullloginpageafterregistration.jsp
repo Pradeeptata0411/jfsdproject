@@ -5,21 +5,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> Applicant Login</title>
+    <title> Compant Login</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
-    
-    <link rel="stylesheet" href="style.css">
+   
     <style>
         /* General styling */
-
-        body {
-            font-family: sans-serif;
+        
+         body {
+            display: flex;
+            justify-content: space-between;
+            height: 120vh;
             margin: 0;
-            padding: 0;
-            background-color: #fff;
         }
+       
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card1 {
+            width: 200px;
+            height: 150px;
+            background-color: lightblue;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            margin: 35px; /* Add some margin between cards */
+        }
+
+        .count {
+            font-size: 70px;
+            font-weight: bold;
+        }
+
+        .label {
+            margin-top: 10px;
+        }
+
+        /* Hover effect */
+        .card1:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            background-color: lightpink;
+            
+        }
+
+       
 
         .container {
             width: 500px;
@@ -1601,31 +1640,14 @@
         color: #333;
     }
     
-       .party-popper {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            display: none;
-            font-size: 24px; /* Adjust the font size as needed */
-        }
-
-        @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.5); }
-            100% { transform: scale(1); }
-        }
-
-        .pop-animation {
-            animation: pop 0.5s ease-out;
-        }
+       
+       
     </style>
 </head>
 
 <body>
-<nav>
-
+   <nav>
+  
   <div class="wrapper">
     <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
 </div>
@@ -1643,60 +1665,156 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-  <div id="partyPopper" class="party-popper">🎉</div>
- 
+ <br><br><br><br><br><br><br>
+
+ <div class="column">
+        <div class="card1" id="registerCard1">
+            <span class="count" id="applicantCount">0</span>
+         <span class="label" id="applicantCount">Total Applicants</span>
+        </div>
+        <div class="card1" id="registerCard1">
+             <span class="count" id="recruiterCount">0</span>
+         <span class="label" id="recruiterCount">Total Applicants</span>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
     <br><br><br><br>
     <div class="container">
-    																																		
+    <br><br><br><br>
+    
     	<div class="card">
     <div class="card-body">
      <span class="blink">
   <h5 align="center" style="color:red">${message}</h5>
   </span>
-                <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
+                <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑹𝒆𝒄𝒓𝒖𝒊𝒕𝒆𝒓 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
 
-        <form action="checkapplicantlogin" method="post">
+        <form action="checkrecruiterlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail\.com" title="email format must be xxx@gmail.com" placeholder="Enter email">
             </div>
            
             <div class="mb-3">
                 <label for="password1">Password:</label>
                 <input type="password" class="form-control" id="password1" name="password1"
-                    placeholder="Enter password" required>
+                    placeholder="Enter password">
                     <br><br>
-                     <a href="register">Don't have an account?</a>
+                     <a href="companyregistration">Don't have an account?</a>
             </div>
            
             <button type="submit" class="btn btn-primary" style="position: relative;">Login</button>
             
            
         </form>
-       
+    </div>
     </div>
     </div>
     
+      <div class="column">
+        <div class="card1" id="registerCard2">
+           <span class="count" id="jobsCount">0</span>
+        <span class="label">Total Jobs Posted</span>
+        </div>
+        <!-- Add more cards as needed -->
+ 			<div class="card1" id="registerCard2">
+            <span class="count" id="jobApplicationsCount">0</span>
+        <span class="label">Total Jobs Applied</span>
+        </div>
     </div>
-  
     
 </body>
+ <script>
+      // Set the target counts
+      const targetApplicantCount = ${applicantCount};
+      const targetRecruiterCount = ${recruiterCount};
+      
+      
+  
+      // Function to update counts
+      function updateCounts() {
+          const applicantCountElement = document.getElementById('applicantCount');
+          const recruiterCountElement = document.getElementById('recruiterCount');
+  
+          // Get the current counts
+          let currentApplicantCount = parseInt(applicantCountElement.textContent);
+          let currentRecruiterCount = parseInt(recruiterCountElement.textContent);
+  
+          // Increment counts until they reach the target
+          if (currentApplicantCount < targetApplicantCount) {
+              currentApplicantCount++;
+              applicantCountElement.textContent = currentApplicantCount;
+          }
+  
+          if (currentRecruiterCount < targetRecruiterCount) {
+              currentRecruiterCount++;
+              recruiterCountElement.textContent = currentRecruiterCount;
+          }
+  
+          // Repeat the update every second (1000 milliseconds)
+          if (currentApplicantCount < targetApplicantCount || currentRecruiterCount < targetRecruiterCount) {
+              setTimeout(updateCounts, 120);
+          }
+      }
+  
+      // Start updating counts
+      updateCounts();
+   </script>
 <script>
-        // Add this script to trigger the party popper
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the message contains 'success'
-            var successMessage = document.querySelector('.card-body h5').innerText.toLowerCase();
-            if (successMessage.includes('success')) {
-                // Trigger the party popper animation
-                var partyPopper = document.getElementById('partyPopper');
-                partyPopper.classList.add('pop-animation');
-                partyPopper.style.display = 'block';
+    // Set the target counts for jobs
+    const targetJobsCount = ${jobsCount};
+    const targetJobApplicationsCount = ${jobApplicationsCount};
 
-                // Remove the party popper animation class after it finishes
-                setTimeout(function () {
-                    partyPopper.classList.remove('pop-animation');
-                }, 500);
-            }
-        });
+    // Function to update job counts
+    function updateJobCounts() {
+        const jobsCountElement = document.getElementById('jobsCount');
+        const jobApplicationsCountElement = document.getElementById('jobApplicationsCount');
+
+        // Get the current job counts
+        let currentJobsCount = parseInt(jobsCountElement.textContent);
+        let currentJobApplicationsCount = parseInt(jobApplicationsCountElement.textContent);
+
+        // Increment counts until they reach the target
+        if (currentJobsCount < targetJobsCount) {
+            currentJobsCount++;
+            jobsCountElement.textContent = currentJobsCount;
+        }
+
+        if (currentJobApplicationsCount < targetJobApplicationsCount) {
+            currentJobApplicationsCount++;
+            jobApplicationsCountElement.textContent = currentJobApplicationsCount;
+        }
+
+        // Repeat the update every second (1000 milliseconds)
+        if (currentJobsCount < targetJobsCount || currentJobApplicationsCount < targetJobApplicationsCount) {
+            setTimeout(updateJobCounts, 120);
+        }
+    }
+
+    // Start updating job counts
+    updateJobCounts();
+</script>
+<script src="sucessfulparty.js"></script>
+    <!-- Confetti  JS-->
+    <script>
+
+        // start
+
+        const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        start();
+        stop();
     </script>
 </html>

@@ -41,11 +41,12 @@ align-items: center;
     .job-card {
       background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
+       border: 3px solid darkblue;
       padding: 8px;
       display: flex;
       flex-direction: column;
-      gap: 2px;	
+      gap: 15px;	
     }
 
     .job-card img {

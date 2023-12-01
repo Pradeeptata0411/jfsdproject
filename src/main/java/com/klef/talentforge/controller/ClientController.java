@@ -138,7 +138,7 @@ public class ClientController
             
         
             emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
-            mv.setViewName("ApplicantLogin");
+            mv.setViewName("applicantsucessfullloginpageafterregistration");
 			mv.addObject("message", msg);
 			
 		}
@@ -250,6 +250,18 @@ public class ClientController
 	     @PostMapping("recruiterRegistration")
 		public ModelAndView recruiterRegistration(HttpServletRequest request) {
 			ModelAndView mv = new ModelAndView();
+			
+			
+			long applicantCount=adminService.applicantCount();
+			long recruiterCount=adminService.recruiterCount();
+			long jobsCount=adminService.JobsCount();
+			long jobApplicationsCount=adminService.JobApplicationsCount();
+			
+			mv.addObject("applicantCount", applicantCount);
+			mv.addObject("recruiterCount",recruiterCount );
+			mv.addObject("jobsCount",jobsCount );
+			mv.addObject("jobApplicationsCount",jobApplicationsCount );
+			
 			String msg = null;
 			try {
 					String companyname = request.getParameter("companyname");
@@ -297,7 +309,7 @@ public class ClientController
 	            
 	        
 	            emailManager.sendEmail(fromEmail, toEmail, subject, text,htmlContent);
-	            mv.setViewName("companylogin");
+	            mv.setViewName("companysucessfullloginpageafterregistration");
 				mv.addObject("message", msg);
 				
 			}
