@@ -13,9 +13,12 @@ import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
+import com.klef.talentforge.repository.JobRepository;
+import com.klef.talentforge.repository.RecruiterRepository;
 import com.klef.talentforge.repository.Uploadapplicantprofileimage;
 import com.klef.talentforge.repository.ViewApplicationStatusRepository;
 @Service
@@ -39,6 +42,14 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	  private ViewApplicationStatusRepository applicationStatusRepository;
+
+	@Autowired
+	  private RecruiterRepository recruiterRepository;
+	
+	
+	@Autowired
+	  private JobRepository jobRepository;
+	
 	
 	
 	@Override
@@ -194,6 +205,17 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	    return applicationStatusRepository.getStatusByIDAndTitle(id,jobtitle);
 	  }
-	
+	  @Override
+	  public List<Recruiter> viewallCompanies() 
+	  {
+	    return recruiterRepository.findAll();
+	  }
+
+	  @Override
+	  public List<Job> viewJobsByCompanyName(String companyname) {
+	    
+	    return jobRepository.viewalljobsbycompanyname(companyname);
+	  }
+
 
 }

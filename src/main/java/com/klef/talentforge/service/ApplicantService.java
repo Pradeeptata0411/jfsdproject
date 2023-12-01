@@ -6,7 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
+import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 
 public interface ApplicantService {
@@ -47,5 +49,8 @@ public interface ApplicantService {
 	  
 	  public List<ViewApplicationStatus> viewmyjobapplicationStatus(int id,String jobtitle);
 	  
+	  public List<Recruiter> viewallCompanies();
 	  
+	  public List<Job> viewJobsByCompanyName(String companyname);
+
 }

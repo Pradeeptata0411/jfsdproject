@@ -158,7 +158,11 @@ public class ClientController
 		HttpSession session = request.getSession();
 		Applicant c = applicantService.checkApplicantlogin(uname, pwd);
 		  JobApplications applications = new JobApplications();
-		ModelAndView mv =new ModelAndView();
+
+			ModelAndView mv =new ModelAndView();
+		  List<Recruiter> companylist=applicantService.viewallCompanies();
+	        mv.addObject("reclist", companylist);
+		  
 		if(c!=null ) {
 		
 			session.setAttribute("cid",c.getId()); 
@@ -185,6 +189,9 @@ public class ClientController
 	 @GetMapping("applicanthome")
      public ModelAndView indexpage(HttpServletRequest request) {
        ModelAndView mv=new ModelAndView("index");
+       List<Recruiter> companylist=applicantService.viewallCompanies();
+       mv.addObject("reclist", companylist);
+       
        HttpSession session = request.getSession();
        int sid = (int) session.getAttribute("cid"); 
 	    String fname = (String) session.getAttribute("fname");
@@ -959,7 +966,7 @@ public class ClientController
 	            ModelAndView mv = new ModelAndView();
 	            mv.setViewName("adminsearchedjobsare");
 	 	       mv.addObject("searchedjobs", searchedjobs);
-	 	      List<Job> jobslist = recruiterService.ViewAllJobs();
+	 	      List<Job> jobslist = adminService.ViewAllJobs();
 	 	      Set<String> companyNamesSet = new HashSet<>();
 
 		         // Extract company names from each Job object and add to the Set
@@ -1010,7 +1017,7 @@ public class ClientController
 		     @GetMapping("adminviewalljobs")
 		     public ModelAndView viewalljobs() {
 		         ModelAndView mv = new ModelAndView("adminviewalljobs");
-		         List<Job> jobslist = recruiterService.ViewAllJobs();
+		         List<Job> jobslist = adminService.ViewAllJobs();
 		         
 		         
 		         
@@ -1134,7 +1141,27 @@ public class ClientController
 		        return "redirect:/ApplicantLogin";
 		            
 		      }
-		     
+		      @GetMapping("viewalljobs")
+		      public ModelAndView homejobs() {
+		        ModelAndView mv=new ModelAndView("viewjobsinhome");
+		        List<Job> jobslist = recruiterService.ViewAllJobs();
+		        mv.addObject("jobslist", jobslist);
+		           
+		        return mv;
+		      }
+		        
+		      @GetMapping("searchbycompany")
+		      public ModelAndView viewallcompanies(@RequestParam("companyname") String companyname) 
+		      {
+		        ModelAndView mv=new ModelAndView("viewjobsbycompanyname");
+		        List<Recruiter> companylist=applicantService.viewallCompanies();
+		          mv.addObject("reclist", companylist);
+		        List<Job> jobslist=applicantService.viewJobsByCompanyName(companyname);
+		        mv.addObject("jobslist", jobslist);
+		        return mv;
+		        
+		      }
+
 		     
 	    	
 }
