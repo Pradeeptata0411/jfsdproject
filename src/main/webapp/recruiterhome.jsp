@@ -48,7 +48,7 @@
 
 </body>
 <script>
-    const uname = "${uname}😊😊"; // Replace with the actual username
+    const uname = "${rcompanynmae}😊😊"; // Replace with the actual username
     const usernameElement = document.getElementById('username');
 
     // Function to display each letter with a delay

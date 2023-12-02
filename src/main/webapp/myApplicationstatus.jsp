@@ -511,7 +511,7 @@
       <div class="job-card" >
       <img src='displaycompanyimage?id=${jobid}' alt="Company Logo" height="45px" width="80px">
        
-      <h2 style="color: darkblue"><i>Your Job Application Status for Role *${jobtitle} :</i> </h2>
+      <h2 style="color: darkblue"><i> Job Application Status for Role *${jobtitle} :</i> </h2>
         
         <c:forEach items="${statuslist}" var="status">
         

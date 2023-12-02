@@ -189,8 +189,16 @@ public class ClientController
 	 @GetMapping("applicanthome")
      public ModelAndView indexpage(HttpServletRequest request) {
        ModelAndView mv=new ModelAndView("index");
-       List<Recruiter> companylist=applicantService.viewallCompanies();
-       mv.addObject("reclist", companylist);
+       List<Job> jobslist1 = adminService.ViewAllJobs();
+       Set<String> companyNamesSet = new HashSet<>();
+
+       		         // Extract company names from each Job object and add to the Set
+       		         for (Job job : jobslist1) {
+       		             companyNamesSet.add(job.getCompanyname());
+       		         }
+
+       
+       mv.addObject("reclist", companyNamesSet);
        
        HttpSession session = request.getSession();
        int sid = (int) session.getAttribute("cid"); 
@@ -1122,6 +1130,10 @@ public class ClientController
 		          List<ViewApplicationStatus> statuslist=applicantService.viewmyjobapplicationStatus(id,jobtitle);
 		          System.out.println(statuslist.size());
 		          mv.addObject("statuslist", statuslist);
+		          ViewApplicationStatus[] statusArray = statuslist.toArray(new ViewApplicationStatus[0]);
+		          System.err.println(statusArray.length);
+		          mv.addObject("statusArray", statusArray);
+		          
 		          mv.addObject("jobtitle", jobtitle);  
 		          mv.addObject("jobid", jobid);  
 		          return mv;
@@ -1180,8 +1192,17 @@ public class ClientController
 		      public ModelAndView viewallcompanies(@RequestParam("companyname") String companyname) 
 		      {
 		        ModelAndView mv=new ModelAndView("viewjobsbycompanyname");
-		        List<Recruiter> companylist=applicantService.viewallCompanies();
-		          mv.addObject("reclist", companylist);
+		        List<Job> jobslist1 = adminService.ViewAllJobs();
+		        Set<String> companyNamesSet = new HashSet<>();
+
+		        		         // Extract company names from each Job object and add to the Set
+		        		         for (Job job : jobslist1) {
+		        		             companyNamesSet.add(job.getCompanyname());
+		        		         }
+
+		        
+		        mv.addObject("reclist", companyNamesSet);
+		        
 		        List<Job> jobslist=applicantService.viewJobsByCompanyName(companyname);
 		        mv.addObject("jobslist", jobslist);
 		        return mv;

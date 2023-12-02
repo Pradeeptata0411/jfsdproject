@@ -505,10 +505,9 @@
                 <label for="branch">Search Jobs By Company :</label>
                 <select id="companyname" name="companyname" required>
                     <option value="">---Select Company---</option>
-                    <c:forEach items="${reclist}" var="rec">
-                    <option value="${rec.companyname}">${rec.id}&nbsp;&nbsp;--${rec.companyname}</option>
-                    
-                    </c:forEach>
+                    <c:forEach var="companyName" items="${reclist}">
+			        <option value="${companyName}">${companyName}</option>
+			    </c:forEach>
                 </select>
            
             <button type="submit">Search</button>
