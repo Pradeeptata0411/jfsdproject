@@ -527,17 +527,20 @@
     </div>
         
    <br>
-    <div id="right-half">
+    <div id="right-half" class="hidden">
     <br><br><br><br>
       <div class="card">
-  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
-   <p style="color: black;">${fname} ${lname}  </p>
-  
+       <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here"  style="width:100%"   height="200px" id="profileimage">
+   
+                </form>
+  <h1 style="color: black;">${fname} ${lname}  </h1>
+  <pstyle="color: black;" class="title"><h4>${email}</h4></p>
+ 
   
 </div>
-
       <nav>
-        <a href="applicanthome">Home</a>
+          <a href="applicanthome">Home</a>
         <a href="myjobApplications">My Applications</a>
           <a href="updateprofileApplicant">Update Profile</a>
             <a href="/">Logout</a>

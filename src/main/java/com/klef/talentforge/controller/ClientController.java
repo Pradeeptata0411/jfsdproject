@@ -1112,7 +1112,21 @@ public class ClientController
 		          
 		        }
 		     
-		     
+		     @GetMapping("recruitergetApplicationStatus")
+		        public ModelAndView recruitergetApplicationStatus(@RequestParam("id") int id,
+		            @RequestParam("jobtitle") String jobtitle,@RequestParam("jobid") int jobid) 
+		        {
+		          ModelAndView mv=new ModelAndView("recruiterviewapplicatstatus");
+		          System.err.println(id+" "+jobtitle);
+		          
+		          List<ViewApplicationStatus> statuslist=applicantService.viewmyjobapplicationStatus(id,jobtitle);
+		          System.out.println(statuslist.size());
+		          mv.addObject("statuslist", statuslist);
+		          mv.addObject("jobtitle", jobtitle);  
+		          mv.addObject("jobid", jobid);  
+		          return mv;
+		          
+		        }
 		     
 		     @GetMapping("updateprofileApplicant")
 		      public ModelAndView applicantupdateprofile(HttpServletRequest request) {

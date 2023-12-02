@@ -49,29 +49,56 @@
 
 .btn {
 	 display: inline-block;
-  padding: 10px 20px;
+  padding: 16px 20px;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: lightpink;
+ 
 }
 
 .we {
     cursor: pointer;
     color: #fff; /* Set the initial text color */
     background-color: #007bff; /* Set the initial background color */
-    padding: 5px 10px; /* Add padding for better appearance */
+    padding: 10px 10px; /* Add padding for better appearance */
+    display: inline-block; /* Make it a block to allow setting width and height */
+    text-decoration: none; /* Remove underline from the text */
+    border-radius: 4px; /* Add rounded corners for a button-like appearance */
+  }
+.btn.view-btn {
+  display: inline-block;
+  background-color: #3498db; /* Blue color */
+  color: #fff; /* White color */
+  padding: 18px 26px;
+  text-decoration: none; /* Remove underline from the link */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn.view-btn:hover {
+  background-color: #2980b9; /* Darker blue color on hover */
+}
+  /* Change styles on hover */
+  .we:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
+  
+  .weview {
+    cursor: pointer;
+    color: black; /* Set the initial text color */
+    background-color: #E6D894; /* Set the initial background color */
+    padding: 13px 10px; /* Add padding for better appearance */
     display: inline-block; /* Make it a block to allow setting width and height */
     text-decoration: none; /* Remove underline from the text */
     border-radius: 4px; /* Add rounded corners for a button-like appearance */
   }
 
-  /* Change styles on hover */
-  .we:hover {
-    background-color: #0056b3; /* Change background color on hover */
+
+.weview:hover {
+    background-color: #F4BE22; /* Change background color on hover */
   }
 	</style>
 </head>
@@ -118,7 +145,7 @@
 				<th>Contact No</th>
 				<th>Resume</th>
 				<th>Update Status</th>
-				
+				<th>View Status</th>
 				
 			</tr>
 			<c:forEach items="${jobslist}" var="job">
@@ -132,10 +159,13 @@
 					
 					<td><c:out value="${job.experience}" /></td>
 					<td><c:out value="${job.contactno}" /></td>
-					<td><a href="/download/${job.applicationid}/${job.jobtitle}"><button class="btn">Download Resume</button></a>
+					<td><a href="/download/${job.applicationid}/${job.jobtitle}"><button class="btn fa fa-download ">.Download Resume</button></a>
 
 					</td>				
 					<td><a href="updateapplicationstatus?id=${job.id}&jobtitle=${job.jobtitle}" class="we"> <i class="fas fa-edit">Update Status</i></a></td>
+				<td>
+					    <a href="recruitergetApplicationStatus?id=${job.id}&jobtitle=${job.jobtitle}&jobid=${job.id}" class="weview fa fa-eye">View Status</a>
+					  </td>
 				</tr>
 			</c:forEach>
 		</table>
