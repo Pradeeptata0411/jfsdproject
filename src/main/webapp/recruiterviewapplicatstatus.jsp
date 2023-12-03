@@ -82,6 +82,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -70px;
 }
 
 .status-list {
@@ -108,12 +109,28 @@
 }
 
 .approved {
-    background-image: url('path-to/approved-icon.png'); /* Replace with the actual path to your approved icon */
+    background-image: url('images/approved.png'); /* Replace with the actual path to your approved icon */
 }
 
 .rejected {
     background-image: url('path-to/rejected-icon.png'); /* Replace with the actual path to your rejected icon */
 }
+
+  .animated-item {
+        animation: moveUp 1.0s ease-in-out forwards;
+        opacity: 0;
+    }
+
+    @keyframes moveUp {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 </style>
 </head>
 <body>
@@ -151,30 +168,31 @@
 <br>
 <br>
 <br>
- <div class="job-card">
-  <img src='displaycompanyimage?id=${jobid}' alt="Company Logo" height="45px" width="80px">
-  <h2 style="color: darkblue"><i>Your Job Application Status for Role *${jobtitle} :</i> </h2>
-  <c:forEach items="${statuslist}" var="status">
-    ✅ <c:out value="${status.applicationstatus}"></c:out><br>
-    🔻<br>
-  </c:forEach>
-  &nbsp;&nbsp;⋮<br>
-  🏆
-</div>
+ 
 <br>
 <br>
 <br>
 
-<div class="container">
+<div class="container" >
+ <img src='displaycompanyimage?id=${jobid}' alt="Company Logo" height="45px" width="80px">
         <h2>Application Status for Job: ${jobtitle}</h2>
         <ul class="status-list">
             <!-- Loop through statusArray and populate the list -->
-            <c:forEach var="status" items="${statuslist}">
-                <li>
-                    <span class="applicant-name">${status.applicationstatus}</span>
-                    <span class="status-icon ${status.applicationstatus == 'Approved' ? 'approved' : 'rejected'}"></span>
-                </li>
-            </c:forEach>
+           <c:forEach var="status" items="${statuslist}">
+    <li class="animated-item">
+        <c:choose>
+            <c:when test="${status.applicationstatus eq 'Application Rejected'}">
+                <img src="images/declined.png" style="width: 100px; height: 80px; margin-bottom: -4px;"></img>
+            </c:when>
+            <c:otherwise>
+                <img src="images/approved.png" style="width: 100px; height: 100px; margin-bottom: -4px;"></img>
+            </c:otherwise>
+        </c:choose>
+        <span class="applicant-name" style="font-size: 20px">${status.applicationstatus}</span>
+        <span></span>
+    </li>
+</c:forEach>
+
         </ul>
     </div>
 
@@ -195,5 +213,16 @@
     // Call the function with the username
     typeText(uname, 0);
   </script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add animation class to each list item with delay and repetition
+        var listItems = document.querySelectorAll(".animated-item");
+        listItems.forEach(function (item, index) {
+            var delay = (index % 3) * 0.2; // Delay every three items
+            item.style.animationDelay = delay + "s";
+        });
+    });
+</script>
+
 </html>
     

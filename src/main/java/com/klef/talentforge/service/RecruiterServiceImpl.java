@@ -138,6 +138,12 @@ public class RecruiterServiceImpl implements RecruiterService {
       applicationStatusRepository.save(viewApplicationStatus);
       return "Sucessfully Updated";
     }
+
+	@Override
+	public ViewApplicationStatus checkingduplicatestautsalreadythere(int id, String jobtitle, String status) {
+		
+		return applicationStatusRepository.checkingduplicatestautsalreadythere(id, jobtitle, status);
+	}
 	 
 	
 

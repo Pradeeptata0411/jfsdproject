@@ -42,4 +42,7 @@ public interface RecruiterService {
 	
 	public List<String> getAllApplicantEmails(Applicant applicant);
 	public String addApplicationStatus(ViewApplicationStatus viewApplicationStatus);
+	
+	public ViewApplicationStatus checkingduplicatestautsalreadythere(int id, String jobtitle,String status);
+	
 }

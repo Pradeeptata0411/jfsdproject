@@ -22,4 +22,8 @@ public interface ViewApplicationStatusRepository extends JpaRepository<ViewAppli
 	public List<ViewApplicationStatus> getStatusByIDAndTitle(int id, String jobtitle);
 	
 	
+	
+	@Query("FROM ViewApplicationStatus WHERE id = ?1 AND applicationstatustittle=?2 and applicationstatus=?3")
+	public ViewApplicationStatus checkingduplicatestautsalreadythere(int id, String jobtitle,String status);
+	
 }

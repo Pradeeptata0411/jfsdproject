@@ -1643,7 +1643,7 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-  <div id="partyPopper" class="party-popper">🎉</div>
+  
  
     <br><br><br><br>
     <div class="container">

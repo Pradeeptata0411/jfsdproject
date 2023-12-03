@@ -85,7 +85,7 @@ public class ClientController
 	 
 	
 	@PostMapping("registration")
-	public ModelAndView addSeller(HttpServletRequest request) {
+	public ModelAndView addapplicant(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String msg = null;
 		try {
@@ -189,16 +189,7 @@ public class ClientController
 	 @GetMapping("applicanthome")
      public ModelAndView indexpage(HttpServletRequest request) {
        ModelAndView mv=new ModelAndView("index");
-       List<Job> jobslist1 = adminService.ViewAllJobs();
-       Set<String> companyNamesSet = new HashSet<>();
-
-       		         // Extract company names from each Job object and add to the Set
-       		         for (Job job : jobslist1) {
-       		             companyNamesSet.add(job.getCompanyname());
-       		         }
-
-       
-       mv.addObject("reclist", companyNamesSet);
+      
        
        HttpSession session = request.getSession();
        int sid = (int) session.getAttribute("cid"); 
@@ -467,6 +458,17 @@ public class ClientController
 	        public ModelAndView uploadapplicantprofileimage(HttpServletRequest request,@RequestParam("ApplicantImage") MultipartFile file)throws IOException, SerialException, SQLException
 	        {
 	          ModelAndView mv=new ModelAndView();
+	          
+	          List<Job> jobslist1 = recruiterService.ViewAllJobs();
+	          Set<String> companyNamesSet = new HashSet<>();
+
+	          		         // Extract company names from each Job object and add to the Set
+	          		         for (Job job : jobslist1) {
+	          		             companyNamesSet.add(job.getCompanyname());
+	          		         }
+
+	          
+	          mv.addObject("reclist", companyNamesSet);
 	          
 	          byte[] bytes = file.getBytes();
 	      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
@@ -1075,34 +1077,71 @@ public class ClientController
 		     }
 		     
 		     
+//		     @PostMapping("addapplicationstatus")
+//		     public ModelAndView addApplicationStatus(HttpServletRequest request)
+//		     {
+//		       ModelAndView mv=new ModelAndView("viewallapplications");
+//		       
+//		       HttpSession session=request.getSession();
+//		         String companyname=(String)session.getAttribute("rcompanynmae");
+//		         List<JobApplications> jobslist=recruiterService.viewalljobapplicationsByCompany(companyname);
+//		         mv.addObject("jobslist", jobslist);
+//		       
+//		       int id=Integer.parseInt(request.getParameter("id"));
+//		       String jobtitle=request.getParameter("jobtitle");
+//		       String status=request.getParameter("applicationStatus");
+//		       String comment=request.getParameter("comment");
+//		       
+//		       ViewApplicationStatus stat=new ViewApplicationStatus();
+//		       stat.setId(id);
+//		       stat.setApplicationstatus(status);
+//		       stat.setApplicationstatustittle(jobtitle);
+//		       stat.setComment(comment);
+//		       
+//		       String msg=recruiterService.addApplicationStatus(stat);
+//		       mv.addObject("message", msg);
+//		       
+//		       return mv;  
+//		     } 
+//		     
+
+		     
+		     
 		     @PostMapping("addapplicationstatus")
-		     public ModelAndView addApplicationStatus(HttpServletRequest request)
-		     {
-		       ModelAndView mv=new ModelAndView("viewallapplications");
-		       
-		       HttpSession session=request.getSession();
-		         String companyname=(String)session.getAttribute("rcompanynmae");
-		         List<JobApplications> jobslist=recruiterService.viewalljobapplicationsByCompany(companyname);
+		     public ModelAndView addApplicationStatus(HttpServletRequest request) {
+		         ModelAndView mv = new ModelAndView("viewallapplications");
+
+		         HttpSession session = request.getSession();
+		         String companyname = (String) session.getAttribute("rcompanynmae");
+		         List<JobApplications> jobslist = recruiterService.viewalljobapplicationsByCompany(companyname);
 		         mv.addObject("jobslist", jobslist);
-		       
-		       int id=Integer.parseInt(request.getParameter("id"));
-		       String jobtitle=request.getParameter("jobtitle");
-		       String status=request.getParameter("applicationStatus");
-		       String comment=request.getParameter("comment");
-		       
-		       ViewApplicationStatus stat=new ViewApplicationStatus();
-		       stat.setId(id);
-		       stat.setApplicationstatus(status);
-		       stat.setApplicationstatustittle(jobtitle);
-		       stat.setComment(comment);
-		       
-		       String msg=recruiterService.addApplicationStatus(stat);
-		       mv.addObject("message", msg);
-		       
-		       return mv;  
-		     } 
-		     
-		     
+
+		         int id = Integer.parseInt(request.getParameter("id"));
+		         String jobtitle = request.getParameter("jobtitle");
+		         String status = request.getParameter("applicationStatus");
+		         String comment = request.getParameter("comment");
+
+		         // Check if the record already exists
+		         ViewApplicationStatus existingStatus = recruiterService.checkingduplicatestautsalreadythere(id, jobtitle, status);
+
+		         if (existingStatus != null) {
+		             // Record already exists, show a message indicating it's already updated
+		             mv.addObject("message", "Application status already updated for this ID, Job Title, and Status");
+		         } else {
+		             // Record does not exist, proceed with insertion
+		             ViewApplicationStatus stat = new ViewApplicationStatus();
+		             stat.setId(id);
+		             stat.setApplicationstatus(status);
+		             stat.setApplicationstatustittle(jobtitle);
+		             stat.setComment(comment);
+
+		             String msg = recruiterService.addApplicationStatus(stat);
+		             mv.addObject("message", msg);
+		         }
+
+		         return mv;
+		     }
+
 		     
 		     @GetMapping("getApplicationStatus")
 		        public ModelAndView getApplicationsStatus(@RequestParam("id") int id,
