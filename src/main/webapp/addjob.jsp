@@ -334,6 +334,11 @@ a:hover {
                     placeholder="Enter Skills Required" required>
             </div>
             <div class="mb-3">
+                <label for="phone_number">Date of Posting:</label>
+                <input type="date" class="form-control" id="dateposted" name="dateposted"
+                    placeholder="Date of Posting" required>
+            </div>
+            <div class="mb-3">
                 <label for="address">Job Description:</label>
                 <textarea class="form-control" id="address" name="description" rows="3"
                     placeholder="Enter Job Description" required></textarea>

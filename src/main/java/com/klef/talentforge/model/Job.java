@@ -32,7 +32,9 @@ public class Job
 	@Column(name="company_name")
 	private String companyname;
 	
-	
+	@Column(name="job_posteddate", length = 10,nullable = false)
+	  private String posteddate;
+
 	  
 	public String getCompanyname() {
 		return companyname;
@@ -82,6 +84,12 @@ public class Job
 	}
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+	public String getPosteddate() {
+		return posteddate;
+	}
+	public void setPosteddate(String posteddate) {
+		this.posteddate = posteddate;
 	}
 	
 	

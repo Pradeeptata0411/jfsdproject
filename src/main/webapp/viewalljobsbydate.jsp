@@ -10,30 +10,6 @@
 
 
   <style>
-  #searchInput {
-  max-width:160px; /* Set the width of the input */
-  padding: 10px; /* Add padding for better spacing */
-  border: 1px solid #ccc; /* Add a border for a defined boundary */
-  border-radius: 5px; /* Add rounded corners */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-  font-size: 26px; /* Set the font size */
-  transition: all 0.3s ease; /* Add a smooth transition effect */
-}
-
-#searchInput::placeholder {
-  color: #999;
-  transition: all 0.3s ease;
-}
-
-#searchInput.typing::placeholder,
-#searchInput:focus::placeholder {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-  #toggle-btn {
-  display: none; /* Initially hide the toggle button */
-}
-  
   .my-form {
     background: #f4f4f4;
     padding: 20px;
@@ -88,6 +64,7 @@
   text-align: center;
   font-family: arial;
 }
+
 
 
 .my-form1 {
@@ -230,7 +207,6 @@
       align-items: center;
       padding: 15px;
       box-sizing: border-box;
-        width: 100%;
     }
 
     nav {
@@ -263,233 +239,13 @@
 .apply-btn:hover {
   background-color: #097969; /* Change color on hover if desired */
 }
-.upload-btn {
-  display: inline-block;
-  background-color: #28A745; /* Adjust the color as needed */
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-   #profileimage {
-        width: 100%;
-        height: 200px;
-        border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
-    }
-    @media screen and (max-width: 768px) {
-/* Style for the search input */
-#searchInput {
-  max-width:160px; /* Set the width of the input */
-  padding: 10px; /* Add padding for better spacing */
-  border: 1px solid #ccc; /* Add a border for a defined boundary */
-  border-radius: 5px; /* Add rounded corners */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-  font-size: 26px; /* Set the font size */
-  transition: all 0.3s ease; /* Add a smooth transition effect */
-}
-
-#searchInput::placeholder {
-  color: #999;
-  transition: all 0.3s ease;
-}
-
-#searchInput.typing::placeholder,
-#searchInput:focus::placeholder {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-.verification-container {
-      display: flex;
-
-      align-items: center;
-    }
-
-    .verified-tick {
-      width: 40px;
-      height: 40px;
-      background-color: #2ecc71; /* Green color */
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-    }
-
-    .tick-icon {
- 
-      width: 25px;
-      height: 25px;
-      fill: #fff; /* White color */
-    }
-
-    .verification-text {
-      font-size: 18px;
-      color: #333; /* Dark color */
-      line-height: 40px; /* Adjust line-height to match the height of the circle */
-    }
-  .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-}
-
-.title {
-  color: grey;
-  font-size: 18px;
-}
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      height: 100vh;
-    }
-
-    #container {
-      display: flex;
-      width: 100%;
-    }
-
-    #left-half {
-      flex: 0 0 100%;
-      overflow-y: auto;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-height: 100vh; /* Set a max height to enable scrolling */
-    }
-
-    #search-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
-
-    #search-bar input {
-      flex: 1;
-      padding: 8px;
-      font-size: 16px;
-      width:80px;
-    }
-
-    #search-bar button {
-      padding: 8px 20px;
-       top: -1px;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .job-card {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;	
-    }
-
-    .job-card img {
-      max-width: 200px;
-      max-height: 100px;
-      border-radius: 0%;
-    }
-
-
-
- #right-half {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100%;
-    width: 100%;
-    background-color: #F9F9FB;
-    z-index: 1;
-    overflow-x: hidden;
-    transition: right 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #right-half.show {
-    right: 0;
-  }
-
-  #toggle-btn {
-    display: block;
-    position: fixed;
-   margin-top: 32px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
-  
-
-    nav {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-top: auto; /* Push the nav items to the bottom */
-    }
-
-    nav a {
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  
-   #profileimage {
-        width: 100%;
-        height: 200px;
-        border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
-    }
-    
-     .apply-btn {
-  display: inline-block;
-  background-color: darkblue;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-    text-align: center; /* Center the text */
-  
-  text-decoration: none; /* Remove underline */
-  cursor: pointer;
-}
-
-.apply-btn:hover {
-  background-color: navy; /* Change color on hover if desired */
-}
-	
-}
-
   </style>
 </head>
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
        <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-        <input type="search" id="searchInput" class="form-control" placeholder="Type Here to search for your required jobs">
-        <button id="toggle-btn">&#9776;</button>
+        <input type="search" id="searchInput" placeholder="Search Jobs by Title">
       </div>
 
       <!-- Sample job cards -->
@@ -505,10 +261,13 @@
                 <label for="branch">Search Jobs By Company :</label>
                 <select id="companyname" name="companyname" required>
                     <option value="">---Select Company---</option>
-                    <c:forEach var="companyName" items="${reclist}">
-			        <option value="${companyName}">${companyName}</option>
-			    </c:forEach>
-			    <option value="All">All Companies</option>
+                    
+                    <c:forEach items="${reclist}" var="rec">
+                    <option value="${rec.companyname}">${rec.id}&nbsp;&nbsp;--${rec.companyname}</option>
+                    
+                    </c:forEach>
+                    <option value="All">All Companies</option>
+                    
                 </select>
            
             <button type="submit">Search</button>
@@ -566,24 +325,25 @@
    </c:forEach>
  </div>
    <br>
-     <div id="right-half" class="hidden">
+    <div id="right-half">
     <br><br><br><br>
       <div class="card">
        <form action="uploadapplicantprofileimage" method="post" enctype="multipart/form-data">
-  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here"  style="width:100%"   height="200px" id="profileimage">
-   
+  <img src='displayApplicantimage?id=${cid}' alt="Upload Your image here" style="width:100%"   height="170px" id="profileimage">
+   <input type="file" class="form-control"  name="ApplicantImage"
+                required>
+                <button type="submit" class="btn">Change</button>
+               
                 </form>
-  <h1 style="color: black;">${fname} ${lname}  </h1>
-  <pstyle="color: black;" class="title"><h4>${email}</h4></p>
- 
+  <p style="color: black;">${fname} ${lname}  </p>
+  
   
 </div>
       <nav>
-          <a href="applicanthome">Home</a>
+        <a href="applicanthome">Home</a>
         <a href="myjobApplications">My Applications</a>
           <a href="updateprofileApplicant">Update Profile</a>
             <a href="/">Logout</a>
-        <!-- Add more navigation items here -->
       </nav>
     </div>
      </div>
@@ -665,24 +425,7 @@
         }
     }
 </script>
- <script>
-    // JavaScript for handling scrolling by revealing additional job cards
-    const loadMoreBtn = document.getElementById('load-more-btn');
 
-    loadMoreBtn.addEventListener('click', () => {
-      const hiddenCards = document.querySelectorAll('.job-card.hidden');
-
-      hiddenCards.forEach(card => {
-        card.classList.remove('hidden');
-      });
-    });
-  </script>
-  <script>
-//JavaScript for handling toggle of right-half on button click
-  document.getElementById('toggle-btn').addEventListener('click', function () {
-    document.getElementById('right-half').classList.toggle('show');
-  });
-</script>
 
 </body>
 </html>

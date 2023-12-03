@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.klef.talentforge.model.Job;
@@ -27,6 +28,8 @@ public interface JobRepository extends JpaRepository<Job, Integer>{
 	
 	 
 	 
+	 @Query("FROM Job WHERE STR_TO_DATE(posteddate, '%d-%m-%Y') >= STR_TO_DATE(:fromdate, '%d-%m-%Y')")
+	  public List<Job> viewallJobsByDate( @Param("fromdate") String fromdate);
 
 	 
 	 

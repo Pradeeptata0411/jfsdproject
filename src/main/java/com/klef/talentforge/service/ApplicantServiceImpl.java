@@ -216,6 +216,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 	    
 	    return jobRepository.viewalljobsbycompanyname(companyname);
 	  }
-
+	  
+	  
+	  @Override
+	  public List<Job> viewAllJobsByDate(String fromdate) {
+	    
+	    return jobRepository.viewallJobsByDate(fromdate);
+	  }
 
 }

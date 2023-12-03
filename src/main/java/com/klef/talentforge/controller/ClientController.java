@@ -160,8 +160,16 @@ public class ClientController
 		  JobApplications applications = new JobApplications();
 
 			ModelAndView mv =new ModelAndView();
-		  List<Recruiter> companylist=applicantService.viewallCompanies();
-	        mv.addObject("reclist", companylist);
+			 List<Job> jobslist1 = recruiterService.ViewAllJobs();
+	          Set<String> companyNamesSet = new HashSet<>();
+
+	          		         // Extract company names from each Job object and add to the Set
+	          		         for (Job job : jobslist1) {
+	          		             companyNamesSet.add(job.getCompanyname());
+	          		         }
+
+	          
+	          mv.addObject("reclist", companyNamesSet);
 		  
 		if(c!=null ) {
 		
@@ -208,6 +216,16 @@ public class ClientController
         List<Job> jobslist = recruiterService.ViewAllJobs();
         ApplicantImage image = applicantService.ViewimageByID(sid);
           mv.addObject("jobslist", jobslist);
+          List<Job> jobslist1 = recruiterService.ViewAllJobs();
+          Set<String> companyNamesSet = new HashSet<>();
+
+          		         // Extract company names from each Job object and add to the Set
+          		         for (Job job : jobslist1) {
+          		             companyNamesSet.add(job.getCompanyname());
+          		         }
+
+          
+          mv.addObject("reclist", companyNamesSet);
           mv.addObject("image", image);
        return mv;
      }
@@ -894,6 +912,12 @@ public class ClientController
 	    	    int salary = Integer.parseInt(salaryParameter);
 	    	    String companyname = request.getParameter("companyname");
 
+	    	    String dateposted=request.getParameter("dateposted");
+	    	    LocalDate parsedDate = LocalDate.parse(dateposted, DateTimeFormatter.ISO_DATE);
+	            String formattedDate = parsedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+	            
+	            
+	    	    
 	    	    byte[] bytes = file.getBytes();
 	    	    Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
@@ -907,6 +931,7 @@ public class ClientController
 	    	        job.setDescription(description);
 	    	        job.setImage(blob);
 	    	        job.setCompanyname(companyname);
+	    	        job.setPosteddate(formattedDate);
 
 	    	        String msg = recruiterService.addjob(job);
 	    	        mv.setViewName("addjob");
@@ -1228,22 +1253,42 @@ public class ClientController
 		      }
 		        
 		      @GetMapping("searchbycompany")
-		      public ModelAndView viewallcompanies(@RequestParam("companyname") String companyname) 
+		      public ModelAndView viewallcompanies(@RequestParam("companyname") String companyname) {
+		          ModelAndView mv = new ModelAndView("viewjobsbycompanyname");
+
+		          List<Job> jobslist1 = adminService.ViewAllJobs();
+		          Set<String> companyNamesSet = new HashSet<>();
+
+		          // Extract company names from each Job object and add to the Set
+		          for (Job job : jobslist1) {
+		              companyNamesSet.add(job.getCompanyname());
+		          }
+
+		          mv.addObject("reclist", companyNamesSet);
+
+		          if ("All".equals(companyname)) {
+		              List<Job> jobslist = recruiterService.ViewAllJobs();
+		              mv.addObject("jobslist", jobslist);
+		          } else {
+		              List<Job> jobslist = applicantService.viewJobsByCompanyName(companyname);
+		              mv.addObject("jobslist", jobslist);
+		          }
+
+		          return mv;
+		      }
+
+		      @GetMapping("searchbydate")
+		      public ModelAndView viewallcompaniesbydate(@RequestParam("fromdate") String fromdate) 
 		      {
-		        ModelAndView mv=new ModelAndView("viewjobsbycompanyname");
-		        List<Job> jobslist1 = adminService.ViewAllJobs();
-		        Set<String> companyNamesSet = new HashSet<>();
-
-		        		         // Extract company names from each Job object and add to the Set
-		        		         for (Job job : jobslist1) {
-		        		             companyNamesSet.add(job.getCompanyname());
-		        		         }
-
-		        
-		        mv.addObject("reclist", companyNamesSet);
-		        
-		        List<Job> jobslist=applicantService.viewJobsByCompanyName(companyname);
+		        ModelAndView mv=new ModelAndView("viewalljobsbydate");
+		        List<Recruiter> companylist=applicantService.viewallCompanies();
+		            mv.addObject("reclist", companylist);
+		           System.err.println(fromdate);
+		           LocalDate parsedDate = LocalDate.parse(fromdate, DateTimeFormatter.ISO_DATE);
+		          String formattedDate = parsedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		          List<Job> jobslist = applicantService.viewAllJobsByDate(formattedDate);
 		        mv.addObject("jobslist", jobslist);
+		        System.err.println(jobslist);
 		        return mv;
 		        
 		      }

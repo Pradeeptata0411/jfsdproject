@@ -52,5 +52,8 @@ public interface ApplicantService {
 	  public List<Recruiter> viewallCompanies();
 	  
 	  public List<Job> viewJobsByCompanyName(String companyname);
+	  
+	  public List<Job> viewAllJobsByDate(String fromdate);
+
 
 }

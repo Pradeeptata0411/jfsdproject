@@ -559,23 +559,23 @@
                    <c:forEach var="companyName" items="${reclist}">
 			        <option value="${companyName}">${companyName}</option>
 			    </c:forEach>
+			    
                 </select>
            
             <button type="submit">Search</button>
              </div>
         </form>
     </div>
-     <div class="wrapper">
-        <form class="my-form1">
-            <div class="form-group">
-                <label for="branch">Search By Date Posted :&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="date" name="fromdate" id="dateposted" required>
-                <input type="date" name="todate" id="dateposted" required>
+    <div class="wrapper">
+        <form class="my-form1" method="get" action="searchbydate">
+               
+            <div class="form-group" >
+                <label for="branch">Search Jobs From Date Posted :&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="date" name="fromdate" id="dateposted" pattern="\d{2}-\d{2}-\d{4}">
             <button type="submit">Search</button>
              </div>
         </form>
     </div>
-   
      
      
      
