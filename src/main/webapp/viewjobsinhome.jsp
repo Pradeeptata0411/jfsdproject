@@ -15,7 +15,37 @@
    
 </head>
 <style>
+.date-posted-box {
+    background-color: #f0f0f0; /* Background color */
+    padding: 10px; /* Padding around the content */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Border radius for rounded corners */
+    display: inline-block; /* Display as an inline block to fit content */
+   width: 250px;
+  }
 
+
+ #searchInput {
+  max-width:960px; /* Set the width of the input */
+  max-height:10px;
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Add a border for a defined boundary */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  font-size: 26px; /* Set the font size */
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
+
+#searchInput::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+#searchInput.typing::placeholder,
+#searchInput:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 body{
 align-items: center;
 }
@@ -77,7 +107,9 @@ align-items: center;
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
- 
+<br>
+	
+   
     <br><br><br><br>
     <h2 align="center" style="color: #097969">It's Your Time..&nbsp;Apply Now! </h2>
         <c:forEach items="${jobslist}" var="job">
@@ -102,11 +134,31 @@ align-items: center;
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
       <p>Description: <c:out value="${job.description}"></c:out></p>
       <p>Salary: <c:out value="${job.salary}"></c:out></p>
+       <p class="date-posted-box">Date Posted: <c:out value="${job.posteddate}" ></c:out></p> 
         <a href="ApplicantLogin" class="apply-btn">Apply</a>
     </div>
     <br>
    </c:forEach>
     
 </body>
+ <script>
+        // Previous JavaScript code for adding to the cart
 
+        const searchInput = document.getElementById('searchInput');
+        const products = document.querySelectorAll('.job-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchText = searchInput.value.toLowerCase();
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchText)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
 </html>

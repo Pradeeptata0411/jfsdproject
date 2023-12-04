@@ -111,18 +111,12 @@
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="recruiterhome">Home</a></li>
+       <li><a href="recruiterhome">Home</a></li>
       <li><a href="postajob">Post a Job</a></li>
-      <li>
-        <a href="#" class="desktop-item">Actions</a>
-        <input type="checkbox" id="showDrop">
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="recruiterviewjobs">VIEW ALL JOBS</a></li>
-          <li><a href="viewalljobapplications">JOB APPLICATIONS</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Logout</a></li>
+       <li><a href="recruiterviewjobs">view jobs</a></li>
+      <li><a href="viewalljobapplications">Job Applications</a></li>
+      
+      <li><a href="#">logout</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>

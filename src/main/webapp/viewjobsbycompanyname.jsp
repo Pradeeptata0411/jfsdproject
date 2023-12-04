@@ -279,6 +279,16 @@
         height: 200px;
         border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
     }
+    
+    .date-posted-box {
+    background-color: #f0f0f0; /* Background color */
+    padding: 10px; /* Padding around the content */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Border radius for rounded corners */
+    display: inline-block; /* Display as an inline block to fit content */
+   width: 180px;
+  }
+  
     @media screen and (max-width: 768px) {
 /* Style for the search input */
 #searchInput {
@@ -560,6 +570,7 @@
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
       <p>Description: <c:out value="${job.description}"></c:out></p>
       <p>Salary: <c:out value="${job.salary}"></c:out></p>
+       <p class="date-posted-box">Date Posted: <c:out value="${job.posteddate}" ></c:out></p> 
         <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
     </div>
 

@@ -9,6 +9,26 @@
 
 </head>
 <style>
+ #searchInput {
+  max-width:160px; /* Set the width of the input */
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid #ccc; /* Add a border for a defined boundary */
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  font-size: 26px; /* Set the font size */
+  transition: all 0.3s ease; /* Add a smooth transition effect */
+}
+
+#searchInput::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+#searchInput.typing::placeholder,
+#searchInput:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-100%);
+}
    /* CSS for Our Services Section */
 .our_service_section {
   background-color: #f8f8f8;

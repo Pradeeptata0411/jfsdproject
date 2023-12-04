@@ -534,6 +534,16 @@
   opacity: 0;
   transform: translateX(-100%);
 }
+
+.date-posted-box {
+    background-color: #f0f0f0; /* Background color */
+    padding: 10px; /* Padding around the content */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Border radius for rounded corners */
+    display: inline-block; /* Display as an inline block to fit content */
+   width: 180px;
+  }
+
   </style>
 </head>
 <body>
@@ -594,6 +604,7 @@
       <p>Skills: <c:out value="${job.skills}"></c:out></p>
       <p>Description: <c:out value="${job.description}"></c:out></p>
       <p>Salary: <c:out value="${job.salary}"></c:out></p>
+      <p class="date-posted-box">Date Posted: <c:out value="${job.posteddate}" ></c:out></p> 
         <a href="applyjob?id=${job.id}" class="apply-btn">Apply</a>
     </div>
    </c:forEach>
