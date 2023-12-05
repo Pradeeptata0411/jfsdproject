@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

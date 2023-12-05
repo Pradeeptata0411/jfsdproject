@@ -6,6 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Viewall Job's</title>
+  <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <style>
 
@@ -118,20 +119,12 @@
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
       <li><a href="adminhome">Home</a></li>
       <li><a href="viewallapplicants">View All Applicants</a></li>
             <li><a href="viewallrecruiters">View All Companies</a></li>
-      
-      <li>
-        <a href="" class="desktop-item">Actions</a>
-        <input type="checkbox" id="showDrop">
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
-          <li><a href="">JOB APPLICATIONS</a></li>
-        
-        </ul>
-      </li>
+       <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
+     
       
       <li><a href="admin">Logout</a></li>
     </ul>

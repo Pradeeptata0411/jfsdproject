@@ -5,6 +5,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
   <title>Admin Viewall Job's</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <style>
@@ -118,17 +119,8 @@
       <li><a href="adminhome">Home</a></li>
       <li><a href="viewallapplicants">View All Applicants</a></li>
             <li><a href="viewallrecruiters">View All Companies</a></li>
-      
-      <li>
-        <a href="" class="desktop-item">Actions</a>
-        <input type="checkbox" id="showDrop">
-        <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-        <ul class="drop-menu">
-          <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
-          <li><a href="">JOB APPLICATIONS</a></li>
-        
-        </ul>
-      </li>
+       <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
+     
       
       <li><a href="admin">Logout</a></li>
     </ul>

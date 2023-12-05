@@ -5,6 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
     <title> Applicant Login</title>
     <link rel="stylesheet" href="style.css">
     <style>

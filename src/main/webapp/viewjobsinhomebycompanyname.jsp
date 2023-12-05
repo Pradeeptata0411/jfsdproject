@@ -10,6 +10,9 @@
     <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
     <title> Applicant Login</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+    
+
+   
 </head>
 <style>
 .my-form {
@@ -156,21 +159,23 @@ align-items: center;
     <h2 align="center" style="color: #097969">It's Your Time..&nbsp;Apply Now! </h2>
     <div class="wrapper">
         <form class="my-form" action="searchbycompanynameberforelogin" >
+          
+               
+          
             <div class="form-group">
                 <label for="branch">Search Jobs By Company :</label>
                 <select id="companyname" name="companyname" required>
                     <option value="">---Select Company---</option>
-                   <c:forEach var="companyName" items="${reclist}">
+                    <c:forEach var="companyName" items="${reclist}">
 			        <option value="${companyName}">${companyName}</option>
 			    </c:forEach>
-			    
+			    <option value="All">All Companies</option>
                 </select>
            
             <button type="submit">Search</button>
              </div>
         </form>
     </div>
-    
         <c:forEach items="${jobslist}" var="job">
     
     <div class="job-card">

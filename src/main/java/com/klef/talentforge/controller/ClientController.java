@@ -1243,14 +1243,7 @@ public class ClientController
 		        return "redirect:/ApplicantLogin";
 		            
 		      }
-		      @GetMapping("viewalljobs")
-		      public ModelAndView homejobs() {
-		        ModelAndView mv=new ModelAndView("viewjobsinhome");
-		        List<Job> jobslist = recruiterService.ViewAllJobs();
-		        mv.addObject("jobslist", jobslist);
-		           
-		        return mv;
-		      }
+		     
 		        
 		      @GetMapping("searchbycompany")
 		      public ModelAndView viewallcompanies(@RequestParam("companyname") String companyname) {
@@ -1293,6 +1286,47 @@ public class ClientController
 		        
 		      }
 
-		     
-	    	
+		      @GetMapping("searchbycompanynameberforelogin")
+		      public ModelAndView searchbycompanynameberforelogin(@RequestParam("companyname") String companyname) {
+		          ModelAndView mv = new ModelAndView("viewjobsinhomebycompanyname");
+
+		          List<Job> jobslist1 = adminService.ViewAllJobs();
+		          Set<String> companyNamesSet = new HashSet<>();
+
+		          // Extract company names from each Job object and add to the Set
+		          for (Job job : jobslist1) {
+		              companyNamesSet.add(job.getCompanyname());
+		          }
+
+		          mv.addObject("reclist", companyNamesSet);
+
+		          if ("All".equals(companyname)) {
+		              List<Job> jobslist = recruiterService.ViewAllJobs();
+		              mv.addObject("jobslist", jobslist);
+		          } else {
+		              List<Job> jobslist = applicantService.viewJobsByCompanyName(companyname);
+		              mv.addObject("jobslist", jobslist);
+		          }
+
+		          return mv;
+		      }
+		      @GetMapping("viewalljobs")
+		      public ModelAndView homejobs() {
+		        ModelAndView mv=new ModelAndView("viewjobsinhome");
+		        List<Job> jobslist = recruiterService.ViewAllJobs();
+		        mv.addObject("jobslist", jobslist);
+		           
+		        List<Job> jobslist1 = adminService.ViewAllJobs();
+		          Set<String> companyNamesSet = new HashSet<>();
+
+		          // Extract company names from each Job object and add to the Set
+		          for (Job job : jobslist1) {
+		              companyNamesSet.add(job.getCompanyname());
+		          }
+
+		          mv.addObject("reclist", companyNamesSet);
+		        
+		        
+		        return mv;
+		      }
 }
