@@ -416,7 +416,7 @@
   #toggle-btn {
     display: block;
     position: fixed;
-   margin-top: 43px;
+   margin-top: 45px;
     right: 10px;
     cursor: pointer;
   }

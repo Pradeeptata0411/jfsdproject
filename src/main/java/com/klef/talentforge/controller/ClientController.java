@@ -31,12 +31,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.service.AdminService;
 import com.klef.talentforge.service.ApplicantService;
+import com.klef.talentforge.service.ContactUsEmailManager;
 import com.klef.talentforge.service.EmailManager;
 import com.klef.talentforge.service.RecruiterService;
 
@@ -49,6 +51,7 @@ public class ClientController
 	@Autowired
 	private ApplicantService applicantService;
 	
+	
 	@Autowired
 	private RecruiterService recruiterService;
 	
@@ -56,11 +59,15 @@ public class ClientController
 	@Autowired
 	private AdminService adminService;
 	
-	
-	
 
 	@Autowired
 	private EmailManager emailManager;
+	
+	
+	@Autowired
+	private ContactUsEmailManager contactusform;
+	
+	
 	
 	
 	
@@ -70,6 +77,15 @@ public class ClientController
 		return mv;
 	}
 
+	
+	@GetMapping("contactus")
+	public ModelAndView contactus() {
+		ModelAndView mv=new ModelAndView("contactus");
+		return mv;
+	}
+	
+	
+	
 	
 	 @GetMapping("/")
 	    public ModelAndView homepage() {
@@ -1329,4 +1345,36 @@ public class ClientController
 		        
 		        return mv;
 		      }
+		      
+		      
+		      
+		      
+		      
+		      
+			     @PostMapping("contactusform")
+			     public ModelAndView contactus(HttpServletRequest request)
+			     {
+			       ModelAndView mv=new ModelAndView("contactus");
+			       
+			       HttpSession session=request.getSession();
+			       
+			       String name=request.getParameter("name");
+			       String email=request.getParameter("email");
+			       String msg=request.getParameter("message");
+			       String subject=request.getParameter("subject");
+			       
+			       ContactForm contactus=new ContactForm();
+			       
+			       contactus.setEmail(email);
+			       contactus.setName(name);
+			       contactus.setMessage(msg);
+			       contactus.setSubject(subject);
+			       
+			       String msgg=applicantService.contactusform(contactus);
+			       
+			       
+			       contactusform.sendEmailToManager(email, name, subject, msg);
+			       return mv;  
+			     } 	      
+		      
 }

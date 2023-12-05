@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
@@ -56,4 +57,8 @@ public interface ApplicantService {
 	  public List<Job> viewAllJobsByDate(String fromdate);
 
 
+	  public String contactusform(ContactForm contactForm);
+	  
+	  
+	  
 }

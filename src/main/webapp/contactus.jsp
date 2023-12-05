@@ -108,7 +108,54 @@
   }
 }
 
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+form {
+  display: grid;
+  gap: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
 </style>
 <body>
 <nav>
@@ -119,7 +166,7 @@
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="viewalljobs">Jobs</a></li>
       <li><a href="contactus">Contact Us 📞</a></li>
        <li><a href="ApplicantLogin">Applicant Login</a></li>
@@ -133,56 +180,31 @@
  
 <!-- partial -->
 <br><br>
-<section>
-
-
-<img src="/images/jobsearchhome.jpg" height="350px" width="1498px">
-</section>
- <section class="our_service_section">
-    <h3 class="section_title">Our Top Recruiters</h3>
-   
-    <!-- Feature Cards Container -->
-    <div class="feature-carousel-container">
-      <div class="feature-carousel">
-        <!-- Feature Card 1 -->
-        <div class="feature-card">
-          <img src="/images/wipro.jpg" alt="Service 1">
-          
-          <p class="feature-description">Wipro is an Indian multinational corporation that provides information technology, consultant and business process services.</p>
-          <br>
-          <h4 class="feature-title"> Salaries from 800000 LPA</h4><br>
-        </div>
-        <!-- Feature Card 2 -->
-        <div class="feature-card"><br>
-          <img src="/images/google.png" alt="Service 2">
-          <p class="feature-description">Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing.</p>
-          <br>
-           <h4 class="feature-title"> Salaries from 2000000 LPA</h4><br><br>
-        </div>
-        <!-- Feature Card 3 -->
-        <div class="feature-card">
-          <img src="/images/amazon.png" alt="Service 3">
-          <p class="feature-description">Amazon is an American Multinational technology company focusing on e-commerce, online advertising, digital streaming, and artificial intelligence</p>
-          <h4 class="feature-title"> Salaries from 2800000 LPA</h4><br><br>
-          
-        </div>
-        <!-- Add more feature cards as needed -->
-        <div class="feature-card">
-          <img src="/images/ibm.png" alt="Service 3">
-      
-          <p class="feature-description">The International Business Machines Corporation, is an American multinational  corporation Headquartered in New York</p>
-                    <h4 class="feature-title"> Salaries from 1400000 LPA</h4>
-          
-        </div>
-        <div class="feature-card">
-          <img src="/images/cisco.png" alt="Service 3"><br><br>
-          <p class="feature-description">Cisco Systems, Inc., commonly known as Cisco, is an American-based multinational digital communications technology</p><br>
-           <h4 class="feature-title"> Salaries from 900000 LPA</h4>
-          
-        </div>
+<br><br><br>
+ <div class="container">
+    <form action="contactusform" method="post">
+      <h2>Contact Us</h2>
+      <div class="input-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name Here " required>
       </div>
-    </div>
-  </section>
+      <div class="input-group">
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Valid Email 📧" required>
+      </div>
+      <div class="input-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter Subject here" required>
+      </div>
+      <div class="input-group">
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Enter Your Message " required></textarea>
+      </div>
+      <div class="input-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
   </body>
 </html>
     

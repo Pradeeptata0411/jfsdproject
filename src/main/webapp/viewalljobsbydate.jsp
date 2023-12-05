@@ -435,7 +435,7 @@
   #toggle-btn {
     display: block;
     position: fixed;
-   margin-top: 32px;
+   margin-top: 45px;
     right: 10px;
     cursor: pointer;
   }
@@ -488,7 +488,7 @@
   <div id="container">
     <div id="left-half">
       <div id="search-bar">
-       <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+      <p style="color: darkblue; font-size: 20px;"> <a href="applicanthome"> <img src="/images/navlogo.jpg" width="165px" height="55" /></a></p>
          <input type="search" id="searchInput" class="form-control" placeholder="Type Here to search for your required jobs">
         <button id="toggle-btn">&#9776;</button>
         

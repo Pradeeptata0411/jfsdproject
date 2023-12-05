@@ -11,11 +11,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.klef.talentforge.model.Applicant;
 import com.klef.talentforge.model.ApplicantImage;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.JobApplications;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.model.ViewApplicationStatus;
 import com.klef.talentforge.repository.ApplicantRepository;
+import com.klef.talentforge.repository.ContactUsRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
@@ -49,6 +51,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	  private JobRepository jobRepository;
+	
+	
+	@Autowired
+	private ContactUsRepository contactUsRepository;
 	
 	
 	
@@ -223,5 +229,11 @@ public class ApplicantServiceImpl implements ApplicantService {
 	    
 	    return jobRepository.viewallJobsByDate(fromdate);
 	  }
+
+	@Override
+	public String contactusform(ContactForm contactForm) {
+		contactUsRepository.save(contactForm);
+		return "ThankYou 😊 For Contacting 🤝";
+	}
 
 }

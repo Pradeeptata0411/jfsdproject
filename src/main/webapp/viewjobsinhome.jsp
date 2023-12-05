@@ -141,7 +141,7 @@ align-items: center;
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
       <li><a href="/">Home</a></li>
       <li><a href="viewalljobs">Jobs</a></li>
-      
+      <li><a href="contactus">Contact Us 📞</a></li>
        <li><a href="ApplicantLogin">Applicant Login</a></li>
       <li><a href="companylogin">Company Login</a></li>
       
