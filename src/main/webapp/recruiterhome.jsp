@@ -5,7 +5,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>TalentForge Recruiter Home</title>
+  <title>TalentForge | Recruiter Home</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 </head>
@@ -18,12 +18,13 @@
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="recruiterhome">Home</a></li>
-      <li><a href="postajob">Post a Job</a></li>
-       <li><a href="recruiterviewjobs">view jobs</a></li>
-      <li><a href="viewalljobapplications">Job Applications</a></li>
+     <li><a href="recruiterhome"><i class="fa fa-home">  HOME</i></a></li> 
+      <li><a href="postajob"><i class="fa fa-suitcase">  POST A JOB</i></a></li>
+     <li><a href="recruiterviewjobs"><i class="fa fa-eye" > VIEW ALL JOBS</i></a></li>
+      <li><a href="viewalljobapplications"><i class="fa fa-tasks">&nbsp; JOB APPLICATIONS</i> </a></li>
+      <li><a href="companylogin"><i class="fa fa-power-off"></i> LOGOUT</a></li>
       
-      <li><a href="#">logout</a></li>
+     
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
@@ -36,6 +37,7 @@
 <!-- partial -->
   <div class="body-text">
   <div class="title"><h3>Welcome</h3><h1 id="username" style="font-style: oblique;"></h1></div>
+  <div class="title"><h1><img src='displaycompanyimage?id=${rid}' alt="Company Logo" height="90px" width="180px"></h1></div>
   <div class="sub-title"> </div>
 </div>
 

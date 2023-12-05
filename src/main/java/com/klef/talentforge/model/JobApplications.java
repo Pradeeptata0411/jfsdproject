@@ -51,7 +51,7 @@ public class JobApplications {
 	private byte[] bfileContent;
 
    
-    
+   
     
 	public int getId() {
 		return id;
@@ -157,6 +157,7 @@ public class JobApplications {
 		this.jobid = jobid;
 	}
 
+	
 	
 	
 	

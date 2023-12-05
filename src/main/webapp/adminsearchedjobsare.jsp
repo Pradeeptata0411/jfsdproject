@@ -107,26 +107,26 @@
         button:hover {
             background-color: #45a049;
         }
-        
+        .navlogo{
+       margin-top: 19px;
+       }
 </style>
 </head>
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="adminhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+     <p > <a href="adminhome"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="adminhome">Home</a></li>
-      <li><a href="viewallapplicants">View All Applicants</a></li>
-            <li><a href="viewallrecruiters">View All Companies</a></li>
-         <li><a href="adminviewalljobs">View All Jobs</a></li>
-       <li><a href="viewqueries">Queries</a></li>
+      <li><a href="adminhome"><i class="fa fa-home">  HOME</i></a></li> 
+      <li><a href="viewallapplicants"><i class="fa fa-eye" > ALL APPLICANTS</a></i></li>
+      <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
+      <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
       
-      <li><a href="admin">Logout</a></li>
+       <li><a href="viewqueries">Queries</a></li>      
+         <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>

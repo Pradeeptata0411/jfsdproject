@@ -130,27 +130,32 @@ align-items: center;
       border-radius: 0%;
     }
 
+
+.navlogo{
+       margin-top: 19px;
+       }
 </style>
 
 <body>
 <nav>
 
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="/"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+    <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
+
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="/">Home</a></li>
-      <li><a href="viewalljobs">Jobs</a></li>
-      
-       <li><a href="ApplicantLogin">Applicant Login</a></li>
-      <li><a href="companylogin">Company Login</a></li>
+      <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
+      <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
+        <li><a href="contactus">Contact Us 📞</a></li>
+       <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i></a></li>
       
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
+  
 </nav>
 <br>
 	

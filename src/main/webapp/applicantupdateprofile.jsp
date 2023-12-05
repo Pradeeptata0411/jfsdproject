@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalentForge Profile</title>
+  <title>TalentForge | Update Profile</title>
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
   <style>
   
@@ -707,10 +708,10 @@ button:hover {
   
 </div>
       <nav>
-          <a href="applicanthome">Home</a>
-        <a href="myjobApplications">My Applications</a>
-          <a href="updateprofileApplicant">Update Profile</a>
-            <a href="/">Logout</a>
+             <a href="applicanthome"><i class="fa fa-home">  HOME</i></a>
+        <a href="myjobApplications"><i class="fa fa-envelope" >&nbsp;JOB APPLICATIONS</i></a>
+          <a href="updateprofileApplicant"><i class='fas fa-edit' > UPDATE PROFILE</i></a>
+            <a href="/"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a>
         <!-- Add more navigation items here -->
       </nav>
     </div>

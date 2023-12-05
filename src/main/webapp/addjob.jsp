@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
-  <title>TalentForge Recruiter Home</title>
+  <title>TalentForge | Post a Job</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
   <style>
   .container {
@@ -284,18 +284,17 @@ a:hover {
 <body>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
+    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 </a> <img src="/images/search.png" width="30px" height="30" /></p>
 </div>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-       <li><a href="recruiterhome">Home</a></li>
-      <li><a href="postajob">Post a Job</a></li>
-       <li><a href="recruiterviewjobs">view jobs</a></li>
-      <li><a href="viewalljobapplications">Job Applications</a></li>
-      
-      <li><a href="#">logout</a></li>
+       <li><a href="recruiterhome"><i class="fa fa-home">  HOME</i></a></li> 
+      <li><a href="postajob"><i class="fa fa-suitcase">  POST A JOB</i></a></li>
+     <li><a href="recruiterviewjobs"><i class="fa fa-eye" > VIEW ALL JOBS</i></a></li>
+      <li><a href="viewalljobapplications"><i class="fa fa-tasks">&nbsp; JOB APPLICATIONS</i> </a></li>
+      <li><a href="companylogin"><i class="fa fa-power-off"></i> LOGOUT</a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
