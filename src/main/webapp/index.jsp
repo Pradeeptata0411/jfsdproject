@@ -582,7 +582,7 @@
                
             <div class="form-group" >
                 <label for="branch">Search Jobs From Date Posted :&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="date" name="fromdate" id="dateposted" pattern="\d{2}-\d{2}-\d{4}">
+                <input type="date" name="fromdate" id="dateposted" pattern="\d{2}-\d{2}-\d{4}" required>
             <button type="submit">Search</button>
              </div>
         </form>

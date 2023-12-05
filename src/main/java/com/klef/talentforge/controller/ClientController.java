@@ -100,6 +100,9 @@ public class ClientController
 	    }
 	 
 	
+	 
+	 
+	
 	@PostMapping("registration")
 	public ModelAndView addapplicant(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
@@ -1375,6 +1378,22 @@ public class ClientController
 			       
 			       contactusform.sendEmailToManager(email, name, subject, msg);
 			       return mv;  
-			     } 	      
+			     } 	  
+			     
+			     
+			     
+			     
+			     @GetMapping("viewqueries")
+				    public ModelAndView viewqueries() {
+				      ModelAndView mv=new ModelAndView("adminviewqueries");
+				      
+				      List<ContactForm> contact = adminService.viewallQueries();
+				      mv.addObject("contact", contact);
+				      return mv;
+				    }
+				 
+				      
+			     
+			     
 		      
 }

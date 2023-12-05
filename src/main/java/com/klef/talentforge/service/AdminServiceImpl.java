@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 import com.klef.talentforge.repository.AdminRepository;
 import com.klef.talentforge.repository.ApplicantRepository;
+import com.klef.talentforge.repository.ContactUsRepository;
 import com.klef.talentforge.repository.JobApplicationsRepository;
 import com.klef.talentforge.repository.JobRepository;
 import com.klef.talentforge.repository.RecruiterRepository;
@@ -40,7 +42,8 @@ public class AdminServiceImpl implements AdminService
 	private ApplicantRepository applicantRepository;
 	
 	
-	
+	@Autowired
+	private ContactUsRepository contactUsRepository;
 	
 	public Admin checkadminlogin(String username, String password) {
 		
@@ -140,6 +143,13 @@ public class AdminServiceImpl implements AdminService
 		public List<Recruiter> getcompanynames() {
 			return recruiterRepository.findAll();
 					
+		}
+
+
+		@Override
+		public List<ContactForm> viewallQueries() {
+			// TODO Auto-generated method stub
+			return contactUsRepository.findAll();
 		}
 	
 	

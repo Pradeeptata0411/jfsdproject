@@ -123,8 +123,8 @@
       <li><a href="adminhome">Home</a></li>
       <li><a href="viewallapplicants">View All Applicants</a></li>
             <li><a href="viewallrecruiters">View All Companies</a></li>
-       <li><a href="adminviewalljobs">VIEW ALL JOBS</a></li>
-     
+         <li><a href="adminviewalljobs">View All Jobs</a></li>
+       <li><a href="viewqueries">Queries</a></li>
       
       <li><a href="admin">Logout</a></li>
     </ul>

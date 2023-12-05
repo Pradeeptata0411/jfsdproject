@@ -213,7 +213,7 @@ nav .wrapper{
 
 
 
-@media screen and  (max-width: 998px) {
+@media screen and  (max-width: 1000px) {
 	
 	
 	
@@ -384,6 +384,16 @@ nav .wrapper{
         button:hover {
             background-color: #45a049;
         }
+        
+        
+        
+      #employee-card {
+      width: 10px; /* Make the cards full-width on smaller screens */
+      margin: 15px 0;
+    }  
+        
+        
+        
 }
 nav input{
   display: none;

@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
-  <title>All Recruiters</title>
+  <title>Admin Viewall Job's</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <style>
 
@@ -52,7 +52,7 @@
 .btn {
 	 display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -71,7 +71,74 @@
   border-radius: 5px;
   background-color: #D96060;
 }
+#jobSalaryForm {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-align: center;
+            margin-left: 410px;
+        }
 
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 200px;
+            padding: 10px;
+            
+            margin-bottom: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer; 
+            margin-left: 10px;
+            margin-top: -18px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+     
+
+  .employee-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 35px;
+    padding: 20px;
+    width: 800px;
+    margin-left:350px;
+    text-align: center;
+  }
+
+  .employee-card h2 {
+    color: darkblue;
+    font-family: fantasy;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .employee-card p {
+    margin: 5px 0;
+  }
+
+  .employee-card-id {
+    font-weight: bold;
+  }
+ .employee-card-email {
+    font-weight: bold;
+    font-style: italic;
+    font-stretch: ultra-condensed;
+  }
 </style>
 </head>
 <body>
@@ -86,7 +153,7 @@
       <li><a href="adminhome">Home</a></li>
       <li><a href="viewallapplicants">View All Applicants</a></li>
             <li><a href="viewallrecruiters">View All Companies</a></li>
-         <li><a href="adminviewalljobs">View All Jobs</a></li>
+       <li><a href="adminviewalljobs">View All Jobs</a></li>
        <li><a href="viewqueries">Queries</a></li>
       
       <li><a href="admin">Logout</a></li>
@@ -96,45 +163,36 @@
 </nav>
 
 <br>
-<br>
-<br>
-<br>
-<br>
+
  <h5 align="center" style="color:red">${message}</h5>
- 
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Recruiters</p>
+  <br>
  <br>
- <table id="employee">
-			<tr bgcolor="darkblue" style="color: white">
-				<th>Recruiter ID</th>
-				<th>Company Name</th>
-				<th>Email-📧</th>
-				<th>Contact-📞</th>
-				<th>Address</th>
-				<th>Status</th>
-				<th>Accept</th>
-				<th>Reject</th>
-								
-				
-			</tr>
-			<c:forEach items="${recruiters}" var="rec">
-				<tr>
-					<td><c:out value="${rec.id}" /></td>
-					<td><c:out value="${rec.companyname}" /></td>
-					<td><c:out value="${rec.email}" /></td>
-					
-					</td>
-					<td><c:out value="${rec.contactno}" /></td>
-					
-					<td><c:out value="${rec.address}" /></td>
-					<td><c:out value="${rec.loginstatus}" /></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclined?id=${rec.id}&status=true"></c:url>'><button class="btn"><h3>Accept</h3></button></a></td>
-					<td><a href='<c:url value="setstatusacceptanceordeclined?id=${rec.id}&status=false"></c:url>'><button class="btnr"><h3>Reject</h3></button></a>
-					</td>				
-					</tr>
-			</c:forEach>
-		</table>
- 
+ <div class="employee-container">
+  <c:forEach items="${contact}" var="job">
+    <div class="employee-card">
+      <h2>${job.name}</h2>
+      <p class="employee-card-id">ID: ${job.id}</p>
+       <p class="employee-card-email">Mail-ID: ${job.email}</p>
+      <p>Subject: ${job.subject}</p>
+      <p>Message: ${job.message}</p>
+    </div>
+  </c:forEach>
+</div>
+		<br>
+		<br>
+		<br>
+  <script>
+        function submitForm() {
+            // Get selected values
+            var jobTitle = document.getElementById("jobTitle").value;
+            var salary = document.getElementById("salary").value;
+
+            // You can perform further actions here, such as sending the data to a server
+            // For simplicity, we'll just log the values for now
+            console.log("Selected Job Title: " + jobTitle);
+            console.log("Selected Salary: $" + salary);
+        }
+    </script>
  
 </body>
 </html>

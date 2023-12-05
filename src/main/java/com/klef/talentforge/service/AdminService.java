@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.klef.talentforge.model.Admin;
 import com.klef.talentforge.model.Applicant;
+import com.klef.talentforge.model.ContactForm;
 import com.klef.talentforge.model.Job;
 import com.klef.talentforge.model.Recruiter;
 
@@ -44,4 +45,13 @@ public interface AdminService {
 		
 	 public List<Recruiter> getcompanynames();
 	
+	 
+	 
+	 
+	 public List<ContactForm> viewallQueries();
+	 
+	 
+	 
+	 
+	 
 }
