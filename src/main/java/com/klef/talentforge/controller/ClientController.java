@@ -203,7 +203,7 @@ public class ClientController
 			 
 			   //ApplicantImage image = applicantService.ViewimageByID(sid);
 		          mv.addObject("jobslist", jobslist);
-		          //mv.addObject("image", image);
+		          //mv.addObject("image", image);;;
 			mv.setViewName("index");
 		}else  {
 			mv.setViewName("ApplicantLogin");
