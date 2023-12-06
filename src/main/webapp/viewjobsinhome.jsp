@@ -145,7 +145,7 @@ align-items: center;
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
        <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
       <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
-        <li><a href="contactus">Contact Us 📞</a></li>
+       <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;Contact Us</a></li>
        <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
       <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i></a></li>
       

@@ -8,8 +8,27 @@
   <title>TalentForge | Recruiter Home</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+<style>
+
+
+
+  #video-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+  }
+</style>
 </head>
 <body>
+<video autoplay muted loop id="video-bg">
+    <source src="images/recruiterhome.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 <nav>
   <div class="wrapper">
     <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
@@ -33,12 +52,13 @@
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
 <!-- partial -->
   <div class="body-text">
   <div class="title"><h3>Welcome</h3><h1 id="username" style="font-style: oblique;"></h1></div>
-  <div class="title"><h1><img src='displaycompanyimage?id=${rid}' alt="Company Logo" height="90px" width="180px"></h1></div>
-  <div class="sub-title"> </div>
+   <div class="sub-title"> </div>
 </div>
 
 </body>

@@ -125,7 +125,7 @@
       <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
       <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
       
-       <li><a href="viewqueries">Queries</a></li>      
+        <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;Queries</a></li>   
          <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
