@@ -22,6 +22,10 @@
     height: auto;
     z-index: -1;
   }
+  
+   .navlogo{
+       margin-top: 19px;
+       }
 </style>
 </head>
 <body>
@@ -31,8 +35,8 @@
   </video>
 <nav>
   <div class="wrapper">
-    <div class="logo"><p style="color: white; font-size: 24px;"> <a href="recruiterhome"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆</a> <img src="/images/search.png" width="30px" height="30" /></p>
-</div>
+   <p > <a href="recruiterhome"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
+   
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
