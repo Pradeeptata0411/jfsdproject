@@ -5,13 +5,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>TalentForge | Applicant Login</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
     
     <link rel="stylesheet" href="style.css">
+                <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
     <style>
         /* General styling */
 
@@ -21,7 +22,18 @@
             padding: 0;
             background-color: #fff;
         }
+            .background-container {
+            background-image: url('/images/background.jpg'); /* Replace 'your-image-url.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure the body takes up the full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+      
         .container {
             width: 500px;
             margin: 0 auto;
@@ -1602,30 +1614,10 @@
         color: #333;
     }
     
-       .party-popper {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            display: none;
-            font-size: 24px; /* Adjust the font size as needed */
-        }
-
-        @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.5); }
-            100% { transform: scale(1); }
-        }
-
-        .pop-animation {
-            animation: pop 0.5s ease-out;
-        }
-        
-        
         .navlogo{
        margin-top: 19px;
-       }
+       }  
+       
     </style>
 </head>
 
@@ -1633,25 +1625,25 @@
 <nav>
 
   <div class="wrapper">
-   <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
-
+  <p > <a href="/"> <img src="/images/greennavlogo.png"  class="navlogo" width="180px" height="80" /></a></p>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-       <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
+    <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+      <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
       <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
-         <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;Contact Us</a></li>
+      <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;CONTACT US</a></li>
        <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
-      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i></a></li>
-      
-    </ul>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i>
+      </a></li>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-  
- 
-    <br><br><br><br>
+
+ </div>
+    <br><br><br>
+    <div class="background-container">
+        <div class="content">
     <div class="container">
     																																		
     	<div class="card">
@@ -1659,18 +1651,18 @@
      <span class="blink">
   <h5 align="center" style="color:red">${message}</h5>
   </span>
-                <p style="color: darkblue; font-size: 24px;"> 𝑻𝒂𝒍𝒆𝒏𝒕𝑭𝒐𝒓𝒈𝒆 𝑳𝒐𝒈𝒊𝒏<img src="/images/search.png" width="30px" height="30" /></p>
+ <a href="ApplicantLogin"><img src="/images/navlogo.jpg"   width="100px" height="40" /></a> &nbsp;<p style="display:inline-block;  color: darkblue; font-size: 30px;"> 𝑨𝒑𝒑𝒍𝒊𝒄𝒂𝒏𝒕 𝑳𝒐𝒈𝒊𝒏</p>
 
         <form action="checkapplicantlogin" method="post">
             <div class="mb-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
             </div>
            
             <div class="mb-3">
                 <label for="password1">Password:</label>
                 <input type="password" class="form-control" id="password1" name="password1"
-                    placeholder="Enter password" required>
+                    placeholder="Enter password">
                     <br><br>
                      <a href="register">Don't have an account?</a>
             </div>
@@ -1682,27 +1674,11 @@
        
     </div>
     </div>
-    
+     </div>
+    </div>
     </div>
   
     
 </body>
-<script>
-        // Add this script to trigger the party popper
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the message contains 'success'
-            var successMessage = document.querySelector('.card-body h5').innerText.toLowerCase();
-            if (successMessage.includes('success')) {
-                // Trigger the party popper animation
-                var partyPopper = document.getElementById('partyPopper');
-                partyPopper.classList.add('pop-animation');
-                partyPopper.style.display = 'block';
 
-                // Remove the party popper animation class after it finishes
-                setTimeout(function () {
-                    partyPopper.classList.remove('pop-animation');
-                }, 500);
-            }
-        });
-    </script>
 </html>

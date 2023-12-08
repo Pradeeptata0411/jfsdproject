@@ -7,9 +7,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
     <title> TalentForge | Job Announcements</title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+      
+            <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
+
+   
 </head>
 <style>
 .my-form {
@@ -110,12 +115,13 @@ align-items: center;
   background-color: #097969; /* Change color on hover if desired */
 }
 
-    .job-card {
+  .job-card {
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 28px;
       box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
-       border: 3px solid darkblue;
       padding: 8px;
+      width:90%;
+      margin-left:70px;
       display: flex;
       flex-direction: column;
       gap: 15px;	
@@ -127,36 +133,38 @@ align-items: center;
       border-radius: 0%;
     }
 
-.navlogo{
+ .navlogo{
        margin-top: 19px;
-       }
-
+       }  
 </style>
 
 <body>
 <nav>
 
   <div class="wrapper">
-   <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
+  <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo"  width="180px" height="80" /></a></p>
 
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-       <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
+      <li><a href="/"><i class="fa fa-home">  HOME</i></a></li>
       <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
-       <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;Contact Us</a></li>
+      <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;Contact Us</a></li>
        <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
-      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i></a></li>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i>
+      </a></li>
       
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-<br>
-	
-   
+                
+
+ 
     <br><br><br><br>
+   
+       
     <h2 align="center" style="color: #097969">It's Your Time..&nbsp;Apply Now! </h2>
     <div class="wrapper">
         <form class="my-form" action="searchbycompanynameberforelogin" >
@@ -174,6 +182,7 @@ align-items: center;
              </div>
         </form>
     </div>
+    <br> <br>
     
         <c:forEach items="${jobslist}" var="job">
     
@@ -202,26 +211,10 @@ align-items: center;
     </div>
     <br>
    </c:forEach>
-    
+
+  
+   
+         
 </body>
- <script>
-        // Previous JavaScript code for adding to the cart
 
-        const searchInput = document.getElementById('searchInput');
-        const products = document.querySelectorAll('.job-card');
-
-        searchInput.addEventListener('input', function () {
-            const searchText = searchInput.value.toLowerCase();
-
-            products.forEach(product => {
-                const productName = product.querySelector('h3').textContent.toLowerCase();
-                if (productName.includes(searchText)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        });
-    </script>
-    
 </html>

@@ -7,10 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
-    <title> Applicant Login</title>
+    
+    <title> TalentForge | Search Jobs By Comapany </title>
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
     
+            <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 
    
 </head>
@@ -115,10 +116,11 @@ align-items: center;
 
     .job-card {
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 28px;
       box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
-       border: 3px solid darkblue;
       padding: 8px;
+      width:90%;
+      margin-left:70px;
       display: flex;
       flex-direction: column;
       gap: 15px;	
@@ -130,17 +132,16 @@ align-items: center;
       border-radius: 0%;
     }
 
-
-.navlogo{
+ .navlogo{
        margin-top: 19px;
-       }
+       }  
 </style>
 
 <body>
 <nav>
 
   <div class="wrapper">
-    <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
+  <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
 
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
@@ -150,12 +151,12 @@ align-items: center;
       <li><a href="viewalljobs"><i class='fas fa-bullhorn' > &nbsp;JOBS</i></a></li>
       <li><a href="contactus"><i class="fa fa-address-book"></i> &nbsp;Contact Us</a></li>
        <li><a href="ApplicantLogin"><i class='fas fa-user-tie'> &nbsp;APPLICANT LOGIN</i></a></li>
-      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i></a></li>
+      <li><a href="companylogin"><i class='fa fa-building'>&nbsp; COMPANY LOGIN</i>
+      </a></li>
       
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
-  
 </nav>
 <br>
 	
@@ -181,6 +182,7 @@ align-items: center;
              </div>
         </form>
     </div>
+    <br><br>
         <c:forEach items="${jobslist}" var="job">
     
     <div class="job-card">

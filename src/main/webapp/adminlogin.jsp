@@ -5,10 +5,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
     <title>TalentForge | Admin Login</title>
     <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
+    
     <style>
+     .background-container {
+            background-image: url('/images/recruiter.png'); /* Replace 'your-image-url.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure the body takes up the full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         /* General styling */
 
         body {
@@ -1604,6 +1615,7 @@
 </head>
 
 <body>
+ <div class="background-container">
     <div class="container">
     
     	<div class="card">
@@ -1633,7 +1645,8 @@
         </form>
     </div>
     </div>
-    </div>
+    </div>   </div>
+    
     
 </body>
 

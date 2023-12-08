@@ -11,6 +11,21 @@
     <style>
         /* General styling */
         
+        
+         .background-container {
+            background-image: url('/images/background.jpg');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+                width: 100%;
+            
+          
+        }
+        
          body {
             display: flex;
             justify-content: space-between;
@@ -1668,6 +1683,9 @@
   </div>
 </nav>
  <br><br><br><br><br><br><br>
+
+  <div class="background-container">
+ 
 
  <div class="column">
         <div class="card1" id="registerCard1">

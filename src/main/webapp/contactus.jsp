@@ -9,6 +9,23 @@
 <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 </head>
 <style>
+
+
+
+ .background-container {
+            background-image: url('/images/background.jpg');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    height: 100vh;
+		   
+		    justify-content: center;
+		    align-items: center;
+                width: 100%;
+            
+          
+        }
+
  #searchInput {
   max-width:160px; /* Set the width of the input */
   padding: 10px; /* Add padding for better spacing */
@@ -164,6 +181,7 @@ button:hover {
 <body>
 <nav>
 
+
   <div class="wrapper">
    <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo"  width="180px" height="80" /></a></p>
 
@@ -181,11 +199,10 @@ button:hover {
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-
+<div class="background-container">
  
-<!-- partial -->
-<br><br>
-<br><br><br>
+ 
+<!-- partial --><br><br>
  <div class="container">
     <form action="contactusform" method="post">
       <h2>Contact Us</h2>

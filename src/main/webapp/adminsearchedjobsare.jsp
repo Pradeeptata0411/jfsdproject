@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <title>Admin Viewall Job's</title>
   <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
 <style>
 
  .button {
@@ -115,7 +115,7 @@
 <body>
 <nav>
   <div class="wrapper">
-     <p > <a href="adminhome"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
+     <p > <a href="adminhome"> <img src="/images/adminnavlogo.jpg" class="navlogo" width="180px" height="80" /></a></p>
     <input type="radio" name="slider" id="menu-btn">
     <input type="radio" name="slider" id="close-btn">
     <ul class="nav-links">

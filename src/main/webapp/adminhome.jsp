@@ -4,29 +4,24 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
   <title>TalentForge | Admin Home</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
-<head>
-  <!-- Existing head content -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
+    <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 
-  <script>
-    document.addEventListener('copy', function (e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('cut', function (e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('paste', function (e) {
-      e.preventDefault();
-    });
-  </script>
-  
-
-
+</head>
 <style>
+   .background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+            width: 100%;
+            
+          
+        }
    body {
             display: flex;
             justify-content: space-between;
@@ -34,9 +29,15 @@
             margin: 0;
         }
        
-       
-       
-        .card {
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card1 {
             width: 200px;
             height: 150px;
             background-color: lightblue;
@@ -51,10 +52,13 @@
         }
 
         .count {
-            font-size: 60px;
+            font-size: 2em;
             font-weight: bold;
         }
-       
+
+        .label {
+            margin-top: 10px;
+        }
 
         /* Hover effect */
         .card:hover {
@@ -64,145 +68,57 @@
             background-color: lightpink;
             
         }
-        .navlogo{
-       margin-top: 19px;
-       }
+
+
 </style>
-</head>
 <body>
 <nav>
   <div class="wrapper">
-     <p > <a href="adminhome"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
-    <input type="radio" name="slider" id="menu-btn">
-    <input type="radio" name="slider" id="close-btn">
+  <p > <a href="adminhome"> <img src="/images/adminnavlogo.jpg" width="200px" height="93" /></a></p>
+
+   
     <ul class="nav-links">
       <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
       <li><a href="adminhome"><i class="fa fa-home">  HOME</i></a></li> 
       <li><a href="viewallapplicants"><i class="fa fa-eye" > ALL APPLICANTS</a></i></li>
       <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
       <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
-       <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;Queries</a></li>
-      
-        <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
+       <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;QUERIES</a></li>   
+      <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
 
- <div class="column">
-        <div class="card" id="registerCard1">
-            <span class="count" id="applicantCount">0</span>
-         <span class="label" id="applicantCount">Total Applicants</span>
-        </div>
-        <div class="card" id="registerCard1">
-           <span class="count" id="recruiterCount">0</span>
-         <span class="label" id="recruiterCount">Total Applicants</span>
-        </div>
-        <!-- Add more cards as needed -->
-    </div>
-    <div class="body-text">
-  <div class="title"><h3>Welcome</h3><h1 id="username"></h1></div>
-  <div class="sub-title"> </div>
 </div>
-
-    <div class="column">
-        <div class="card" id="registerCard2">
-           <span class="count" id="jobsCount">0</span>
-        <span class="label">Total Jobs Posted</span>
+  <div class="background-container">
+ 
+ 
+ <div class="column">
+        <div class="card1" id="registerCard1">
+            <span class="count">${applicantCount}</span>
+            <span class="label">Total Applicants</span>
+        </div>
+        <div class="card1" id="registerCard1">
+            <span class="count">${recruiterCount}</span>
+            <span class="label">Total Companies</span>
         </div>
         <!-- Add more cards as needed -->
- <div class="card" id="registerCard2">
-           <span class="count" id="jobApplicationsCount">0</span>
-        <span class="label">Total Jobs Applied</span>
-        </div>
     </div>
-<!-- partial -->
-   
+    <br><br><br><br>
+    
+  
+      <div class="column">
+        <div class="card1" id="registerCard2">
+            <span class="count">${jobsCount}</span>
+            <span class="label">Total Jobs Posted</span>
+        </div>
+        <!-- Add more cards as needed -->
+         <div class="card1" id="registerCard2">
+            <span class="count">${jobApplicationsCount}</span>
+            <span class="label">Total Jobs Applied</span>
+        </div>
+    </div></div>
 </body>
-<script>
-    const uname = "${uname}"; // Replace with the actual username
-    const usernameElement = document.getElementById('username');
-
-    // Function to display each letter with a delay
-    function typeText(text, index) {
-      if (index < text.length) {
-        usernameElement.innerHTML += text.charAt(index);
-        setTimeout(() => typeText(text, index + 1), 100);
-      }
-    }
-
-    // Call the function with the username
-    typeText(uname, 0);
-  </script>
-  <script>
-      // Set the target counts
-      const targetApplicantCount = ${applicantCount};
-      const targetRecruiterCount = ${recruiterCount};
-      
-      
-  
-      // Function to update counts
-      function updateCounts() {
-          const applicantCountElement = document.getElementById('applicantCount');
-          const recruiterCountElement = document.getElementById('recruiterCount');
-  
-          // Get the current counts
-          let currentApplicantCount = parseInt(applicantCountElement.textContent);
-          let currentRecruiterCount = parseInt(recruiterCountElement.textContent);
-  
-          // Increment counts until they reach the target
-          if (currentApplicantCount < targetApplicantCount) {
-              currentApplicantCount++;
-              applicantCountElement.textContent = currentApplicantCount;
-          }
-  
-          if (currentRecruiterCount < targetRecruiterCount) {
-              currentRecruiterCount++;
-              recruiterCountElement.textContent = currentRecruiterCount;
-          }
-  
-          // Repeat the update every second (1000 milliseconds)
-          if (currentApplicantCount < targetApplicantCount || currentRecruiterCount < targetRecruiterCount) {
-              setTimeout(updateCounts, 120);
-          }
-      }
-  
-      // Start updating counts
-      updateCounts();
-   </script>
-<script>
-    // Set the target counts for jobs
-    const targetJobsCount = ${jobsCount};
-    const targetJobApplicationsCount = ${jobApplicationsCount};
-
-    // Function to update job counts
-    function updateJobCounts() {
-        const jobsCountElement = document.getElementById('jobsCount');
-        const jobApplicationsCountElement = document.getElementById('jobApplicationsCount');
-
-        // Get the current job counts
-        let currentJobsCount = parseInt(jobsCountElement.textContent);
-        let currentJobApplicationsCount = parseInt(jobApplicationsCountElement.textContent);
-
-        // Increment counts until they reach the target
-        if (currentJobsCount < targetJobsCount) {
-            currentJobsCount++;
-            jobsCountElement.textContent = currentJobsCount;
-        }
-
-        if (currentJobApplicationsCount < targetJobApplicationsCount) {
-            currentJobApplicationsCount++;
-            jobApplicationsCountElement.textContent = currentJobApplicationsCount;
-        }
-
-        // Repeat the update every second (1000 milliseconds)
-        if (currentJobsCount < targetJobsCount || currentJobApplicationsCount < targetJobApplicationsCount) {
-            setTimeout(updateJobCounts, 120);
-        }
-    }
-
-    // Start updating job counts
-    updateJobCounts();
-</script>
 </html>
     

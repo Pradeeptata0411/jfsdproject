@@ -1636,13 +1636,29 @@ margin-top:300px;
 .navlogo{
        margin-top: 19px;
        }
+       
+       
+        .background-container {
+            background-image: url('/images/background.jpg');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+                width: 100%;
+            
+          
+        }
     </style>
 </head>
 
 <body>
 <nav>
-
+  
   <div class="wrapper">
+  
    <p > <a href="/"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
 
     <input type="radio" name="slider" id="menu-btn">
@@ -1658,6 +1674,7 @@ margin-top:300px;
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
+  
 </nav>
     <div class="container">
     <div class="registration-section">
