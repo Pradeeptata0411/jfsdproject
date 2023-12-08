@@ -10,6 +10,20 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
 <style>
 
+
+.background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat:space;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+                width: 100%;
+            
+          
+        }
  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -95,7 +109,8 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-
+<div class="background-container">
+ 
 <br>
 <br>
 <br>
@@ -103,7 +118,6 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Recruiters</p>
  <br>
  <table id="employee">
 			<tr bgcolor="darkblue" style="color: white">

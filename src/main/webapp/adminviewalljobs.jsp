@@ -10,6 +10,16 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
 <style>
 
+.background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat:no-reapt;
+		   
+            
+          
+        }
+
  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -51,7 +61,7 @@
 
 .btn {
 	 display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
@@ -84,9 +94,10 @@
             margin-bottom: 8px;
         }
 
-        select {
+     select {
             width: 200px;
             padding: 10px;
+            border-radius:10px;
             
             margin-bottom: 16px;
         }
@@ -106,9 +117,23 @@
             background-color: #45a049;
         }
 
+		
        .navlogo{
        margin-top: 19px;
        }
+       
+       
+       #company{
+       margin-top:10px;
+       }
+       #salary{
+       margin-top:10px;
+       }
+       
+        #search{
+       margin-top:-9px;
+       }
+       
 </style>
 </head>
 <body>
@@ -123,14 +148,16 @@
       <li><a href="viewallapplicants"><i class="fa fa-eye" > ALL APPLICANTS</a></i></li>
       <li><a href="viewallrecruiters"><i class="fa fa-eye" > ALL COMPANIES</a></i></li>
       <li><a href="adminviewalljobs"><i class="fa fa-list-alt""> ALL JOBS</i></a></li>
-       <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;Queries</a></li>
+       <li><a href="viewqueries"><i class="fa fa-question-circle"></i>&nbsp;QUERIES</a></li>
       
          <li><a href="admin"><i class="fas fa-sign-in-alt" > &nbsp;LOGOUT</i></a></li>
     </ul>
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-
+<div class="background-container">
+ 
+ 
 <br>
 <br>
 <br>
@@ -138,12 +165,12 @@
 <br>
  <h5 align="center" style="color:red">${message}</h5>
  
-  <p align="center" style="font-size: 34px;font-weight: bold; color: darkblue" >View All Jobs</p>
+  
   <br>
   
   <br>
   <form id="jobSalaryForm" method="get" action="adminsearching">
-    <label for="jobTitle">Company:</label>
+    <label for="jobTitle">Company:&nbsp;&nbsp;</label>
 			<select id="company" name="companyname" required>
 			    <option value="">---Select An Option---</option>
 			    <c:forEach var="companyName" items="${companyNamesSet}">
@@ -152,7 +179,7 @@
 			</select>
 
 
-        <label for="salary">Salary:</label>
+        <label for="salary">&nbsp;&nbsp;&nbsp;Salary:&nbsp;&nbsp;</label>
         <select id="salary" name="salary" required>
             <option value="">---Select An Option---</option>
             <!-- Use JSTL to dynamically populate salary options from the controller -->
@@ -163,7 +190,7 @@
                 <option value="1000000">>=1000000</option>
                 <option value="1500000">>=1500000</option>
                         </select>
-        <button type="submit">Search</button>
+        <button type="submit" id="search">Search</button>
     </form>
   <br>
  <br>

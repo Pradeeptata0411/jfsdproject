@@ -190,7 +190,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background-color: white;
       display: flex;
       height: 100vh;
     }
@@ -240,15 +240,20 @@
       cursor: pointer;
     }
 
-    .job-card {
+   .job-card {
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 8px;
       display: flex;
       flex-direction: column;
-      gap: 2px;	
+      gap: 2px;  
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
     }
+    .job-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box-shadow on hover */
+}
 
     .job-card img {
       max-width: 200px;
@@ -288,13 +293,14 @@
         border-radius: 50%; /* This sets the border-radius to 50% to make it a circle. You can adjust this value as needed. */
     }
     
-     .apply-btn {
+    .apply-btn {
   display: inline-block;
-  background-color: darkblue;
+  background-color: #778A35;
   color: #fff;
   padding: 8px 12px;
   border: none;
-  border-radius: 4px;
+        border-radius: 20px;
+
     text-align: center; /* Center the text */
   
   text-decoration: none; /* Remove underline */
@@ -302,12 +308,22 @@
 }
 
 .apply-btn:hover {
-  background-color: navy; /* Change color on hover if desired */
+  background-color: #097969; /* Change color on hover if desired */
 }
-
 #toggle-btn {
   display: none; /* Initially hide the toggle button */
 }
+
+#right-half {
+      flex: 0 0 10%;
+      background-color: #F9F9FB;
+      color: blue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
 
 
 @media screen and (max-width: 768px) {
@@ -363,11 +379,21 @@
     }
   .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width:240px;
+  height:300px;
   margin: auto;
   text-align: center;
   font-family: arial;
+  border-radius: 15px;
 }
+ .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Content inside the card */
+    .card-content {
+      padding: 20px;
+    }
 
 .title {
   color: grey;
@@ -559,6 +585,7 @@
 
       <!-- Sample job cards -->
      <br><br><br><br>
+     <br><br><br>
      
      
      

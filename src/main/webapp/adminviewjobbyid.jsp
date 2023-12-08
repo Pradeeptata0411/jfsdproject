@@ -10,6 +10,35 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/adminstyle.css">
 <style>
 
+.container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease; /* Adding a smooth transition effect for box-shadow change */
+            
+        }
+        .container:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box-shadow on hover */
+}
+
+.background-container {
+            background-image: url('/images/recruiter.png');
+             background-size: cover;
+		    background-position: center;
+		    background-repeat:space;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+                width: 100%;
+            
+          
+        }
+
  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -71,15 +100,7 @@
   border-radius: 5px;
   background-color: #D96060;
 }
-.container {
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+
         
        .profile-info {
     text-align: center;
@@ -129,6 +150,9 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+
+<div class="background-container">
+ 
 
 <br>
 <br>
