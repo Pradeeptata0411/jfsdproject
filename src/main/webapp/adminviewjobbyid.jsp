@@ -18,9 +18,9 @@
             background-color: #fff;
             border-radius: 25px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                transition: box-shadow 0.3s ease; /* Adding a smooth transition effect for box-shadow change */
-            
+            transition: box-shadow 0.3s ease; /* Adding a smooth transition effect for box-shadow change */
         }
+        
         .container:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box-shadow on hover */
 }

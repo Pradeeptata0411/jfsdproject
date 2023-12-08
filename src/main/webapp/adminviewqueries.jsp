@@ -24,6 +24,11 @@
           
         }
 
+ 
+ .employee-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0.5, 0.5); /* Change the box-shadow on hover */
+}
+
 
  .button {
   display: inline-block;
@@ -124,7 +129,7 @@
      
 
   .employee-card {
-    background-color: #f0f0f0;
+    background-color: transparent;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
