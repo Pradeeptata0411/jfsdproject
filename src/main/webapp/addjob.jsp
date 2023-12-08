@@ -8,6 +8,20 @@
   <title>TalentForge | Post a Job</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
   <style>
+  
+  .background-container {
+            background-image: url('/images/background.jpg');
+             background-size: cover;
+        background-position: center;
+        background-repeat:space;
+        height: 150vh;
+        
+        justify-content: center;
+        align-items: center;
+                width: 100%;
+            
+          
+        }
   .container {
     max-width: 600px;
     margin: auto;
@@ -301,6 +315,9 @@ a:hover {
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+
+<div class="background-container">
+
           <br>       <br>       <br>       <br>	
 <div class="container">
     <div class="registration-section">

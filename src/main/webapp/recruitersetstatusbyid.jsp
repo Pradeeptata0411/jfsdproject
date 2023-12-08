@@ -11,6 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 	<style>
+	
+	.background-container {
+            background-image: url('/images/background.jpg');
+             background-size: cover;
+        background-position: center;
+        background-repeat:space;
+        height: 100vh;
+        
+        justify-content: center;
+        align-items: center;
+                width: 100%;
+            
+          
+        }
 	  .button {
   display: inline-block;
   padding: 10px 20px;
@@ -146,6 +160,8 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
+<div class="background-container">
+
 <br>
 <br>
 <br>

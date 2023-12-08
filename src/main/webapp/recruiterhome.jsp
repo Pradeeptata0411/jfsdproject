@@ -9,19 +9,6 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/css/style.css">
 <link rel="shortcut icon" type="image/png" href="/images/apple-touch-icon.png"/>
 <style>
-
-
-
-  #video-bg {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-  }
   
    .navlogo{
        margin-top: 19px;
@@ -29,10 +16,7 @@
 </style>
 </head>
 <body>
-<video autoplay muted loop id="video-bg">
-    <source src="images/recruiterhome.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+
 <nav>
   <div class="wrapper">
    <p > <a href="recruiterhome"> <img src="/images/greennavlogo.png" class="navlogo" width="180px" height="80" /></a></p>
@@ -52,9 +36,7 @@
     <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
-<br>
-<br>
-<br>
+
 <br>
 <br>
 <br>
