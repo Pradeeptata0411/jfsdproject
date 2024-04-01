@@ -17,6 +17,7 @@
     right: 0;
     transform: translateY(-50%);
 }
+
    .background-container {
             background-image: url('/images/recruiter.png');
              background-size: cover;
